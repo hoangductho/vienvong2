@@ -15,6 +15,7 @@ angular
         $scope.suggest = null;
         $scope.listCount = 0;
         $scope.pageComment = 1;
+        var tryAgain = true;
 
         // get articles from server
         var getDetail = function() {
@@ -25,11 +26,14 @@ angular
 
                     suggest();
                 } else {
-                    var delay = 1;
-                    $timeout(function () {
-                        list(addGroup, addPage);
-                        delay = 0;
-                    }, 500, delay > 0);
+                    if(tryAgain){
+                        tryAgain = false;
+                        var delay = 1;
+                        $timeout(function () {
+                            getDetail();
+                            delay = 0;
+                        }, 500, delay > 0);
+                    }
                 }
             });
         };
