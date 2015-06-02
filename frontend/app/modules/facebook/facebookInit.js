@@ -11,7 +11,8 @@ window.fbAsyncInit = function () {
         appId: '550251971759267',
         status: true,
         xfbml: true,
-        version: 'v2.2'
+        channelUrl: 'app/channel.html',
+        version: 'v2.3'
     });
 };
 
