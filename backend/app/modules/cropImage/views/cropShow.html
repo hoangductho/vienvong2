@@ -1,0 +1,16 @@
+<input type="file" crop-loader>
+<p></p>
+<div ng-if="options.image">
+    <div class="button-control">
+        <div class="btn btn-success" ng-click="cropImage()">Crop</div>
+        <div class="btn btn-success" ng-click="uploadImage()">Upload</div>
+        <div class="btn btn-danger" ng-click="delImage()">Delete</div>
+    </div>
+    <p></p>
+    <image-crop image-out="imageOut" crop-options="options" ng-transclude>
+        <edit-crop ng-dblclick="cropImage()"></edit-crop>
+    </image-crop>
+    <div ng-if="options.imageUrl">
+        <img ng-src="http://api.vienvong.vn/{{options.imageUrl}}" style="max-width: 100%">
+    </div>
+</div>

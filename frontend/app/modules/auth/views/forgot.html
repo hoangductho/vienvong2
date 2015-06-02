@@ -1,0 +1,35 @@
+<div class="login">
+    <h2>Renew Password</h2>
+    <hr>
+    <div class="login-form">
+        <form>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-ss-12">
+                    <div class="form-valid" ng-bind-html="validate.email.mess">
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <button class="btn btn-primary" ng-class="{'disable': (scores < 1)}">Send</button>
+                    <button type="reset" class="btn btn-default">Clear</button>
+                </div>
+            </div>
+            <hr>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <p>
+                        <a ui-sref="main.auth.login">Do you have account?</a>
+                    </p>
+                    <p>
+                        <a ui-sref="main.auth.registry">Registry new account?</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

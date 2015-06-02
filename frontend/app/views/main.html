@@ -1,0 +1,129 @@
+<!-- Header of Page loading-->
+<header ng-include="'/views/header.html'">
+
+</header>
+
+<!-- End header of page-->
+
+<!-- Main Content loading-->
+<main class="container">
+    <div class="row" ui-view="">
+
+    </div>
+</main>
+<!-- End main content-->
+
+<!-- Footer of page loading-->
+<footer class="col-md-12" ng-include="'views/footer.html'">
+
+</footer>
+<!-- End footer of page-->
+
+<!-- Irregular Box-->
+<div class="irregular-box">
+    <div id="search-bar" class="header-package" ng-class="{'hide': (searchBoxShow == false)}" off-click="searchHide()" off-click-if="searchBoxShow">
+        <!-- Search Box-->
+        <div id="search-bar-box" class="bar pull-right full-radius">
+            <form ng-submit="searchPosts()">
+                <div class="pull-left col-md-11 col-sm-10 row none-padding-right">
+                    <input type="text" name="search" class="form-control none-padding-right">
+                </div>
+                <div class="pull-right">
+                    <button type="submit" class="form-control none-effect">
+                        <i class="fa fa-search primary-color"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- End search box-->
+    </div>
+
+    <!-- Load facebook page-->
+    <div id="facebook-page-box" ng-class="{'hide': (facebookShow == false)}" off-click="fbHide()" off-click-if="facebookShow">
+        <div id="fb-root"></div>
+        <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
+             data-height="100%" data-colorscheme="light" data-show-faces="true" data-header="false"
+             data-stream="false" data-show-border="true"></div>
+    </div>
+    <!-- end load facebook page-->
+
+    <!-- Login box-->
+    <div id="login-box" ng-class="{'hide': (loginBoxShow == false || online)}" off-click="loginHide()" off-click-if="loginBoxShow">
+        <div class="login-actions">
+            <div class="login-title end-box">
+                <img src="/images/vienvong1.png">
+                <strong class="g-plus"> Login</strong>
+            </div>
+            <div class="login-description end-box col-xs-0-max">
+                <p><i class="fa fa-caret-right g-plus"></i> You can <a ui-sref="main.auth.registry">registry</a> the account by your e-mail.</p>
+
+                <p><i class="fa fa-caret-right g-plus"></i> You can using Facebook or Google account to registry and login.</p>
+            </div>
+            <div class="login-button end-box">
+                <form ng-controller="loginCtrl">
+                    <div class="login-data">
+                        <div ng-if="!result.ok && result.err" class="invalid container-fluid">
+                            <i class="fa fa-times-circle"></i> <b>Please try again.</b> <br>
+                            {{result.err}}
+                        </div>
+                    </div>
+                    <div class="login-data row">
+                        <div class="container-fluid">
+                            <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+                        </div>
+                        <div class="container-fluid" ng-if="!validate.email.valid">
+                            <p></p>
+                            <div class="form-valid" ng-bind-html="validate.email.mess">
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="login-data row">
+                        <div class="container-fluid">
+                            <input type="password" name="password" ng-model="auth.password" ng-blur="valid('password')" placeholder="Password" class="form-control"/>
+                        </div>
+                        <div class="container-fluid" ng-if="!validate.password.valid">
+                            <p></p>
+                            <div class="form-valid" ng-bind-html="validate.password.mess">
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <!--<div class="login-data row">
+                        <div class="col-xs-12 pull-left" style="text-align: left">
+                            <input type="checkbox" name="keepMe" ng-model="keepMe"/>
+                            Keep Me logged in
+                        </div>
+                    </div>
+                    <p></p>-->
+                    <div class="login-data row">
+                        <div class="container-fluid">
+                            <button class="btn btn-primary" ng-class="{'disable': (scores < 2)}" ng-click="process()">Sing in</button>
+                            <button ng-click="reset()" class="btn btn-default">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           <!-- <div class="login-button end-box">
+                <a class="btn btn-block btn-social btn-google-plus">
+                    <i class="fa fa-google-plus"></i>Sign in with Google
+                </a>
+                <p></p>
+                <a class="btn btn-block btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i>Sign in with Facebook
+                </a>
+                &lt;!&ndash;<div fb-login-button=""></div>&ndash;&gt;
+            </div>-->
+        </div>
+        <div class="user-term">
+            <div class="user-terms">
+                <a href="javascript">
+                    This terms for users
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- End login box-->
+</div>
+<!-- End irregular box-->
+

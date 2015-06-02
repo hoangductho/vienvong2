@@ -1,0 +1,176 @@
+<!doctype html>
+<html ng-app="vienvong">
+<head>
+    <base href='/'>
+    <meta name="fragment" content="!" />
+    <meta charset="utf-8">
+    <title ng-bind-template="{{viewTitle}} Viễn Vọng">Viễn Vọng</title>
+    <link rel="shortcut icon" href="images/vienvong-logo1.png">
+
+    <link rel="apple-touch-icon-precomposed" href="images/vienvong-logo2.png">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css" />
+    <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css" />
+    <link rel="stylesheet" href="bower_components/angular-markdown-toolkit/markdown.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+</head>
+
+<body>
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div ui-view="">
+
+</div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+
+<!-- CryptoJS lib-->
+
+<script src="scripts/plugins/crypto/core-min.js"></script>
+<script src="scripts/plugins/crypto/enc-base64-min.js"></script>
+<script src="scripts/plugins/crypto/sha256.js"></script>
+<script src="scripts/plugins/crypto/hmac-sha256.js"></script>
+<script src="scripts/plugins/crypto/aes.js"></script>
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>-->
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/cipher-core-min.js"></script>-->
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>-->
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha256.js"></script>-->
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>-->
+<!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>-->
+<!-- End cryptoJS lib-->
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-off-click/offClick.js"></script>
+<script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
+<script src="bower_components/angular-markdown-toolkit/markdown.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angularjs-viewhead/angularjs-viewhead.js"></script>
+<script src="bower_components/sotos.crop-image/dist/sotos.crop-image.min.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/jsbn/jsbn.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<!-- endbower -->
+
+<!-- Pagedown-Extra-->
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Converter.js"></script>
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Sanitizer.js"></script>
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Editor.js"></script>
+<script src="bower_components/pagedown-extra/Markdown.Extra.js"></script>
+<!-- End pagedown extra-->
+
+<script src="bower_components/jsbn/jsbn2.js"></script>
+<script src="bower_components/jsbn/base64.js"></script>
+<script src="bower_components/jsbn/ec.js"></script>
+<script src="bower_components/jsbn/prng4.js"></script>
+<script src="bower_components/jsbn/rng.js"></script>
+<script src="bower_components/jsbn/rsa.js"></script>
+<script src="bower_components/jsbn/rsa2.js"></script>
+<script src="bower_components/jsbn/sec.js"></script>
+
+<script src="scripts/plugins/extras.js"></script>
+
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/factories/initConnectFactory.js"></script>
+
+<!-- facebook Module-->
+<script src="modules/facebook/facebookInit.js"></script>
+<script src="modules/facebook/facebook.js"></script>
+
+<script src="modules/facebook/controllers/facebookCtrl.js"></script>
+
+<script src="modules/facebook/directives/facebookDirective.js"></script>
+<script src="modules/facebook/directives/fbLoginDirective.js"></script>
+<!-- facebook module end-->
+
+<!-- Articles Module-->
+<script src="modules/articles/articles.js"></script>
+<script src="modules/articles/controllers/articlesCtrl.js"></script>
+<script src="modules/articles/controllers/searchCtrl.js"></script>
+<script src="modules/articles/controllers/expressCtrl.js"></script>
+
+<script src="modules/articles/factories/articleConnectFactory.js"></script>
+<script src="modules/articles/factories/getArticlesFactory.js"></script>
+<script src="modules/articles/factories/expressArticlesFactory.js"></script>
+<script src="modules/articles/factories/commentConnectFactory.js"></script>
+
+<!-- End articles module-->
+
+<!-- Auth module-->
+<script src="modules/auth/auth.js"></script>
+<script src="modules/auth/controllers/loginCtrl.js"></script>
+<script src="modules/auth/controllers/forgotCtrl.js"></script>
+<script src="modules/auth/controllers/registryCtrl.js"></script>
+<script src="modules/auth/controllers/logoutCtrl.js"></script>
+
+<script src="modules/auth/factories/authConnectFactory.js"></script>
+<!-- End auth module-->
+<!-- endbuild -->
+
+</body>
+</html>

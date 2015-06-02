@@ -1,0 +1,60 @@
+<div class="login">
+    <h2>Authenticate Login</h2>
+    <hr>
+    <div class="login-form">
+        <form>
+            <div class="login-data">
+                <div ng-if="!result.ok && result.err" class="invalid container-fluid">
+                    <i class="fa fa-times-circle"></i> <b>Please try again.</b> <br>
+                    {{result.err}}
+                </div>
+            </div>
+            <p></p>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-ss-12">
+                    <div class="form-valid" ng-bind-html="validate.email.mess">
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <input type="password" name="password" ng-model="auth.password" ng-blur="valid('password')" placeholder="Password" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-ss-12">
+                    <div class="form-valid" ng-bind-html="validate.password.mess">
+
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <!--<div class="login-data">
+                <div class="col-ss-12">
+                    <input type="checkbox" name="keepMe" ng-model="keepMe"/>
+                    Keep Me logged in
+                </div>
+            </div>
+            <p></p>-->
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <button class="btn btn-primary" ng-class="{'disable': (scores < 2)}" ng-click="process()">Sing in</button>
+                    <button ng-click="reset()" class="btn btn-default">Clear</button>
+                </div>
+            </div>
+            <hr>
+            <div class="login-data row">
+                <div class="col-xs-6 col-ss-12">
+                    <p>
+                        <a ui-sref="main.auth.registry">Registry new account?</a>
+                    </p>
+                    <p>
+                        <a ui-sref="main.auth.forgot">Forgot your password?</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div id="hot-posts">
+    <div id="hot-post-box">
+        <div id="hot-posts-sandbox">
+            <!-- hottest post-->
+            <div id="hottest-post-box">
+                <div id="hottest-thumb" class="hot-thumb">
+                    <img ng-src="{{imgHost + hotArticles[0].lAvatar}}">
+                </div>
+                <div id="hottest-title" class="title">
+                    <a ng-href="/express/{{hotArticles[0]._id}}?{{hotArticles[0].friendly}}">
+                        <p>{{hotArticles[0].title}}</p>
+                    </a>
+                </div>
+            </div>
+            <!-- end hottest post-->
+
+            <!-- hotter posts-->
+            <div id="hotter-posts-box">
+                <div class="hit-post-box" ng-repeat="hot in hotArticles" ng-if="$index">
+                    <div class="hotter-thumb hot-thumb">
+                        <img ng-src="{{imgHost + hot.sAvatar}}">
+                    </div>
+                    <div class="hit-post-title title">
+                        <a ng-href="/express/{{hot._id}}?{{hot.friendly}}">
+                            <p>{{hot.title}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- end hotter posts-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div id="header-box">
+    <div id="logo" class="header-package col-sm-0-min col-xs-3">
+        <div id="logo-button" class="blur" ng-init="secondMenu = false" ng-click="secondMenu =! secondMenu">
+            <img src="images/vienvong-logo2.png" height="100%">
+            <span class="caret"></span>
+        </div>
+
+        <nav id="second-menu" ng-class="{'hide': (secondMenu == false)}" off-click="secondMenu = false" off-click-if="secondMenu">
+            <a ui-sref="main.articles.home">
+                <div class="second-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
+            </a>
+            <a ui-sref="main.articles.group({group: 'news'})">
+                <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'news')}">News</div>
+            </a>
+            <a ui-sref="main.articles.group({group: 'blog'})">
+                <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Blog</div>
+            </a>
+            <a ui-sref="main.articles.group({group: 'tutorials'})">
+                <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
+            </a>
+            <a ui-sref="main.articles.group({group: 'NoSQL'})">
+                <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'NoSQL')}">NoSQL</div>
+            </a>
+        </nav>
+    </div>
+    <div id="site-name" class="header-package col-xs-0-max col-sm-3 col-md-2">
+        <a href="/">
+            <div id="site-name-letter" class="blur col-sm-12">
+                <!--<img src="images/vienvong-fulltext3.png" height="80%" style="padding-top: 5%">-->
+                <div style="font-family: 'Times New Roman'; font-size: 32px"><b>Viễn Vọng</b></div>
+            </div>
+        </a>
+    </div>
+    <div id="main-bar" class="header-package col-xs-0-max col-sm-5 col-md-5">
+        <div id="main-bar-above" class="header-dual">
+            <p>Tri thức là sự chia sẻ</p>
+        </div>
+        <div id="main-bar-below" class="header-dual">
+            <nav id="main-menu">
+                <a ui-sref="main.articles.home">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
+                </a>
+                <a ui-sref="main.articles.group({group: 'news'})">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'news')}">News</div>
+                </a>
+                <a ui-sref="main.articles.group({group: 'blog'})">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Blog</div>
+                </a>
+                <a ui-sref="main.articles.group({group: 'tutorials'})">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
+                </a>
+                <a ui-sref="main.articles.group({group: 'NoSQL'})">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'NoSQL')}">NoSQL</div>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <div id="actions" class="header-package col-xs-8 col-sm-4 col-md-5 pull-right">
+
+        <div id="auth-box" class="header-package block pull-right">
+            <div ng-if="!online">
+                <div id="user-name" class="header-dual">
+                    <p>You are Anonymous!</p>
+                </div>
+                <div id="user-actions" class="header-dual">
+                    <button ng-click="loginShow()">Sign in</button>
+                    <button ui-sref="main.auth.registry">Sign up</button>
+                </div>
+            </div>
+            <div ng-if="online">
+                <div id="user-name" class="header-dual">
+                    <p>{{online.email}}</p>
+                </div>
+                <div id="user-actions" class="header-dual">
+                    <!--<button ui-sref="main.auth.profile">Profile</button>-->
+                    <button ui-sref="main.auth.logout">Sign out</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="facebook-box" class="header-package block pull-right">
+            <div class="header-button facebook-bar-button" ng-click="fbShow()">
+                <i class="fa fa-2x fa-facebook header-color"></i>
+            </div>
+        </div>
+        <div id="search-button" class="header-package col-md-0-min block pull-right">
+            <div class="header-button facebook-bar-button" ng-click="searchShow()">
+                <i class="fa fa-search primary-color fa-2x"></i>
+            </div>
+        </div>
+
+        <div id="search-bar" class="header-package block col-md-6 col-lg-7 col-sm-0-max pull-right">
+            <!-- Search Box-->
+            <div id="search-bar-box" ng-controller="searchCtrl" class="bar pull-right col-md-12 full-radius">
+                <form ng-submit="searchArticle()" class="row">
+                    <div class="pull-left col-md-11 col-sm-10 row none-padding-right">
+                        <input type="text" name="search" ng-model="searchString" class="form-control none-padding-right">
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="form-control none-effect">
+                            <i class="fa fa-search primary-color"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- End search box-->
+        </div>
+    </div>
+</div>
