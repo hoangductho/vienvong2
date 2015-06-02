@@ -588,6 +588,11 @@ main {
 //  List Normal post style
   #capital {
 
+    .search-status {
+      padding: 7px $standard-space;
+      border: 1px solid $border-color;
+    }
+
     .btn {
       border-radius: 1px;
     }
