@@ -6,7 +6,7 @@
 
 angular
     .module('articles')
-    .controller('searchCtrl', function ($scope, $rootScope, $state, $location, $timeout, getArticles, hotArticles, articleConnect) {
+    .controller('searchCtrl', function ($scope, $sce, $rootScope, $state, $location, $timeout, getArticles, hotArticles, articleConnect) {
         // public params
         $scope.state = $state;
         $scope.next = true;
