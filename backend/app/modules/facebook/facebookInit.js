@@ -11,7 +11,8 @@ window.fbAsyncInit = function () {
         appId: '550251971759267',
         status: true,
         xfbml: true,
-        version: 'v2.1'
+        channelUrl: 'app/channel.html',
+        version: 'v2.3'
     });
 };
 
@@ -19,7 +20,7 @@ window.fbAsyncInit = function () {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=550251971759267&version=v2.1";
+    js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 

@@ -136,10 +136,14 @@ class CI_DB_mongo_driver extends Mongo_query_builder
     public function db_connect($persistent = FALSE)
     {
         $options = array(
-            'username' => $this->username,
-            'password' => $this->password,
             'db' => $this->database
         );
+
+        if($this->username) {
+            $options['username'] = $this->username;
+            $options['password'] = $this->password;
+        }
+
         try {
             $this->_connection_string();
             $this->connection = new MongoClient($this->connection_string, $options);

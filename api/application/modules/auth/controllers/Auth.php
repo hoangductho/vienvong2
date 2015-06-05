@@ -657,11 +657,20 @@ class Auth extends CI_Controller {
 
 
     public function test() {
-        $where['_id'] = 'ea39cb541c2826d3c0758876b052645589b3a0677009ddf27d686d60654b8706';
+        //$where['_id'] = 'ea39cb541c2826d3c0758876b052645589b3a0677009ddf27d686d60654b8706';
 
-        $access = $this->_getAccessInfo($where);
+        //$access = $this->_getAccessInfo($where);
 
-        var_dump($access);
+        //var_dump($access);
+//        date_default_timezone_set('asia/ho_chi_minh');
+
+//        var_dump(strtotime('2015-05-01 00:00:00'));
+//        var_dump(strtotime('2015-05-30 00:00:00'));
+//
+//        var_dump(date('Y:m:d H:i:s', 1432350000));
+//        var_dump(date('Y:m:d H:i:s', 1430413201));
+//        var_dump(date('Y:m:d H:i:s', 1433300400));
+//        var_dump(date('Y:m:d H:i:s', time()));
 
         // Function to get the client IP address
         /*$ipaddress = '';

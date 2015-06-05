@@ -987,6 +987,42 @@ class Mongo_query_builder extends CI_DB {
     }
 
     // --------------------------------------------------------------------
+    /**
+     * Select Count
+     *
+     * @param    string $by
+     * @param    bool $escape
+     * @return    CI_DB_query_builder
+     */
+    public function select_count($by, $escape = NULL)
+    {
+        // convert group_by string to array
+        if(!empty($by) && !is_array($by)) {
+            $by = explode(',', $by);
+        }
+
+        $group = array();
+
+        if(empty($by)) {
+            $group = null;
+        }else {
+            foreach ($by as $key=>$value) {
+                $group[$value] = '$'.trim($value);
+            }
+        }
+
+        if(empty($this->qb_groupby['$group']['_id'])){
+            $this->qb_groupby['$group']['_id']= $group;
+        }else {
+            $this->qb_groupby['$group']['_id'] = array_merge($this->qb_groupby['$group']['_id'],$group);
+        }
+
+        $this->qb_groupby['$group']['count'] = array('$sum' => 1);
+
+        return $this;
+    }
+
+    // --------------------------------------------------------------------
 
     /**
      * Select Sum

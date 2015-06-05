@@ -40,18 +40,12 @@
                 <a ui-sref="main.articles.home">
                     <div class="main-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
                 </a>
-                <a ui-sref="main.articles.group({group: 'news'})">
-                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'news')}">News</div>
+                <a ui-sref="main.articles.create">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.includes('main.articles.create'))}">Create New</div>
                 </a>
-                <a ui-sref="main.articles.group({group: 'blog'})">
-                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Blog</div>
-                </a>
-                <a ui-sref="main.articles.group({group: 'tutorials'})">
-                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
-                </a>
-                <a ui-sref="main.articles.group({group: 'NoSQL'})">
-                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'NoSQL')}">NoSQL</div>
-                </a>
+                <!--<a ui-sref="main.articles.group({group: 'blog'})">-->
+                    <!--<div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Statistic</div>-->
+                <!--</a>-->
             </nav>
         </div>
     </div>

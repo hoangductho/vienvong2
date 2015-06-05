@@ -101,10 +101,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'onclan',
-	'password' => '12345678',
-	'database' => 'dev_onclan',
+	'hostname' => '125.253.117.185',
+//	'username' => 'oni',
+//	'password' => '12345678',
+	'database' => 'oni',
 	'port' => 27017,
 	'dbdriver' => 'mongo',
 	'dbprefix' => '',

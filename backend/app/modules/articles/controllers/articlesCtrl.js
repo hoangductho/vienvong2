@@ -11,7 +11,6 @@ angular
         $scope.state = $state;
         $scope.next = true;
         $scope.listArticles = [];
-        $scope.hotArticles = false;
         $scope.imgHost = 'http://api.vienvong.vn/';
         $scope.searchString = null;
 
@@ -32,20 +31,6 @@ angular
                 page += 1;
             });
         };
-
-        // get hot articles
-        var hot = function() {
-            hotArticles.get(function(data) {
-                $scope.hotArticles = data.result;
-            })
-        };
-
-        // set group name
-        if($state.params.group && $state.params.group !== 'all') {
-            group = $state.params.group;
-        }else {
-            hot();
-        }
 
         // first get articles
         list(group, page);

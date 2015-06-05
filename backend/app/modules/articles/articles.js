@@ -16,7 +16,8 @@ angular
     .module('articles', [
         'ui.router',
         'ngResource',
-        'viewhead'
+        'viewhead',
+        'cropImage'
     ])
     .config(function ($stateProvider) {
         var modulePath = 'modules/articles/';
@@ -24,7 +25,12 @@ angular
         $stateProvider
             .state('main.articles', {
                 abstract: true,
-                template: '<ui-view></ui-view>'
+                template: '<ui-view></ui-view>',
+                controller: function($rootScope, $state){
+                    if(!$rootScope.online) {
+                        $state.go('main.auth.login');
+                    }
+                }
             })
             .state('main.articles.home', {
                 url: '/',
@@ -42,9 +48,14 @@ angular
                 templateUrl: modulePath + 'views/listArticles.html',
                 controller: 'searchCtrl'
             })
-            .state('main.articles.group', {
-                url: '/:group',
-                templateUrl: modulePath + 'views/listArticles.html',
-                controller: 'articlesCtrl'
+            .state('main.articles.create', {
+                url: '/create',
+                templateUrl: modulePath + 'views/create.html',
+                controller: 'createCtrl'
+            })
+            .state('main.articles.edit', {
+                url: '/edit/:id',
+                templateUrl: modulePath + 'views/edit.html',
+                controller: 'editCtrl'
             });
     });
