@@ -657,6 +657,9 @@ class Auth extends CI_Controller {
 
 
     public function test() {
+
+        var_dump(md5('vienvong1'));
+
         //$where['_id'] = 'ea39cb541c2826d3c0758876b052645589b3a0677009ddf27d686d60654b8706';
 
         //$access = $this->_getAccessInfo($where);

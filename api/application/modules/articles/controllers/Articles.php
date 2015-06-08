@@ -550,6 +550,7 @@ class Articles extends CI_Controller {
             $art['owner'] = 1;
             $art['groups'] = 7;
             $art['others'] = 2;
+            $art['groups_id'] = 'e883d72537d6cbd65a60e411fa584a67';
             $art['hot'] = $index['Location'];
 
             $insert = $this->Articles_model->insert_articles('Articles', $art);

@@ -356,7 +356,10 @@ module.exports = function (grunt) {
             'images/{,*/}*.{webp}',
             'fonts/*',
               'modules/*/views/*html',
+              'modules/facebook/*.js',
+              'modules/facebook/*/*.js',
               'scripts/plugins/*',
+              'scripts/plugins/*/*',
               'styles/*png'
           ]
         }, {
