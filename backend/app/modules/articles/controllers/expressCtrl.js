@@ -15,15 +15,26 @@ angular
         $scope.suggest = null;
         $scope.listCount = 0;
         $scope.pageComment = 1;
+        var tryAgain = true;
 
         // get articles from server
         var getDetail = function() {
             expressArticles.get({pid: $state.params.id}, function(data){
-                $scope.detail = data.result[0];
-                console.log($scope.detail);
-                $window.document.title = $scope.detail.Title;
+                if (data.ok && data.result.length > 0) {
+                    $scope.detail = data.result[0];
+                    $window.document.title = $scope.detail.Title;
 
-                suggest();
+                    suggest();
+                } else {
+                    if(tryAgain){
+                        tryAgain = false;
+                        var delay = 1;
+                        $timeout(function () {
+                            getDetail();
+                            delay = 0;
+                        }, 500, delay > 0);
+                    }
+                }
             });
         };
 
@@ -33,7 +44,6 @@ angular
                 if(data.ok && data.result.length > 0) {
                     $scope.suggest = data.result;
                 }
-                console.log(data);
             });
         };
 
@@ -51,13 +61,23 @@ angular
             }, 5000, delay>0);
         };
 
+        $scope.commentStatus = function () {
+
+            if(!$rootScope.online) {
+                $rootScope.loginBoxShow = true;
+                console.log($rootscope.loginBoxShow);
+                $scope.addStatus = false;
+            }else {
+                $scope.addStatus = true;
+            }
+        };
+
         $scope.addComment = function() {
             var commentUrl = $rootScope.apiHost + '/comments/add/:pid';
             commentConnect(commentUrl).submit({pid: $state.params.id},{auth: $rootScope.online.code, data: $scope.CommentContent},function(data){
                 if(data['ok'] && data['err'] == null) {
                     if($scope.listCount < 10) {
                         $scope.listComment = $scope.listComment.concat(data.data);
-                        console.log($scope.listComment);
                     };
                     $scope.addMessage = 'You added comment successful.';
                     $scope.addStatus = false;
