@@ -274,5 +274,24 @@ class Controller extends CI_Controller {
     }
     // ---------------------------------------------------------------------
 
+    /**
+     * ID Validate
+     *
+     * @param string $id data need check valid.
+     * @todo using regular expression to check data valid.
+     * @return bool result check valid
+     */
+    protected function _idValid($id) {
+        $regexp = array("options" => array("regexp" => "/^[\\w]{16,128}$/u"));
+        $valid = filter_var($id, FILTER_VALIDATE_REGEXP, $regexp);
+
+        if (!$valid) {
+            return false;
+        }
+
+        return true;
+    }
+    // ---------------------------------------------------------------------
+
     // End of class
 }

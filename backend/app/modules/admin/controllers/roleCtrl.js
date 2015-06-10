@@ -94,6 +94,22 @@ angular
 
         $scope.getRole();
 
+        $scope.updateRole = function() {
+            if($scope.point >= 0) {
+                var url = $rootScope.apiHost + '/admin/role/update';
+                var data = {
+                    rid: $scope.listRoles[$scope.point]._id,
+                    permission: $scope.listRoles[$scope.point].permission
+                };
+                adminConnect(url).submit({},{auth: $rootScope.online.code, data: data}, function(data){
+                    if(data.ok && data.err == null) {
+                        $scope.point = -1;
+                        roleStore = angular.copy($scope.listRoles);
+                    }
+                });
+            }
+        };
+
         $scope.changePer = function(permission, index) {
             $scope.point = index;
             $scope.listRoles = angular.copy(roleStore);

@@ -11,7 +11,7 @@
         <div class="col-md-2 col-xs-12 none-padding">
             <select ng-model="data.permission" class="form-control form-control-static none-shadow none-radius">
                 <option value="0">Permission</option>
-                <option ng-repeat="per in permission"">{{per.value}}</option>
+                <option ng-repeat="per in permission">{{per.value}}</option>
             </select>
             <!--<input ng-model="data.permission" type="text" placeholder="The container role name" class="form-control form-control-static none-shadow none-radius">-->
         </div>
@@ -59,8 +59,8 @@
                     </td>
                     <td>
                         <div ng-if="point == $index">
-                            <a ng-href="#update={{role.$index+1}}" ng-click="" class="btn btn-info">Update</a>
-                            <a ng-href="#reset" ng-click="reset()" class="btn btn-default">Reset</a>
+                            <button ng-click="updateRole()" class="btn btn-info">Update</button>
+                            <button ng-click="reset()" class="btn btn-default">Reset</button>
                         </div>
                     </td>
                 </tr>

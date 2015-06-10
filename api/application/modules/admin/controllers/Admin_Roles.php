@@ -105,5 +105,22 @@ class Admin_Roles extends  Admin
     }
     // ---------------------------------------------------------------------
 
+    public function updateRole() {
+        $table = 'Roles';
+        $perValid = $this->_permissionValid($this->data['permission']);
+        $idValid = $this->_idValid($this->data['rid']);
+
+        if($perValid && $idValid){
+            $where['_id'] = $this->data['rid'];
+            $data['permission'] = $this->data['permission'];
+            $update = $this->Admin_model->update($table, $data, $where);
+            echo json_encode($update, true);
+        }else {
+            echo json_encode(array('ok' => 0, 'err' => 'Data invalid'), true);
+            return false;
+        }
+    }
+    // ---------------------------------------------------------------------
+
     // End of class
 }
