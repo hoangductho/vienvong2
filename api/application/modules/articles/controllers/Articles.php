@@ -323,7 +323,10 @@ class Articles extends CI_Controller {
                 $data = $detail['result'][0];
 
                 if($data['others'] === 0 && $data['users_id'] == $uid && in_array($data['owner'], $this->write)) {
-                    echo json_encode($detail, true);
+                    foreach($this->valid as $key) {
+                        $result[$key] = $data[$key];
+                    }
+                    echo json_encode(array('ok' => 1, 'result'=>array($result)), true);
                 }else {
                     if(in_array($data['groups'], $this->write)) {
                         $role = $this->_checkGroupPermission($uid,$data['groups_id'],$this->write);

@@ -61,6 +61,17 @@ angular
             }, 5000, delay>0);
         };
 
+        $scope.commentStatus = function () {
+
+            if(!$rootScope.online) {
+                $rootScope.loginBoxShow = true;
+                console.log($rootscope.loginBoxShow);
+                $scope.addStatus = false;
+            }else {
+                $scope.addStatus = true;
+            }
+        };
+
         $scope.addComment = function() {
             var commentUrl = $rootScope.apiHost + '/comments/add/:pid';
             commentConnect(commentUrl).submit({pid: $state.params.id},{auth: $rootScope.online.code, data: $scope.CommentContent},function(data){

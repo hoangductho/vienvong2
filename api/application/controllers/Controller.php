@@ -29,6 +29,53 @@ class Controller extends CI_Controller {
     // --------------------------------------------------------------------
 
     /**
+     * _GetUser Get user detail info
+     *
+     * @param string $select info need get.
+     * @param array $where where conditions query.
+     * @param int $limit number of user will be get.
+     * @return array query result.
+     */
+    protected function _getUser($select, $where, $limit = 1) {
+        $table = 'Users';
+
+        $user = $this->Auth_model->select($table, $select, $where, $limit);
+
+        return $user;
+    }
+    // --------------------------------------------------------------------
+
+    /**
+     * _UserExist Check User Existed
+     *
+     * @param array $where where conditions to query
+     * @param bool $detail get detail info or check existed
+     * @return mixed (array, 0, -1)
+     */
+    protected function _userExist($where, $detail = false) {
+        $select = 'email';
+
+        if($detail) {
+            $select = '*';
+        }
+
+        $user = $this->_getUser($select, $where);
+
+        if(!$user['ok'])
+            return -1;
+
+        if($user['ok'] && !count($user['result']))
+            return 0;
+
+        if($detail) {
+            return $user;
+        }
+
+        return 1;
+    }
+    // --------------------------------------------------------------------
+
+    /**
      * Function : _CheckAccess
      * Type     : private
      * Task     :
@@ -78,7 +125,7 @@ class Controller extends CI_Controller {
      * Check access from user access token
      *
      * @param string $code auth access code
-     * @param string $fields once field data you want to return
+     * @param string $fields fields data you want to return
      *
      * @todo analyst access code to get users_id and select database to validate this access code
      *

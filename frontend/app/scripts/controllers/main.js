@@ -47,16 +47,16 @@ angular.module('vienvong')
         };
 
         /* Control login box show and hide*/
-        $scope.loginBoxShow = false;
+        $rootScope.loginBoxShow = false;
 
 
         $scope.loginHide = function () {
-            $scope.loginBoxShow = false;
+            $rootScope.loginBoxShow = false;
             return 0;
         };
 
         $scope.loginShow = function () {
-            $scope.loginBoxShow = !($scope.loginBoxShow);
+            $rootScope.loginBoxShow = !($rootScope.loginBoxShow);
             return 0;
         };
 

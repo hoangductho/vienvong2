@@ -115,12 +115,24 @@ body {
   padding: 0;
 }
 
+.none-margin {
+  margin: 0;
+}
+
 .none-padding-left {
   padding-left: 0;
 }
 
 .none-padding-right {
   padding-right: 0;
+}
+
+.none-shadow {
+  box-shadow: none !important;
+}
+
+.none-radius {
+  border-radius: 0 !important;
 }
 
 .valid {
@@ -136,6 +148,15 @@ body {
 .disable {
   opacity: 0.5;
   cursor: no-drop;
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+}
+
+.standard-border {
+  border: 1px solid $border-color;
 }
 // end general style
 // -------------------------------------------------------------------
@@ -612,11 +633,6 @@ main {
     }
 
     .normal-post {
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
       .normal-post-detail{
         position: absolute;
         width: 100%;
@@ -626,6 +642,11 @@ main {
       .normal-thumb-box {
         float: left;
         width: (7 / 16) * 100%;
+        height: 100%;
+      }
+
+      .normal-thumb-box img {
+        width: 100%;
         height: 100%;
       }
 

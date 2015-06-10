@@ -245,6 +245,10 @@ class Auth extends CI_Controller {
         $data['user_info']['fullName'] = $user['fullName'];
         $data['user_info']['avatar'] = $user['avatar'];
 
+        if($_SERVER['HTTP_ORIGIN'] == 'http://backend.vienvong.vn') {
+            $data['user_info']['role'] = $user['role'];
+        }
+
         $data['secretKey'] = $crypt->randomKey(16);
 
         $auth_hash = hash_hmac('sha256', $user['email'], $user['password']);
@@ -368,6 +372,7 @@ class Auth extends CI_Controller {
         if($exist === 0) {
             $data['time'] = date('Y:d:m H:m:s');
             $data['liveTime'] = $data['time'];
+            $data['role'] = 'member';
             $data['password'] = hash('sha256', $data['password']);
 
             foreach($this->default_user_info as $key => $value) {
@@ -541,10 +546,19 @@ class Auth extends CI_Controller {
 
         $where['_id'] = hash('sha256', $email);
 
+        if($_SERVER['HTTP_ORIGIN'] == 'http://backend.vienvong.vn') {
+            $where['role'] = 'admin';
+        };
+
         $user = $this->_userExist($where, true);
 
         if(!is_array($user)) {
-            echo 0;
+            $result = array(
+                'ok' => 0,
+                'message' => 'Permission Denied'
+            );
+            echo json_encode($result);
+            return 0;
         }else {
             $hash = hash_hmac('sha256', $user['result'][0]['email'], $user['result'][0]['password']);
 
@@ -556,7 +570,12 @@ class Auth extends CI_Controller {
 
                 echo $token;
             }else {
-                echo 0;
+                $result = array(
+                    'ok' => 0,
+                    'message' => 'E-mail or Password invalid'
+                );
+                echo json_encode($result);
+                return 0;
             }
         }
     }

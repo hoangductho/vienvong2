@@ -589,6 +589,7 @@ main {
   #capital {
 
     .search-status {
+      margin-top: $standard-space;
       padding: 7px $standard-space;
       border: 1px solid $border-color;
     }
@@ -617,11 +618,6 @@ main {
     }
 
     .normal-post {
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
       .normal-post-detail{
         position: absolute;
         width: 100%;
@@ -631,6 +627,12 @@ main {
       .normal-thumb-box {
         float: left;
         width: (7 / 16) * 100%;
+        height: 100%;
+      }
+
+      .normal-thumb-box img {
+        position: relative;
+        width: 100%;
         height: 100%;
       }
 

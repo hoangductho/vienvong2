@@ -19,7 +19,8 @@ angular
         'facebook',
 
         'articles',
-        'auth'
+        'auth',
+        'group'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
 

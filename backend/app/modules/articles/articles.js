@@ -49,12 +49,12 @@ angular
                 controller: 'searchCtrl'
             })
             .state('main.articles.create', {
-                url: '/create',
+                url: '/articles/create',
                 templateUrl: modulePath + 'views/create.html',
                 controller: 'createCtrl'
             })
             .state('main.articles.edit', {
-                url: '/edit/:id',
+                url: '/articles/edit/:id',
                 templateUrl: modulePath + 'views/edit.html',
                 controller: 'editCtrl'
             });

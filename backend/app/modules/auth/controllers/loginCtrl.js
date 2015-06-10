@@ -101,6 +101,7 @@ angular
             var encrypt = rsakey.encrypt($scope.auth.email + '/' + authentication + '/' + $scope.auth.ip);
 
             authConnect(url).submit({},{auth: encrypt}, function(data) {
+                console.log(data);
                 if(data.ok) {
                     $scope.result.ok = 1;
 
