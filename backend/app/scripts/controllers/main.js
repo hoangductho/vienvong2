@@ -29,6 +29,10 @@ angular.module('vienvong')
 
         $rootScope.online = localStorageService.get('online');
 
+        if(!$rootScope.online && !$state.includes('main.auth')) {
+            $state.go('main.auth.login');
+        }
+
         // state of ui-router
         $scope.state = $state;
 
