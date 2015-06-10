@@ -545,7 +545,7 @@ class Articles extends CI_Controller {
             $art['description'] = filter_var(html_entity_decode(htmlspecialchars_decode($index['Sapo'])), FILTER_SANITIZE_STRIPPED);
             $art['content'] = html_entity_decode(htmlspecialchars_decode($index['Content']));
             $art['keyword'] = null;
-            $art['categories'] = $index['Catalogue'];
+            $art['categories'] = 'News';
             $art['tags'] = $index['Tag'];
             $art['series'] = $index['Keyword'];
             $art['firstTime'] = $index['Time'];
@@ -560,11 +560,6 @@ class Articles extends CI_Controller {
             echo $count;
             var_dump($insert);
         }
-    }
-
-    public function test($text) {
-        $articles = $this->Articles_model->fulltextSearch('Articles', $text);
-        var_dump($articles);
     }
 
     // --------------------------------------------------------------------

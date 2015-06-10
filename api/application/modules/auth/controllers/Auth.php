@@ -627,7 +627,7 @@ class Auth extends CI_Controller {
      *      - Init class and overwrite older class
      *      - load model class to query database
      */
-    public function facebook() {
+    /*public function facebook() {
         $in = json_decode(file_get_contents('php://input'), true);
         list($signal, $payload) = explode('.', $in['signedRequest'], 2);
 
@@ -672,12 +672,12 @@ class Auth extends CI_Controller {
             }
         }
 
-    }
+    }*/
 
 
-    public function test() {
-
-        var_dump(md5('vienvong1'));
+//    public function test() {
+//
+//        var_dump(md5('vienvong1'));
 
         //$where['_id'] = 'ea39cb541c2826d3c0758876b052645589b3a0677009ddf27d686d60654b8706';
 
@@ -768,6 +768,6 @@ class Auth extends CI_Controller {
         echo $raw['n']->toHex();
         echo '<br>end hex: <br>';*/
 
-    }
+//    }
     // --------------------------------------------------------------------
 }
