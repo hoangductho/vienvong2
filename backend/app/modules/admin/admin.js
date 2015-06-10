@@ -14,11 +14,7 @@ angular
             .state('main.admin', {
                 abstract: true,
                 template: '<ui-view></ui-view>',
-                controller: function($rootScope, $state){
-                    if(!$rootScope.online) {
-                        $state.go('main.auth.login');
-                    }
-                }
+                controller: 'adminCtrl'
             })
             .state('main.admin.group', {
                 url: '/admin/group',

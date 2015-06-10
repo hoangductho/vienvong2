@@ -26,11 +26,7 @@ angular
             .state('main.articles', {
                 abstract: true,
                 template: '<ui-view></ui-view>',
-                controller: function($rootScope, $state){
-                    if(!$rootScope.online) {
-                        $state.go('main.auth.login');
-                    }
-                }
+                controller: 'articlesFirstCtrl'
             })
             .state('main.articles.home', {
                 url: '/',
