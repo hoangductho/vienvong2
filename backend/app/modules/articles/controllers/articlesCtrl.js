@@ -6,13 +6,14 @@
 
 angular
     .module('articles')
-    .controller('articlesCtrl', function ($scope, $rootScope, $state, $sce, $timeout, $location, getArticles, hotArticles, articleConnect) {
+    .controller('articlesCtrl', function ($scope, $sce, $rootScope, $state, $location, $timeout, getArticles, hotArticles, articleConnect) {
         // public params
         $scope.state = $state;
         $scope.next = true;
         $scope.listArticles = [];
         $scope.imgHost = 'http://api.vienvong.vn/';
         $scope.searchString = null;
+        $scope.searchMess = null;
         var tryAgain = 3;
 
         // pirate params
