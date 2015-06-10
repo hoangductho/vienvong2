@@ -20,25 +20,7 @@ class Admin_Groups extends  Admin{
     public function __construct() {
         parent::__construct();
     }
-    // ---------------------------------------------------------------------
-
-    /**
-     * Data Validate
-     *
-     * @param string $name data need check valid.
-     * @todo using regular expression to check data valid.
-     * @return bool result check valid
-     */
-    private function _groupNameValid($name) {
-        $regexp = array("options"=>array("regexp"=>"/^[\\s\\w]{2,64}$/u"));
-        $valid = filter_var($name, FILTER_VALIDATE_REGEXP, $regexp);
-
-        if(!$valid) {
-            return false;
-        }
-
-        return true;
-    }
+    
     // ---------------------------------------------------------------------
 
     /**
