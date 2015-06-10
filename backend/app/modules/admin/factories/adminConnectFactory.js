@@ -5,8 +5,8 @@
 'use strict';
 
 angular
-    .module('group')
-    .factory('groupConnect', function ($resource) {
+    .module('admin')
+    .factory('adminConnect', function ($resource) {
         return function(url) {
             return $resource(url,
                 {},

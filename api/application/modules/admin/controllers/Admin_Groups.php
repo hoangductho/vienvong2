@@ -50,7 +50,7 @@ class Admin_Groups extends  Admin{
      */
     public function listGroup($page = 1, $text = '') {
         $table = 'Groups';
-        $select = '*';
+        $select = '_id, name, family';
         $limit = 10;
 
         $textValid = $this->_groupNameValid($text);
@@ -59,7 +59,7 @@ class Admin_Groups extends  Admin{
         }
 
         $groups = $this->Admin_model->select_admin($table, $text, $select, $page, $limit);
-        $groups['text'] = $text;
+
         echo json_encode($groups, true);
     }
     // ---------------------------------------------------------------------
@@ -69,10 +69,11 @@ class Admin_Groups extends  Admin{
      */
     public function addGroup() {
         $table = 'Groups';
+        $family = null;
 
         $textValid = $this->_groupNameValid($this->data['name']);
         if($textValid) {
-            $data['_id'] = md5($this->data['name']);
+            $data['_id'] = md5(strtolower(str_replace(' ','_',$this->data['name'])));
             $where['_id'] = $data['_id'];
 
             $exist = $this->_dataExist($table, $where);
@@ -82,8 +83,21 @@ class Admin_Groups extends  Admin{
                 return false;
             }
 
-            $data['_id'] = md5($this->data['name']);
-            $data['name'] = $this->data['name'];
+            if($this->_groupNameValid($this->data['father'])){
+                $fatherID = md5( md5(strtolower(str_replace(' ','_',$this->data['father']))));
+                $father = $this->_getGroupInfo($fatherID, 'family');
+                if($father['ok'] && count($father['result'])) {
+                    $fatherName = str_replace(' ','_',$this->data['father']);
+                    if($father['result'][0]['family']){
+                        $family = $father['result'][0]['family'].'.'.$fatherName;
+                    }else {
+                        $family = $fatherName;
+                    }
+                }
+            }
+
+            $data['name'] = strtolower($this->data['name']);
+            $data['family'] = $family;
             $data['time'] = date('Y:d:m H:m:s');
             $data['creator'] = $this->uid;
 

@@ -89,5 +89,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['admin/group/list/(:num)/(:any)'] = 'admin/Admin_Groups/listGroup/$1/$2';
 $route['admin/group/add'] = 'admin/Admin_Groups/addGroup';
 
+$route['admin/role/list/(:num)/(:any)'] = 'admin/Admin_Roles/listRole/$1/$2';
+$route['admin/role/add'] = 'admin/Admin_Roles/addRole';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

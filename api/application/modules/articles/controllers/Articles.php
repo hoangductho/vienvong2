@@ -193,10 +193,10 @@ class Articles extends CI_Controller {
             $family = explode('.',$group['result'][0]['family']);
 
             foreach($family as $key=>$value) {
-                $family[$key] = hash('sha256', $uid.hash('sha256', $value));
+                $family[$key] = md5($uid.md5($value));
             }
 
-            $family[count($family)] = hash('sha256', $uid.$gid);
+            $family[count($family)] = md5($uid.$gid);
 
             $role = $this->_getGroupRole(array('_id' => $family), '_id, permission');
 
@@ -553,7 +553,7 @@ class Articles extends CI_Controller {
             $art['owner'] = 1;
             $art['groups'] = 7;
             $art['others'] = 2;
-            $art['groups_id'] = 'e883d72537d6cbd65a60e411fa584a67';
+            $art['groups_id'] = md5('vienvong_1');
             $art['hot'] = $index['Location'];
 
             $insert = $this->Articles_model->insert_articles('Articles', $art);

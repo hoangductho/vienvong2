@@ -55,11 +55,11 @@ class Admin extends  Controller{
         if(isset($in['auth']) && $in['auth']) {
             $user = $this->_checkAccess($in['auth'], 'user_info');
 
-            if(isset($user['role']) && $user['role'] == 'admin'){
+            if(isset($user['user_info']['role']) && $user['user_info']['role'] == 'admin'){
                 if(isset($in['data'])){
                     $this->data = $in['data'];
                 }
-                $this->uid = $user['uid'];
+                $this->uid = $user['user_info']['uid'];
 
                 return $this;
             }

@@ -20,7 +20,7 @@ angular
 
         'articles',
         'auth',
-        'group'
+        'admin'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
 

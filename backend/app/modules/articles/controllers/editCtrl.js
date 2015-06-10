@@ -13,8 +13,9 @@ angular
             detailArticles.data({pid: $state.params.id}, {auth: $rootScope.online.code}, function(data){
                 if(data.ok && data.result[0]) {
                     $scope.detail = data.result[0];
+                }else {
+                    $state.go('main.articles.home');
                 }
-                console.log(data);
             });
         };
 

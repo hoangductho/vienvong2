@@ -2,11 +2,14 @@
 <div id="capital" class="col-lg-8 col-md-9 col-sm-12">
     <h4>Add New Group</h4>
     <div id="add-group-form" class="standard-border container-fluid none-padding">
-        <div class="col-md-10 none-padding">
-            <input ng-model="data.name" type="text" placeholder="New group name" class="form-control form-control-static no-border none-shadow none-radius">
+        <div class="col-md-5 col-xs-12 none-padding">
+            <input ng-model="data.name" type="text" placeholder="New role name" class="form-control form-control-static none-shadow none-radius">
         </div>
-        <div class="col-md-2 none-padding pull-right">
-            <button ng-click="addGroup()" class="form-control btn btn-default form-control-static no-border none-shadow none-radius">
+        <div class="col-md-5 col-xs-12 none-padding">
+            <input ng-model="data.father" type="text" placeholder="The container role name" class="form-control form-control-static none-shadow none-radius">
+        </div>
+        <div class="col-md-2 col-xs-12 none-padding pull-right">
+            <button ng-click="addGroup()" class="form-control btn btn-default form-control-static none-shadow none-radius">
                 <i class="fa fa-plus primary-color"></i> Add
             </button>
         </div>
@@ -15,30 +18,30 @@
     <hr>
     <h4>Current Groups</h4>
     <div id="search-group-form" class="standard-border col-md-12 none-padding">
-        <div class="col-md-10 none-padding">
+        <div class="col-md-10 col-xs-8 none-padding">
             <input ng-model="searchString" type="text" placeholder="Groups name contain" class="form-control form-control-static no-border none-shadow none-radius">
         </div>
-        <div class="col-md-2 none-padding pull-right">
+        <div class="col-md-2 col-xs-4 none-padding pull-right">
             <button ng-click="getGroup()" class="form-control btn btn-default form-control-static no-border none-shadow none-radius">
                 <i class="fa fa-search primary-color"></i> Search
             </button>
         </div>
     </div>
-    <div id="list-posts">
+    <article>
         <div class="articles-block">
             <table class="table table-hover none-margin">
                 <thead>
                 <tr>
                     <th>No.</th>
                     <th>Group Name</th>
-                    <th>Actions</th>
+                    <th>Group Family</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="group in listGroups">
                     <th scope="row">{{$index + 1}}</th>
                     <td>{{group.name}}</td>
-                    <td></td>
+                    <td>{{group.family}}</td>
                 </tr>
                 </tbody>
                 <caption align="bottom" class="none-padding">
@@ -47,7 +50,7 @@
                 </caption>
             </table>
         </div>
-    </div>
+    </article>
 </div>
 <div id="right-edge" class="col-lg-2 col-md-3 col-sm-0-max">
 

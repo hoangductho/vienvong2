@@ -159,7 +159,7 @@ class Controller extends CI_Controller {
                         $fields = explode(',', str_replace(' ', '',$fields));
                     }
                     foreach($fields as $key) {
-                        $respond = $access['result'][0][$key];
+                        $respond[$key] = $access['result'][0][$key];
                     }
                     return $respond;
                 }
@@ -221,4 +221,58 @@ class Controller extends CI_Controller {
         return false;
     }
     // --------------------------------------------------------------------
+    /**
+     * Get Role's info
+     *
+     * @param string $rid id of role need get family
+     * @return array info of the role
+     */
+    protected function _getRoleInfo($rid, $select) {
+        $table = 'Roles';
+        $where['_id'] = $rid;
+
+        $role = $this->Admin_model->select($table,$select, $where);
+
+        return $role;
+    }
+    // ---------------------------------------------------------------------
+
+    /**
+     * Data Validate
+     *
+     * @param string $name data need check valid.
+     * @todo using regular expression to check data valid.
+     * @return bool result check valid
+     */
+    protected function _groupNameValid($name) {
+        $regexp = array("options" => array("regexp" => "/^[\\s\\w]{2,64}$/u"));
+        $valid = filter_var($name, FILTER_VALIDATE_REGEXP, $regexp);
+
+        if (!$valid) {
+            return false;
+        }
+
+        return true;
+    }
+    // ---------------------------------------------------------------------
+
+    /**
+     * Email Validate
+     *
+     * @param string $email data need check valid.
+     * @todo using regular expression to check data valid.
+     * @return bool result check valid
+     */
+    protected function _emailValid($email) {
+        $valid = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+        if (!$valid) {
+            return false;
+        }
+
+        return true;
+    }
+    // ---------------------------------------------------------------------
+
+    // End of class
 }

@@ -4,14 +4,14 @@
 'use strict';
 
 angular
-    .module('group', [
+    .module('admin', [
         'ui.router'
     ])
     .config(function ($stateProvider) {
-        var modulePath = 'modules/group/';
+        var modulePath = 'modules/admin/';
 
         $stateProvider
-            .state('main.group', {
+            .state('main.admin', {
                 abstract: true,
                 template: '<ui-view></ui-view>',
                 controller: function($rootScope, $state){
@@ -20,9 +20,14 @@ angular
                     }
                 }
             })
-            .state('main.group.actions', {
-                url: '/group',
+            .state('main.admin.group', {
+                url: '/admin/group',
                 templateUrl: modulePath + 'views/group.html',
                 controller: 'groupCtrl'
+            })
+            .state('main.admin.role', {
+                url: '/admin/role',
+                templateUrl: modulePath + 'views/role.html',
+                controller: 'roleCtrl'
             });
     });

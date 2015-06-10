@@ -5,10 +5,11 @@
 'use strict';
 
 angular
-    .module('group')
-    .controller('groupCtrl', function ($rootScope, $scope, $sce, $timeout, groupConnect) {
+    .module('admin')
+    .controller('groupCtrl', function ($rootScope, $scope, $sce, $timeout, adminConnect) {
         $scope.data = {
-            'name': null
+            'name': null,
+            'father': null
         };
 
         $scope.addMessage = null;
@@ -30,10 +31,11 @@ angular
 
         $scope.addGroup = function() {
             var url = $rootScope.apiHost + '/admin/group/add';
-            groupConnect(url).submit(
+            adminConnect(url).submit(
                 {},
                 {auth: $rootScope.online.code, data: $scope.data},
                 function(data){
+                    console.log(data);
                     if(data.ok && data.err == null) {
                         $scope.addMessage = $sce.trustAsHtml('<br><div class="valid form-control"><i class="fa fa-check-circle"></i> Add group successful</div>');
                     }else {
@@ -53,8 +55,7 @@ angular
             if(!text) {
                 text = 0;
             }
-            groupConnect(url).submit({page: page, text: text},{auth: $rootScope.online.code},function(data){
-                console.log(data);
+            adminConnect(url).submit({page: page, text: text},{auth: $rootScope.online.code},function(data){
                 if(data.ok) {
                     $scope.listGroups = angular.copy(data.result);
                     $scope.searchMess = null;
