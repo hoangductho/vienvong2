@@ -31,7 +31,7 @@ angular
             });
 
         $locationProvider.html5Mode(true);
-
+        $locationProvider.hashPrefix('!');
         localStorageServiceProvider.setPrefix('ls');
 
         $(document).ajaxComplete(function () {
