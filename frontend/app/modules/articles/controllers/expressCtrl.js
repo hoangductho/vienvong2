@@ -21,10 +21,10 @@ angular
         var getDetail = function() {
             expressArticles.get({pid: $state.params.id}, function(data){
                 if (data.ok && data.result.length > 0) {
-                    $scope.detail = data.result[0];
-                    $window.document.title = $scope.detail.Title;
+                    $scope.detail = angular.copy(data.result[0]);
+                    $window.document.title = $scope.detail.title;
 
-                    suggest();
+                    suggest($scope.detail.keyword);
                 } else {
                     if(tryAgain){
                         tryAgain = false;
@@ -38,9 +38,9 @@ angular
             });
         };
 
-        var suggest = function() {
+        var suggest = function(keyword) {
             var url = $rootScope.apiHost + '/articles/suggest/:pid/:text';
-            articleConnect(url).get({pid: $state.params.id ,text: $scope.detail.keyword}, function(data){
+            articleConnect(url).get({pid: $state.params.id ,text: keyword}, function(data){
                 if(data.ok && data.result.length > 0) {
                     $scope.suggest = data.result;
                 }
