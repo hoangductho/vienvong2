@@ -17,9 +17,9 @@
  *
  */
 
-class Photos extends CI_Controller {
-    // ---------------------------------------------------------------------
+require_once(APPPATH.'controllers/Controller.php');
 
+class Photos extends Controller {
     /**
      * Function : Construct
      * Type     : Public
@@ -39,60 +39,33 @@ class Photos extends CI_Controller {
      *      - upload image to server
      */
     public function upload64() {
-        $origin = 'test.jpg';
-        $thumb = 'test_thumb.jpg';
-
         $post = json_decode(file_get_contents('php://input'), true);
 
-        $data = explode(",", $post['source']);
+        $access = $this->_checkAccess($post['auth'],'shortLiveToken');
 
-        $source = base64_decode($data[1]);
-
-        $image = fopen($origin, "w") or die("Unable to open file!");
-
-        fwrite($image, $source);
-
-        $create_thumb = $this->thumb($origin, $thumb, 200, 200);
-
-        $respond = [
-            'ok' => 1,
-            'imageUrl' => $thumb
-        ];
-
-        echo json_encode($respond, true);
-    }
-
-    // ---------------------------------------------------------------------
-
-    /**
-     * Function : upload
-     * Type     : Public
-     * Task     :
-     *      - upload image to server
-     */
-    private function thumb($source, $output, $setWidth, $setHeight) {
-
-        // Content type
-        header('Content-Type: image/jpeg');
-
-        // Get new sizes
-        list($width, $height) = getimagesize($source);
-
-        // compute width and height of thumb
-        if($width >= $height) {
-            $setHeight = ($setWidth / $width) * $height;
-        }else {
-            $setWidth = ($setHeight / $height) * $width;
+        if(!isset($access['shortLiveToken'])) {
+            $result['err'] = 'Permission Denied';
+            echo json_encode($result, true);
+            die();
         }
 
-        // Load
-        $thumb = imagecreatetruecolor($setWidth, $setHeight);
-        $source = imagecreatefromjpeg($source);
+        $imgName = md5('avatar.'.$access['shortLiveToken']);
 
-        // Resize
-        imagecopyresized($thumb, $source, 0, 0, 0, 0, $setWidth, $setHeight, $width, $height);
+        $options = array(
+            'path' => 'uploader/tmpImgStore/',
+            'width' => 400,
+            'height' => 400
+        );
 
-        // Output
-        return imagejpeg($thumb, $output);
+        require_once('photoProcess.php');
+        $photo = new photoProcess();
+        $photo->set($options);
+
+        $upload = $photo->photo64($post['source'], $imgName);
+
+        echo json_encode($upload, true);
     }
+    // ---------------------------------------------------------------------
+
+    // End of class
 }

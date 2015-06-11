@@ -10,7 +10,7 @@
     <image-crop image-out="imageOut" crop-options="options" ng-transclude>
         <edit-crop ng-dblclick="cropImage()"></edit-crop>
     </image-crop>
-    <div ng-if="options.imageUrl">
-        <img ng-src="http://api.vienvong.vn/{{options.imageUrl}}" style="max-width: 100%">
-    </div>
+</div>
+<div ng-if="options.resultUpload.thumb">
+    <img ng-src="http://api.vienvong.vn/{{options.resultUpload.thumb}}" style="max-width: 100%">
 </div>

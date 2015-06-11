@@ -4,7 +4,7 @@
 
 angular
     .module('cropImage')
-    .controller('cropCtrl', function ($scope, $http) {
+    .controller('cropCtrl', function ($scope, $rootScope, $http) {
         //the image to output
         $scope.imageOut = '';
 
@@ -15,7 +15,6 @@ angular
 
         $scope.cropImage = function () {
             $scope.$broadcast('cropImage');
-            console.log($scope.options.image);
         };
 
         $scope.delImage = function () {
@@ -35,9 +34,11 @@ angular
 
         // upload image from server
         $scope.uploadImage = function() {
-            $http.post($scope.options.uploadUrl, {source: $scope.options.image})
+            $http.post($scope.options.uploadUrl, {auth: $rootScope.online.code, source: $scope.options.image})
                 .success(function(data, status, headers, config) {
-                    $scope.options.imageUrl = data.imageUrl;
+                    $scope.options.resultUpload.photo = data.photo;
+                    $scope.options.resultUpload.thumb = data.thumb;
+                    $scope.options.image = null;
                 })
                 .error(function(data, status, headers, config) {
                     console.log(data);

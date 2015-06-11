@@ -31,7 +31,8 @@ class Articles extends CI_Controller {
      */
     private $valid = array(
         'title',
-//        'lAvatar',
+        'lAvatar',
+        'sAvatar',
         'description',
         'content',
         'categories',
@@ -49,6 +50,9 @@ class Articles extends CI_Controller {
      * write permission values
      */
     private $write = array(2, 3, 6, 7);
+
+    //
+    private $uploadPath = 'uploader/';
 
     // ---------------------------------------------------------------------
 
@@ -208,6 +212,56 @@ class Articles extends CI_Controller {
         return false;
     }
     // --------------------------------------------------------------------
+    /**
+     * ID Validate
+     *
+     * @param string $id data need check valid.
+     * @todo using regular expression to check data valid.
+     * @return bool result check valid
+     */
+    protected function _idValid($id) {
+        $regexp = array("options" => array("regexp" => "/^[\\w]{16,128}$/u"));
+        $valid = filter_var($id, FILTER_VALIDATE_REGEXP, $regexp);
+
+        if (!$valid) {
+            return false;
+        }
+
+        return true;
+
+    }
+    // ---------------------------------------------------------------------
+
+    /**
+     * Storage Avatar
+     *
+     * @param string $imagePath image uploaded path.
+     * @param string $pid articles id.
+     * @return bool result.
+     */
+    private function _storageAvatar($imagePath, $pid, $thumb = false) {
+        $storagePath = $this->uploadPath.$pid;
+
+        $storageName = "avatar.$pid.jpg";
+
+        if($thumb) {
+            $storageName = "avatar.$pid.thumb.jpg";
+        }
+
+        // make directory for the article
+        if(!file_exists($storagePath)) {
+            mkdir($storagePath, 0777, true);
+        }
+
+        // copy image to folder storage
+        $copy = copy($imagePath, "$storagePath/$storageName");
+
+        // delete template image uploaded
+        if($copy) $delete = unlink($imagePath);
+
+        return "$storagePath/$storageName";
+    }
+    // ---------------------------------------------------------------------
 
     /**
      * Function     : Index
@@ -312,7 +366,7 @@ class Articles extends CI_Controller {
         }else {
             $uid = $this->_checkAccess($in['auth'], 'uid');
 
-            if($uid) {
+            if($this->_idValid($uid)) {
                 $where = array(
                     '_id' => $id
                 );
@@ -368,7 +422,7 @@ class Articles extends CI_Controller {
         }else {
             $uid = $this->_checkAccess($in['auth'], 'uid');
 
-            if($uid) {
+            if($this->_idValid($uid)) {
                 $where = array(
                     '_id' => $id
                 );
@@ -416,8 +470,20 @@ class Articles extends CI_Controller {
      */
     public function create() {
         $data = [];
-        $in = json_decode(file_get_contents('php://input'), true);
+        $post = json_decode(file_get_contents('php://input'), true);
 
+        $access = $this->_checkAccess($post['auth'], 'uid');
+
+        if(!$this->_idValid($access)) {
+            $err = [
+                'ok' => 0,
+                'err' => "Permission Denied"
+            ];
+            echo json_encode($err, true);
+            die();
+        }
+
+        $in = $post['data'];
         if(count($in)) {
             foreach ($this->valid as $key) {
                 if(isset($in[$key])) {
@@ -432,12 +498,21 @@ class Articles extends CI_Controller {
                 }
             }
 
-            $data['users_id'] = 'a516a631663c9724b06c7492bccf4f5a';
+            $data['users_id'] = $access;
             $data['firstTime'] = date('Y:d:m H:m:s');
             $data['_id'] = md5($data['users_id']. $data['firstTime']);
 
+            // storage avatar
+            $data['lAvatar'] = $this->_storageAvatar($data['lAvatar'], $data['_id']);
+            $data['sAvatar'] = $this->_storageAvatar($data['sAvatar'], $data['_id']);
+
             $this->load->helper("url");
             $data['friendly'] = mb_strtolower(url_title($this->_removesign($data['title'])));
+            $data['owner'] = 1;
+            $data['groups'] = 7;
+            $data['others'] = 2;
+            $data['groups_id'] =  md5(strtolower(str_replace(' ','_',$data['categories'])));;
+            $data['hot'] = 0;
 
             $insert = $this->Articles_model->insert_articles($this->table, $data);
 
