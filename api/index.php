@@ -56,10 +56,6 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'developm
 
 require_once('access_control.php');
 
-if($_SERVER['HTTP_ORIGIN'] !== 'http://localhost:9000') {
-//    echo '404 - only support for domain localhost:9000';return 0;
-};
-
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

@@ -8,7 +8,17 @@
 
 date_default_timezone_set('UTC');
 
-header("Access-Control-Allow-Origin: *");
+if($_SERVER['HTTP_ORIGIN'] === 'http://localhost:9000'){
+    header("Access-Control-Allow-Origin: http://localhost:9000");
+}
+
+if($_SERVER['HTTP_ORIGIN'] === 'http://vienvong.vn'){
+    header("Access-Control-Allow-Origin: http://vienvong.vn");
+}
+
+if($_SERVER['HTTP_ORIGIN'] === 'http://backend.vienvong.vn'){
+    header("Access-Control-Allow-Origin: http://backend.vienvong.vn");
+}
 
 function access_control() {
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -16,4 +26,18 @@ function access_control() {
     header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
 }
 
+function hostAllow() {
+    $hostList = array(
+        'http://localhost:9000',
+        'http://vienvong.vn',
+        'http://backend.vienvong.vn'
+    );
+
+    if(!in_array($_SERVER['HTTP_ORIGIN'], $hostList)) {
+        die('<h1>500 - Access Reject</h1>');
+    }
+}
+
+hostAllow();
 access_control();
+
