@@ -36,7 +36,7 @@ class Articles extends CI_Controller {
         'content',
         'categories',
         'tags',
-//        'others',
+        'keyword',
         'series'
     );
 
