@@ -6,7 +6,7 @@
 
 angular
     .module('auth')
-    .controller('logoutCtrl', function($rootScope, $filter, localStorageService){
+    .controller('authCtrl', function($rootScope, $filter, localStorageService, initConnect){
 
         $rootScope.publicKey = localStorageService.get('publicKey');
         var date = $filter('date')(new Date(), 'yyyy:MM:dd', 'UTC');

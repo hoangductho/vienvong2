@@ -6,7 +6,7 @@
 
 angular
     .module('auth')
-    .controller('loginCtrl', function ($scope, $sce, $rootScope, $state, $filter,localStorageService, authConnect, $http) {
+    .controller('loginCtrl', function ($scope, $sce, $rootScope, $state, $filter,localStorageService, authConnect, $http, initConnect) {
         $rootScope.publicKey = localStorageService.get('publicKey');
         var date = $filter('date')(new Date(), 'yyyy:MM:dd', 'UTC');
 
