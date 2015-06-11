@@ -18,8 +18,8 @@
             <a ui-sref="main.articles.group({group: 'tutorials'})">
                 <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
             </a>
-            <a ui-sref="main.articles.group({group: 'NoSQL'})">
-                <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'NoSQL')}">NoSQL</div>
+            <a ui-sref="main.articles.search({text: 'NoSQL'})">
+                <div class="second-menu-options blur" ng-class="{'active': (state.params.text == 'NoSQL')}">NoSQL</div>
             </a>
         </nav>
     </div>
@@ -49,8 +49,8 @@
                 <a ui-sref="main.articles.group({group: 'tutorials'})">
                     <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
                 </a>
-                <a ui-sref="main.articles.group({group: 'NoSQL'})">
-                    <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'NoSQL')}">NoSQL</div>
+                <a ui-sref="main.articles.search({text: 'NoSQL'})">
+                    <div class="main-menu-options blur" ng-class="{'active': (state.params.text == 'NoSQL')}">NoSQL</div>
                 </a>
             </nav>
         </div>
