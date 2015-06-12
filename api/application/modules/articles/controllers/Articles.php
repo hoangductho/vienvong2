@@ -240,6 +240,10 @@ class Articles extends CI_Controller {
      * @return bool result.
      */
     private function _storageAvatar($imagePath, $pid, $thumb = false) {
+        if(!file_exists($imagePath)){
+            return null;
+        }
+
         $storagePath = $this->uploadPath.$pid;
 
         $storageName = "avatar.$pid.jpg";
@@ -427,7 +431,7 @@ class Articles extends CI_Controller {
                     '_id' => $id
                 );
 
-                $select = '_id, users_id, others, owner, groups, groups_id';
+                $select = '_id, users_id, lAvatar, others, owner, groups, groups_id';
 
                 $detail = $this->Articles_model->detail_article($this->table, $where, $select);
                 $data = $detail['result'][0];
@@ -438,6 +442,12 @@ class Articles extends CI_Controller {
                     if(in_array($data['groups'], $this->write)) {
                         $role = $this->_checkGroupPermission($uid,$data['groups_id'],$this->write);
                         if($role){
+                            // storage avatar
+                            if($in['data']['lAvatar'] && $data['lAvatar'] != $in['data']['lAvatar']) {
+                                $in['data']['lAvatar'] = $this->_storageAvatar($in['data']['lAvatar'], $id);;
+                                $in['data']['sAvatar'] = $this->_storageAvatar($in['data']['sAvatar'], $id);
+                            }
+
                             foreach ($this->valid as $key) {
                                 $update[$key] = $in['data'][$key];
                             }
@@ -620,7 +630,7 @@ class Articles extends CI_Controller {
             $art['description'] = filter_var(html_entity_decode(htmlspecialchars_decode($index['Sapo'])), FILTER_SANITIZE_STRIPPED);
             $art['content'] = html_entity_decode(htmlspecialchars_decode($index['Content']));
             $art['keyword'] = null;
-            $art['categories'] = 'News';
+            $art['categories'] = 'news';
             $art['tags'] = $index['Tag'];
             $art['series'] = $index['Keyword'];
             $art['firstTime'] = $index['Time'];
