@@ -6,6 +6,8 @@
  * Time: 3:29 AM
  */
 
+require_once(APPPATH.'models/Models.php');
+
 class Admin_model extends  Models{
 
     /**

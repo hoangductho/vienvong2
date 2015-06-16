@@ -232,8 +232,8 @@ RewriteRule album/(\d*)$ http://api.vienvong.vn/articles/snapshot/$1 [P]
 # allow search engine can crawl page
 RewriteEngine On
 RewriteCond %{REQUEST_URI}  ^/$
-RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/
-RewriteRule ^(.*)$ http://api.vienvong.vn/articles/snapshot/$1 [P]
+RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
+RewriteRule ^(.*)$ http://api.vienvong.vn/snapshots/%1? [NC,L]
 
 </ifModule>
 

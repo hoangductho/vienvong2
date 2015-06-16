@@ -38,6 +38,6 @@ function hostAllow() {
     }
 }
 
-hostAllow();
+#hostAllow();
 access_control();
 

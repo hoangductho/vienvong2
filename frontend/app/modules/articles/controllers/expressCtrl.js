@@ -37,6 +37,8 @@ angular
                         }, 500, delay > 0);
                     }
                 }
+
+                $rootScope.htmlReady();
             });
         };
 

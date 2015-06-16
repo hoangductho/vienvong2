@@ -339,6 +339,7 @@ class Articles extends CI_Controller {
      * Suggest articles follow current
      *
      * @param string $pid articles id need suggest
+     * @param string $text keyword to search articles suggested
      * @return array list article follow
      */
     public function suggest($pid, $text) {
@@ -347,6 +348,13 @@ class Articles extends CI_Controller {
     }
     // --------------------------------------------------------------------
 
+    /**
+     * Get Suggest Article From Database
+     *
+     * @param string $pid articles id need suggest
+     * @param string $text keyword to search articles suggested
+     * @return array list article follow
+     */
     private function _getSuggest($pid, $text) {
         if(is_string($text) && strlen($text)) {
             $text = urldecode($text);
@@ -368,6 +376,11 @@ class Articles extends CI_Controller {
 
     // --------------------------------------------------------------------
 
+    /**
+     * Create Snapshot For Express Articles Page
+     *
+     * @param string $id Article's ID
+     */
     public function snapshot($id) {
         $where = array(
             '_id' => $id
