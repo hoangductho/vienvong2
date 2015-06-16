@@ -233,7 +233,7 @@ RewriteRule album/(\d*)$ http://api.vienvong.vn/articles/snapshot/$1 [P]
 RewriteEngine On
 RewriteCond %{REQUEST_URI}  ^/$
 RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
-RewriteRule ^(.*)$ /snapshots/%1? [NC,L]
+RewriteRule ^(.*)$ http://api.vienvong.vn/articles/snapshot/$1 [P]
 
 </ifModule>
 
