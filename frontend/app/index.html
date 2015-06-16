@@ -10,6 +10,10 @@
     <link rel="apple-touch-icon-precomposed" href="images/vienvong-logo2.png">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <meta property="og:title" content="{{meta.title}} - vienvong.vn" />
+    <meta property="og:description" content="{{meta.description}}" />
+    <meta property="og:image" content="{{meta.image}}" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -101,6 +105,7 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
+<script src="scripts/seo.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/factories/initConnectFactory.js"></script>
 

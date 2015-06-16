@@ -14,6 +14,12 @@ angular.module('vienvong')
 
         $rootScope.online = localStorageService.get('online');
 
+        $rootScope.meta = {
+            title: null,
+            description: null,
+            image: null
+        };
+
         // state of ui-router
         $scope.state = $state;
 

@@ -23,7 +23,9 @@ angular
                 if (data.ok && data.result.length > 0) {
                     $scope.detail = angular.copy(data.result[0]);
                     $window.document.title = $scope.detail.title;
-
+                    $rootScope.meta.title = $scope.detail.title;
+                    $rootScope.meta.description = $scope.detail.description;
+                    $rootScope.meta.image = $rootScope.apiHost + $scope.detail.lAvatar;
                     suggest($scope.detail.keyword);
                 } else {
                     if(tryAgain){

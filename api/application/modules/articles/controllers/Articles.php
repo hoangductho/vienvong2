@@ -327,7 +327,7 @@ class Articles extends CI_Controller {
             '_id' => $id
         );
 
-        $select = '_id, users_id, title, content, tags, series, friendly, keyword, firstTime';
+        $select = '_id, users_id, title, description, lAvatar, content, tags, series, friendly, keyword, firstTime';
 
         $detail = $this->Articles_model->detail_article($this->table, $where, $select);
 
