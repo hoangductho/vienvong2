@@ -342,17 +342,49 @@ class Articles extends CI_Controller {
      * @return array list article follow
      */
     public function suggest($pid, $text) {
+        $articles = $this->_getSuggest($pid, $text);
+        echo json_encode($articles, true);
+    }
+    // --------------------------------------------------------------------
+
+    private function _getSuggest($pid, $text) {
         if(is_string($text) && strlen($text)) {
             $text = urldecode($text);
             $limit = 5;
             $select = '_id, title, friendly';
             $where['_id !='] = $pid;
             $articles = $this->Articles_model->suggest_articles('Articles', $text, $select, $where);
-//            var_dump($articles);
-            echo json_encode($articles, true);
+
+
+        }else {
+            $articles = [
+                'ok' => 0,
+                'err' => 'no result'
+            ];
         }
+
+        return $articles;
     }
 
+    // --------------------------------------------------------------------
+
+    public function snapshot($id) {
+        $where = array(
+            '_id' => $id
+        );
+
+        $select = '_id, title, description, lAvatar, content, tags, keyword';
+
+        $detail = $this->Articles_model->detail_article($this->table, $where, $select);
+
+        $data = $detail['result'][0];
+
+        $suggest = $this->_getSuggest($id, $data['keyword']);
+
+        $data['suggest'] = $suggest['result'];
+
+        $this->load->view('snapshot', $data);
+    }
     // --------------------------------------------------------------------
 
     /**
