@@ -208,6 +208,48 @@ AddDefaultCharset utf-8
 # Also, some cloud hosting services require `RewriteBase` to be set:
 # http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
 
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|Google.*|google.*)
+    RewriteRule express/([a-z0-9-]+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
+
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+    RewriteRule ^location/([A-Za-z0-9-]+)/([0-9-]+)$ www.example.com/api/renderMetaTags/location/$2 [P,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+
+    #this condition for crawlers not to interfere with normal access
+    RewriteCond %{HTTP_USER_AGENT} !(facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+
+    #this rule for html5 mode and friendly urls without the #
+    RewriteRule (.*) #/$1 [L]
+
+</ifModule>
+
+
+<ifModule mod_rewrite.c>
+    # allow search engine can crawl page
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI}  ^/$
+    RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
+    RewriteRule express/([a-z0-9-]+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+
+    #this condition for crawlers not to interfere with normal access
+    RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
+
+    #this rule for html5 mode and friendly urls without the #
+    RewriteRule (.*) #/$1 [L]
+
+</ifModule>
+
+
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
   # Options +SymLinksIfOwnerMatch
@@ -218,24 +260,6 @@ AddDefaultCharset utf-8
     RewriteCond %{REQUEST_URI} !#
     RewriteRule (.*) #/$1 [L]
 </IfModule>
-
-<ifModule mod_rewrite.c>
-RewriteEngine On
-
-# allow social media crawlers to work by redirecting them to a server-rendered static version on the page
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
-RewriteRule album/(\d*)$ http://api.vienvong.vn/articles/snapshot/$1 [P]
-
-</ifModule>
-
-<ifModule mod_rewrite.c>
-# allow search engine can crawl page
-RewriteEngine On
-RewriteCond %{REQUEST_URI}  ^/$
-RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
-RewriteRule ^(.*)$ http://api.vienvong.vn/snapshots/%1? [NC,L]
-
-</ifModule>
 
 # ------------------------------------------------------------------------------
 # | Suppressing / Forcing the "www." at the beginning of URLs                  |

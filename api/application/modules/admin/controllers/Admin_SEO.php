@@ -42,7 +42,9 @@ class Admin_SEO extends CI_Controller{
     private function _siteMapInit() {
         $table = 'Articles';
         $select = '_id, friendly';
-        $where = array();
+        $where = array(
+            'others >=' => 1
+        );
         $limit = 0;
 
         $allArticles = $this->Admin_model->select($table, $select, $where, $limit);
@@ -51,7 +53,7 @@ class Admin_SEO extends CI_Controller{
 
         foreach($allArticles['result'] as $art) {
             $sitemap .= "<url>
-                            <loc>http://vienvong.vn/#!/express/".$art['_id']."</loc>
+                            <loc>http://vienvong.vn/express/".$art['_id']."</loc>
                             <changefreq>daily</changefreq>
                             <priority>1.0</priority>
                         </url>
