@@ -16,6 +16,9 @@
 # http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
 # http://enable-cors.org/
 
+SetOutputFilter DEFLATE
+SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
+
 <IfModule mod_headers.c>
 #    Header set Access-Control-Allow-Origin "http://beta.vienvong.vn"
 #    Header set Access-Control-Allow-Origin "http://localhost:9000"
