@@ -53,8 +53,8 @@ class Photos extends Controller {
 
         $options = array(
             'path' => 'uploader/tmpImgStore/',
-            'width' => 400,
-            'height' => 400
+            'width' => 300,
+            'height' => 300
         );
 
         require_once('photoProcess.php');

@@ -246,10 +246,10 @@ class Articles extends CI_Controller {
 
         $storagePath = $this->uploadPath.$pid;
 
-        $storageName = "avatar.$pid.jpg";
+        $storageName = "avatar_$pid.jpg";
 
         if($thumb) {
-            $storageName = "avatar.$pid.thumb.jpg";
+            $storageName = 'avatar_'.$pid.'_thumb.jpg';
         }
 
         // make directory for the article

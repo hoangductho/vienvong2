@@ -87,15 +87,6 @@
 <script src="bower_components/pagedown-extra/Markdown.Extra.js"></script>
 <!-- End pagedown extra-->
 
-<script src="bower_components/jsbn/jsbn2.js"></script>
-<script src="bower_components/jsbn/base64.js"></script>
-<script src="bower_components/jsbn/ec.js"></script>
-<script src="bower_components/jsbn/prng4.js"></script>
-<script src="bower_components/jsbn/rng.js"></script>
-<script src="bower_components/jsbn/rsa.js"></script>
-<script src="bower_components/jsbn/rsa2.js"></script>
-<script src="bower_components/jsbn/sec.js"></script>
-
 <script src="scripts/plugins/extras.js"></script>
 
 <!-- endbuild -->
@@ -134,6 +125,25 @@
 <script src="modules/facebook/facebook.js"></script>
 <script src="modules/facebook/directives/facebookDirective.js"></script>
 <!-- facebook module end-->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/crypto.js -->
+<!-- CryptoJS lib-->
+<script src="scripts/plugins/crypto/core-min.js"></script>
+<script src="scripts/plugins/crypto/enc-base64-min.js"></script>
+<script src="scripts/plugins/crypto/sha256.js"></script>
+<script src="scripts/plugins/crypto/hmac-sha256.js"></script>
+<script src="scripts/plugins/crypto/aes.js"></script>
+
+<script src="bower_components/jsbn/jsbn2.js"></script>
+<script src="bower_components/jsbn/base64.js"></script>
+<script src="bower_components/jsbn/ec.js"></script>
+<script src="bower_components/jsbn/prng4.js"></script>
+<script src="bower_components/jsbn/rng.js"></script>
+<script src="bower_components/jsbn/rsa.js"></script>
+<script src="bower_components/jsbn/rsa2.js"></script>
+<script src="bower_components/jsbn/sec.js"></script>
+<!-- End cryptoJS lib-->
 <!-- endbuild -->
 
 <script src="http://connect.facebook.net/en_US/all.js" async></script>
