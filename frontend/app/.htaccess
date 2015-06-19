@@ -51,27 +51,6 @@
 </IfModule>
 
 # ##############################################################################
-# # CACHE FILE                                                                 #
-# ##############################################################################
-
-# ------------------------------------------------------------------------------
-# | Cache file in browser of user, and set time to reload resource             |
-# ------------------------------------------------------------------------------
-
-<IfModule mod_headers.c>
-    # WEEK
-    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
-        Header set Cache-Control "max-age=604800, public"
-    </FilesMatch>
-
-    # 20 mins
-    <FilesMatch "\.(js|css|swf)$">
-        Header set Cache-Control "max-age=1200"
-    </FilesMatch>
-</IfModule>
-
-
-# ##############################################################################
 # # ERRORS                                                                     #
 # ##############################################################################
 
@@ -560,6 +539,27 @@ FileETag None
 # ------------------------------------------------------------------------------
 # | Filename-based cache busting                                               |
 # ------------------------------------------------------------------------------
+
+# ##############################################################################
+# # CACHE FILE                                                                 #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Cache file in browser of user, and set time to reload resource             |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+    # WEEK
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+
+    # 20 mins
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "max-age=1200"
+    </FilesMatch>
+</IfModule>
+
 
 # If you're not using a build process to manage your filename version revving,
 # you might want to consider enabling the following directives to route all
