@@ -25,6 +25,7 @@ angular.module('vienvong')
 
         /* Control facebook show and hide*/
         $scope.facebookShow = false;
+        $scope.fanpageInit = false;
 
 
         $scope.fbHide = function () {
@@ -34,6 +35,11 @@ angular.module('vienvong')
 
         $scope.fbShow = function () {
             $scope.facebookShow = !($scope.facebookShow);
+            if($scope.fanpageInit == false) {
+                $scope.fanpageInit = true;
+                console.log($scope.fanpageInit);
+            }
+
             return 0;
         };
 

@@ -35,9 +35,11 @@
     <!-- Load facebook page-->
     <div id="facebook-page-box" ng-class="{'hide': (facebookShow == false)}" off-click="fbHide()" off-click-if="facebookShow">
         <div id="fb-root"></div>
-        <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
-             data-height="100%" data-colorscheme="light" data-show-faces="true" data-header="false"
-             data-stream="false" data-show-border="true"></div>
+        <div ng-if="fanpageInit">
+            <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
+                 data-height="100%" data-colorscheme="light" data-show-faces="true" data-header="false"
+                 data-stream="false" data-show-border="true"></div>
+        </div>
     </div>
     <!-- end load facebook page-->
 
