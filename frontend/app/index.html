@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="~/cache.manifest" type="text/cache-manifest">
+<html>
 <head>
     <base href='/'>
     <meta name="fragment" content="!" />
@@ -161,21 +161,6 @@
 
     ga('create', 'UA-42299467-1', 'auto');
     ga('send', 'pageview');
-</script>
-<script>
-    $(document).on("mobileinit", function () {
-        //register event to cache site for offline use
-        cache = window.applicationCache;
-        cache.addEventListener('updateready', cacheUpdatereadyListener, false);
-        cache.addEventListener('error', cacheErrorListener, false);
-        function cacheUpdatereadyListener (){
-            window.applicationCache.update();
-            window.applicationCache.swapCache();
-        }
-        function cacheErrorListener() {
-            alert('site not availble offline')
-        }
-    }
 </script>
 </body>
 </html>
