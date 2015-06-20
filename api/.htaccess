@@ -59,41 +59,6 @@ SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
     ErrorDocument 404 /index.php
 </IfModule>
 
-# ------------------------------------------------------------------------------
-# | ETag removal                                                               |
-# ------------------------------------------------------------------------------
-
-# Since we're sending far-future expires headers (see below), ETags can
-# be removed: http://developer.yahoo.com/performance/rules.html#etags.
-
-# `FileETag None` is not enough for every server.
-<IfModule mod_headers.c>
-    Header unset ETag
-</IfModule>
-
-FileETag None
-
-# ------------------------------------------------------------------------------
-# | Expires headers (for better cache control)                                 |
-# ------------------------------------------------------------------------------
-
-# The following expires headers are set pretty far in the future. If you don't
-# control versioning with filename-based cache busting, consider lowering the
-# cache time for resources like CSS and JS to something like 1 week.
-
-<IfModule mod_expires.c>
-
-    ExpiresActive on
-    ExpiresDefault                                      "access plus 1 month"
-
-  # Data interchange
-    ExpiresByType application/json                      "access plus 180 seconds"
-    ExpiresByType application/xml                       "access plus 0 seconds"
-    ExpiresByType text/xml                              "access plus 0 seconds"
-
-  # Media
-    ExpiresByType image/gif                             "access plus 1 month"
-    ExpiresByType image/jpeg                            "access plus 1 month"
-    ExpiresByType image/png                             "access plus 1 month"
-    ExpiresByType image/jpg                             "access plus 1 month"
-</IfModule>
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
