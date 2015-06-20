@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="vienvong">
+<html>
 <head>
     <base href='/'>
     <meta name="fragment" content="!" />
@@ -14,7 +14,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 
-    <!-- build:css(.tmp) styles/bootstrap.min.css -->
+    <!-- build:css(.tmp) styles/core.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <!-- endbuild -->
 
@@ -83,15 +83,9 @@
 
 
 <!-- Add your site or application content here -->
-<div ui-view="">
+<div ng-app="vienvong" ui-view="">
 
 </div>
-
-<!-- Footer of page loading-->
-<footer class="col-md-12" ng-include="'views/footer.html'">
-
-</footer>
-<!-- End footer of page-->
 
 <!-- build:css(.) styles/vendor.css -->
 <!-- bower:css -->
