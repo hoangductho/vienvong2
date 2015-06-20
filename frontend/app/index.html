@@ -155,7 +155,7 @@
 <script>
     jQuery.ajax({
         type: "GET",
-        url: "http://connect.facebook.net/en_US/all.js",
+        url: "http://connect.facebook.net/en_US/all.js#etags",
         success: function(){},
         dataType: "script",
         cache: true
@@ -174,7 +174,7 @@
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js#etags', 'ga');
 
     ga('create', 'UA-42299467-1', 'auto');
     ga('send', 'pageview');

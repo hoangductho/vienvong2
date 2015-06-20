@@ -40,11 +40,11 @@ angular
         };
 
         // set group name
-        //if($state.params.group && $state.params.group !== 'all') {
-        //    group = $state.params.group;
-        //}else if(!WURFL.is_smartphone) {
-        //    hot();
-        //}
+        if($state.params.group && $state.params.group !== 'all') {
+            group = $state.params.group;
+        }else if(!WURFL.is_smartphone) {
+            hot();
+        }
 
         // get articles from server
         var list = function (addGroup, addPage) {
