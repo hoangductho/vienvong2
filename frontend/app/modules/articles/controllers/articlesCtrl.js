@@ -42,7 +42,7 @@ angular
         // set group name
         if($state.params.group && $state.params.group !== 'all') {
             group = $state.params.group;
-        }else {
+        }else if(!WURFL.is_mobile) {
             hot();
         }
 
