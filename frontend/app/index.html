@@ -153,12 +153,20 @@
 <!-- endbuild -->
 
 <script>
-    jQuery.ajax({
-        type: "GET",
-        url: "http://connect.facebook.net/en_US/all.js http://connect.facebook.net/en_US/sdk.js http://www.google-analytics.com/analytics.js",
-        success: function(){},
-        dataType: "script",
-        cache: true
+    var urls = [
+            'http://connect.facebook.net/en_US/all.js',
+            'http://connect.facebook.net/en_US/sdk.js',
+            'http://www.google-analytics.com/analytics.js'
+    ];
+
+    jQuery.each(urls, function(i,u){
+        jQuery.ajax({
+            type: "GET",
+            url: u,
+            success: function(){},
+            dataType: "script",
+            cache: true
+        });
     });
 </script>
 
