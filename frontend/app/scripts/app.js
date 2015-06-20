@@ -14,6 +14,7 @@ angular
         'ui.router',
         'offClick',
         'LocalStorageModule',
+        'ng-optimizely',
 
         'seo',
         'markdown',
@@ -31,15 +32,19 @@ angular
                 controller: 'MainCtrl'
             });
 
+
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');
         localStorageServiceProvider.setPrefix('ls');
 
         $(document).ajaxComplete(function () {
-            console.log('FB re-parse');
+            //console.log('FB re-parse');
             try {
                 FB.XFBML.parse();
             } catch (ex) {
             }
         });
-    });
+    })
+    .run(['optimizely', function(optimizely) {
+        optimizely.loadProject('880950754');
+    }]);;
