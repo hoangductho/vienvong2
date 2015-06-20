@@ -41,68 +41,14 @@
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
+<!-- build:js(.) scripts/static.js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/json3/lib/json3.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
 <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-off-click/offClick.js"></script>
-<script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
-<script src="bower_components/angular-markdown-toolkit/markdown.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angularjs-viewhead/angularjs-viewhead.js"></script>
 <script src="bower_components/sotos.crop-image/dist/sotos.crop-image.min.js"></script>
-<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
-<script src="bower_components/jsbn/jsbn.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-<!-- endbower -->
-
-<!-- Pagedown-Extra-->
-<script src="bower_components/pagedown-extra/pagedown/Markdown.Converter.js"></script>
-<script src="bower_components/pagedown-extra/pagedown/Markdown.Sanitizer.js"></script>
-<script src="bower_components/pagedown-extra/pagedown/Markdown.Editor.js"></script>
-<script src="bower_components/pagedown-extra/Markdown.Extra.js"></script>
-<!-- End pagedown extra-->
-
-<!-- endbuild -->
-
-<!-- build:js({.tmp,app}) scripts/crypto.js -->
-<script src="scripts/plugins/extras.js"></script>
-<script src="scripts/plugins/wurfl.js"></script>
-<!-- CryptoJS lib-->
-<script src="scripts/plugins/crypto/core-min.js"></script>
-<script src="scripts/plugins/crypto/enc-base64-min.js"></script>
-<script src="scripts/plugins/crypto/sha256.js"></script>
-<script src="scripts/plugins/crypto/hmac-sha256.js"></script>
-<script src="scripts/plugins/crypto/aes.js"></script>
-
-<script src="bower_components/jsbn/jsbn2.js"></script>
-<script src="bower_components/jsbn/base64.js"></script>
-<script src="bower_components/jsbn/ec.js"></script>
-<script src="bower_components/jsbn/prng4.js"></script>
-<script src="bower_components/jsbn/rng.js"></script>
-<script src="bower_components/jsbn/rsa.js"></script>
-<script src="bower_components/jsbn/rsa2.js"></script>
-<script src="bower_components/jsbn/sec.js"></script>
-<!-- End cryptoJS lib-->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -140,6 +86,7 @@
 <!-- facebook module end-->
 <!-- endbuild -->
 
+
 <!-- Add your site or application content here -->
 <div ui-view="">
 
@@ -150,6 +97,62 @@
 
 </footer>
 <!-- End footer of page-->
+
+
+<!-- build:js(.) scripts/vendor.js -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/angular-off-click/offClick.js"></script>
+<script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
+<script src="bower_components/angular-markdown-toolkit/markdown.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/jsbn/jsbn.js"></script>
+<!-- Pagedown-Extra-->
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Converter.js"></script>
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Sanitizer.js"></script>
+<script src="bower_components/pagedown-extra/pagedown/Markdown.Editor.js"></script>
+<script src="bower_components/pagedown-extra/Markdown.Extra.js"></script>
+<!-- End pagedown extra-->
+<!-- endbuild -->
+
+
+
+<!-- build:js({.tmp,app}) scripts/crypto.js -->
+<script src="scripts/plugins/extras.js"></script>
+<script src="scripts/plugins/wurfl.js"></script>
+<!-- CryptoJS lib-->
+<script src="scripts/plugins/crypto/core-min.js"></script>
+<script src="scripts/plugins/crypto/enc-base64-min.js"></script>
+<script src="scripts/plugins/crypto/sha256.js"></script>
+<script src="scripts/plugins/crypto/hmac-sha256.js"></script>
+<script src="scripts/plugins/crypto/aes.js"></script>
+
+<script src="bower_components/jsbn/jsbn2.js"></script>
+<script src="bower_components/jsbn/base64.js"></script>
+<script src="bower_components/jsbn/ec.js"></script>
+<script src="bower_components/jsbn/prng4.js"></script>
+<script src="bower_components/jsbn/rng.js"></script>
+<script src="bower_components/jsbn/rsa.js"></script>
+<script src="bower_components/jsbn/rsa2.js"></script>
+<script src="bower_components/jsbn/sec.js"></script>
+<!-- End cryptoJS lib-->
+<!-- endbuild -->
 
 <script>
     jQuery.ajax({
