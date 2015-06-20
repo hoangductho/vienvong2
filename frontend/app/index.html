@@ -123,18 +123,6 @@
 <script src="modules/articles/factories/commentConnectFactory.js"></script>
 
 <!-- End articles module-->
-
-<!-- Add your site or application content here -->
-<div ui-view="">
-
-</div>
-
-<!-- Footer of page loading-->
-<footer class="col-md-12" ng-include="'views/footer.html'">
-
-</footer>
-<!-- End footer of page-->
-
 <!-- Auth module-->
 <script src="modules/auth/auth.js"></script>
 <script src="modules/auth/controllers/loginCtrl.js"></script>
@@ -152,7 +140,16 @@
 <!-- facebook module end-->
 <!-- endbuild -->
 
+<!-- Add your site or application content here -->
+<div ui-view="">
 
+</div>
+
+<!-- Footer of page loading-->
+<footer class="col-md-12" ng-include="'views/footer.html'">
+
+</footer>
+<!-- End footer of page-->
 
 <script>
     jQuery.ajax({
