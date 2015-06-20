@@ -3,7 +3,7 @@
     <!--<main>-->
         <view-title>{{detail.title}}</view-title>
         <meta view-head property="og:description" content="{{detail.description}}">
-        <article>
+        <article scroll>
 
             <div id="brand" class="articles-block">
                 <div class="social-button-box">
@@ -29,13 +29,23 @@
                 </div>
             </div>
 
-            <div class="suggest-articles" ng-if="suggest.length">
-                <h3>Bài viết liên quan</h3>
-                <p class="suggest-articles" ng-repeat="art in suggest">
-                    <a href="/express/{{art._id}}?{{art.friendly}}">
-                        <i class="fa fa-caret-right g-plus"></i> {{art.title}}
-                    </a>
-                </p>
+            <div class="page-branding col-md-12 none-padding">
+                <div class="suggest-articles col-md-7 col-sm-12 none-padding-left" ng-if="suggest.length">
+                    <h3>Bài viết liên quan</h3>
+                    <p class="suggest-articles" ng-repeat="art in suggest">
+                        <a href="/express/{{art._id}}?{{art.friendly}}">
+                            <i class="fa fa-caret-right g-plus"></i> {{art.title}}
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-sm-12 none-padding">
+                    <br>
+                    <div class="page-box" ng-if="fanpageInit">
+                        <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
+                             data-height="190" data-colorscheme="light" data-show-faces="true" data-header="false"
+                             data-stream="false" data-show-border="true"></div>
+                    </div>
+                </div>
             </div>
 
         </article>

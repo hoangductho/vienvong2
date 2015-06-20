@@ -33,11 +33,10 @@ angular.module('vienvong')
             return 0;
         };
 
-        $scope.fbShow = function () {
+        $rootScope.fbShow = function () {
             $scope.facebookShow = !($scope.facebookShow);
             if($scope.fanpageInit == false) {
                 $scope.fanpageInit = true;
-                console.log($scope.fanpageInit);
             }
 
             return 0;

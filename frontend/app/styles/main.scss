@@ -759,6 +759,15 @@ article {
   }
 }
 
+.page-branding {
+  .page-box {
+
+    @media (min-width: $screen-md-max) {
+      float: right;
+    }
+  }
+}
+
 .articles-block {
   .input-sm {
     border-radius: 0;
