@@ -152,7 +152,15 @@
 <!-- facebook module end-->
 <!-- endbuild -->
 
-<script src="http://connect.facebook.net/en_US/all.js" async></script>
+<script>
+    jQuery.ajax({
+        type: "GET",
+        url: "http://connect.facebook.net/en_US/all.js http://connect.facebook.net/en_US/sdk.js http://www.google-analytics.com/analytics.js",
+        success: function(){},
+        dataType: "script",
+        cache: true
+    });
+</script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
