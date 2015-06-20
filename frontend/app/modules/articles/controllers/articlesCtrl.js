@@ -34,7 +34,7 @@ angular
                     $timeout(function () {
                         hot();
                         delay = 0;
-                    }, 1000, delay > 0);
+                    }, 0, delay > 0);
                 };
             })
         };
@@ -66,7 +66,7 @@ angular
                             $timeout(function () {
                                 list(addGroup, addPage);
                                 delay = 0;
-                            }, 1000, delay > 0);
+                            }, 50, delay > 0);
                         }else {
                             $scope.next = false;
                             $scope.searchMess = $sce.trustAsHtml('<div class="invalid search-status"><i class="fa fa-times"></i> No result!</div>');

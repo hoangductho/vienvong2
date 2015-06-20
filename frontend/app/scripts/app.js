@@ -14,7 +14,6 @@ angular
         'ui.router',
         'offClick',
         'LocalStorageModule',
-        'ng-optimizely',
 
         'seo',
         'markdown',
@@ -44,7 +43,4 @@ angular
             } catch (ex) {
             }
         });
-    })
-    .run(['optimizely', function(optimizely) {
-        optimizely.loadProject('880950754');
-    }]);;
+    });
