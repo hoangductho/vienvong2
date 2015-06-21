@@ -32,7 +32,7 @@ angular
                 controller: 'articlesCtrl'
             })
             .state('main.articles.express', {
-                url: '/express/:id?:friendly',
+                url: '/express/:id/:friendly',
                 controller: 'expressCtrl',
                 templateUrl: modulePath + 'views/express.html'
 
