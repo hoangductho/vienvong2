@@ -381,7 +381,7 @@ class Articles extends CI_Controller {
      *
      * @param string $id Article's ID
      */
-    public function snapshot($id, $friendly = null) {
+    public function snapshot($id) {
         $where = array(
             '_id' => $id
         );

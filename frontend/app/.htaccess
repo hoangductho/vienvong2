@@ -211,7 +211,7 @@ AddDefaultCharset utf-8
     RewriteEngine On
 
     RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|googlebot)
-    RewriteRule express/([a-z0-9-]+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
+    RewriteRule express/([a-z0-9-]+)/(.*+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
 
 #    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
 #    RewriteRule ^location/([A-Za-z0-9-]+)/([0-9-]+)$ www.example.com/api/renderMetaTags/location/$2 [P,L]
