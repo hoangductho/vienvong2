@@ -90,7 +90,284 @@
 
 
 <!-- Add your site or application content here -->
-<div ng-app="vienvong" ui-view="">
+<div ng-app="vienvong" ng-controller="MainCtrl">
+
+    <!-- Header of Page loading-->
+    <header>
+        <div id="header-box">
+            <div id="logo" class="header-package col-sm-0-min col-xs-3">
+                <div id="logo-button" class="blur" ng-init="secondMenu = false" ng-click="secondMenu =! secondMenu">
+                    <img src="images/vienvong-logo2.png" height="100%">
+                    <span class="caret"></span>
+                </div>
+
+                <nav id="second-menu" ng-class="{'hide': (secondMenu == false)}" off-click="secondMenu = false" off-click-if="secondMenu">
+                    <a ui-sref="main.articles.home">
+                        <div class="second-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
+                    </a>
+                    <a ui-sref="main.articles.group({group: 'news'})">
+                        <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'news')}">News</div>
+                    </a>
+                    <a ui-sref="main.articles.group({group: 'blog'})">
+                        <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Blog</div>
+                    </a>
+                    <a ui-sref="main.articles.group({group: 'tutorials'})">
+                        <div class="second-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
+                    </a>
+                    <a ui-sref="main.articles.search({text: 'NoSQL'})">
+                        <div class="second-menu-options blur" ng-class="{'active': (state.params.text == 'NoSQL')}">NoSQL</div>
+                    </a>
+                </nav>
+            </div>
+            <div id="site-name" class="header-package col-xs-0-max col-sm-3 col-md-2">
+                <a href="/">
+                    <div id="site-name-letter" class="blur col-sm-12">
+                        <!--<img src="images/vienvong-fulltext3.png" height="80%" style="padding-top: 5%">-->
+                        <div style="font-family: 'Times New Roman'; font-size: 32px"><b>Viễn Vọng</b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="main-bar" class="header-package col-xs-0-max col-sm-5 col-md-5">
+                <div id="main-bar-above" class="header-dual">
+                    <p>Tri thức là sự chia sẻ</p>
+                </div>
+                <div id="main-bar-below" class="header-dual">
+                    <nav id="main-menu">
+                        <a ui-sref="main.articles.home">
+                            <div class="main-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
+                        </a>
+                        <a ui-sref="main.articles.group({group: 'news'})">
+                            <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'news')}">News</div>
+                        </a>
+                        <a ui-sref="main.articles.group({group: 'blog'})">
+                            <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'blog')}">Blog</div>
+                        </a>
+                        <a ui-sref="main.articles.group({group: 'tutorials'})">
+                            <div class="main-menu-options blur" ng-class="{'active': (state.params.group == 'tutorials')}">Tutorials</div>
+                        </a>
+                        <a ui-sref="main.articles.search({text: 'NoSQL'})">
+                            <div class="main-menu-options blur" ng-class="{'active': (state.params.text == 'NoSQL')}">NoSQL</div>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            <div id="actions" class="header-package col-xs-8 col-sm-4 col-md-5 pull-right">
+
+                <div id="auth-box" class="header-package block pull-right">
+                    <div ng-if="!online">
+                        <div id="user-name" class="header-dual">
+                            <p>You are Anonymous!</p>
+                        </div>
+                        <div id="user-actions" class="header-dual">
+                            <button ng-click="loginShow()">Sign in</button>
+                            <button ui-sref="main.auth.registry">Sign up</button>
+                        </div>
+                    </div>
+                    <div ng-if="online">
+                        <div id="user-name" class="header-dual">
+                            <p>{{online.email}}</p>
+                        </div>
+                        <div id="user-actions" class="header-dual">
+                            <!--<button ui-sref="main.auth.profile">Profile</button>-->
+                            <button ui-sref="main.auth.logout">Sign out</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="facebook-box" class="header-package block pull-right">
+                    <div class="header-button facebook-bar-button" ng-click="fbShow()">
+                        <i class="fa fa-2x fa-facebook header-color"></i>
+                    </div>
+                </div>
+                <div id="search-button" class="header-package col-md-0-min block pull-right">
+                    <div class="header-button facebook-bar-button" ng-click="searchShow()">
+                        <i class="fa fa-search primary-color fa-2x"></i>
+                    </div>
+                </div>
+
+                <div id="search-bar" class="header-package block col-md-6 col-lg-7 col-sm-0-max pull-right">
+                    <!-- Search Box-->
+                    <div id="search-bar-box" ng-controller="searchCtrl" class="bar pull-right col-md-12 full-radius">
+                        <form ng-submit="searchArticle()" class="row">
+                            <div class="pull-left col-md-11 col-sm-10 row none-padding-right">
+                                <input type="text" name="search" ng-model="searchString" class="form-control none-padding-right">
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="form-control none-effect">
+                                    <i class="fa fa-search primary-color"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End search box-->
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- end header-->
+
+    <!-- Main Content loading-->
+    <main class="container">
+        <div class="row" ui-view="">
+
+        </div>
+    </main>
+    <!-- End main content-->
+
+    <!-- Footer of page loading-->
+    <footer class="col-md-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-0-max"></div>
+                <div class="col-lg-8 col-md-9">
+                    <div id="introduce">
+                        <h4>Lời Tựa</h4>
+                        <p>Với những nỗ lực của mình, chúng tôi hi vọng đã đem đến cho bạn những thông tin thực sự hữu ích.</p>
+                        <p>Mọi thiếu sót của chúng tôi trong quá trình thực hiện, phát hành và quản lí nội dung cũng như website mong được các bạn thông cảm vả góp ý.</p>
+                        <p>Sự quan tâm của các bạn là niềm vui đối với chúng tôi</p>
+                        <p>Xin chân thành cảm ơn!</p>
+
+                        <hr>
+
+                        <h4>Bản quyền nội dung:</h4>
+                        <!--<p><blockquote>Những nội dung mà chúng tôi cung cấp đều là thông tin độc quyền, không copy từ những nguồn khác.</blockquote></p>-->
+                        <p><blockquote>Để thể hiện sự tôn trọng của bạn với chúng tôi và mọi người xin hãy ghi rõ link nguồn bài viết để xác nhận bản quyền khi các bạn xuất bản lại nội dung của chúng tôi.</blockquote></p>
+                        <p><blockquote>Trong trường hợp các bạn vi phạm vấn đề bản quyền khi phát hành lại nội dung chúng tôi đã đăng tải, chúng tôi sẽ buộc lòng phải nhờ Google can thiệp để xóa nội dung của các bạn trên Google theo các điều khoản của chương trình bảo vệ bản quyền Google DMCA.</blockquote></p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-12">
+                    <div id="contact">
+                        <h4>Liên hệ</h4>
+                        <p>Mọi ý kiến đóng góp của các bạn xin gửi về địa chỉ e-mail:</p>
+                        <p><blockquote>vienvong.vn@gmail.com</blockquote></p>
+                        <p>Hoặc liên hệ với Web Master qua E-mail: </p>
+                        <p><blockquote>hoangductho.3690@gmail.com</blockquote></p>
+                        <p>Hoặc Skype:</p>
+                        <p><blockquote>hoangductho.3690</blockquote></p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div id="copyright">
+                @2015 vienvong.vn <a href="/sitemap.html">Site Map</a>
+            </div>
+            <br>
+        </div>
+
+    </footer>
+    <!-- End footer of page-->
+
+    <!-- Irregular Box-->
+    <div class="irregular-box">
+        <div id="search-bar" class="header-package" ng-class="{'hide': (searchBoxShow == false)}" off-click="searchHide()" off-click-if="searchBoxShow">
+            <!-- Search Box-->
+            <div id="search-bar-box" class="bar pull-right full-radius">
+                <form ng-submit="searchPosts()">
+                    <div class="pull-left col-md-11 col-sm-10 row none-padding-right">
+                        <input type="text" name="search" class="form-control none-padding-right">
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="form-control none-effect">
+                            <i class="fa fa-search primary-color"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- End search box-->
+        </div>
+
+        <!-- Load facebook page-->
+        <div id="facebook-page-box" ng-class="{'hide': (facebookShow == false)}" off-click="fbHide()" off-click-if="facebookShow">
+            <div id="fb-root"></div>
+            <div ng-if="fanpageInit">
+                <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
+                     data-height="100%" data-colorscheme="light" data-show-faces="true" data-header="false"
+                     data-stream="false" data-show-border="true"></div>
+            </div>
+        </div>
+        <!-- end load facebook page-->
+
+        <!-- Login box-->
+        <div id="login-box" ng-class="{'hide': (loginBoxShow == false || online)}" off-click="loginHide()" off-click-if="loginBoxShow">
+            <div class="login-actions">
+                <div class="login-title end-box">
+                    <img src="/images/vienvong1.png">
+                    <strong class="g-plus"> Login</strong>
+                </div>
+                <div class="login-description end-box col-xs-0-max">
+                    <p><i class="fa fa-caret-right g-plus"></i> You can <a ui-sref="main.auth.registry">registry</a> the account by your e-mail.</p>
+
+                    <p><i class="fa fa-caret-right g-plus"></i> You can using Facebook or Google account to registry and login.</p>
+                </div>
+                <div class="login-button end-box">
+                    <form ng-controller="loginCtrl">
+                        <div class="login-data">
+                            <div ng-if="!result.ok && result.err" class="invalid container-fluid">
+                                <i class="fa fa-times-circle"></i> <b>Please try again.</b> <br>
+                                {{result.err}}
+                            </div>
+                        </div>
+                        <div class="login-data row">
+                            <div class="container-fluid">
+                                <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+                            </div>
+                            <div class="container-fluid" ng-if="!validate.email.valid">
+                                <p></p>
+                                <div class="form-valid" ng-bind-html="validate.email.mess">
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="login-data row">
+                            <div class="container-fluid">
+                                <input type="password" name="password" ng-model="auth.password" ng-blur="valid('password')" placeholder="Password" class="form-control"/>
+                            </div>
+                            <div class="container-fluid" ng-if="!validate.password.valid">
+                                <p></p>
+                                <div class="form-valid" ng-bind-html="validate.password.mess">
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <!--<div class="login-data row">
+                            <div class="col-xs-12 pull-left" style="text-align: left">
+                                <input type="checkbox" name="keepMe" ng-model="keepMe"/>
+                                Keep Me logged in
+                            </div>
+                        </div>
+                        <p></p>-->
+                        <div class="login-data row">
+                            <div class="container-fluid">
+                                <button class="btn btn-primary" ng-class="{'disable': (scores < 2)}" ng-click="process()">Sing in</button>
+                                <button ng-click="reset()" class="btn btn-default">Clear</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="login-button end-box">
+                     <a class="btn btn-block btn-social btn-google-plus">
+                         <i class="fa fa-google-plus"></i>Sign in with Google
+                     </a>
+                     <p></p>
+                     <a class="btn btn-block btn-social btn-facebook">
+                         <i class="fa fa-facebook"></i>Sign in with Facebook
+                     </a>
+                     &lt;!&ndash;<div fb-login-button=""></div>&ndash;&gt;
+                 </div>-->
+            </div>
+            <div class="user-term">
+                <div class="user-terms">
+                    <a href="javascript">
+                        This terms for users
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- End login box-->
+    </div>
+    <!-- End irregular box-->
 
 </div>
 
