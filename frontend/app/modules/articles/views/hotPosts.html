@@ -4,7 +4,7 @@
             <!-- hottest post-->
             <div id="hottest-post-box">
                 <div id="hottest-thumb" class="hot-thumb">
-                    <img ng-src="{{imgHost + hotArticles[0].lAvatar}}">
+                    <img ng-src="{{imgHost + hotArticles[0].lAvatar}}" alt="{{hotArticles[0].title}}">
                 </div>
                 <div id="hottest-title" class="title">
                     <a ui-sref="main.articles.express({id: hotArticles[0]._id, friendly: hotArticles[0].friendly})">
@@ -18,7 +18,7 @@
             <div id="hotter-posts-box">
                 <div class="hit-post-box" ng-repeat="hot in hotArticles" ng-if="$index">
                     <div class="hotter-thumb hot-thumb">
-                        <img ng-src="{{imgHost + hot.sAvatar}}">
+                        <img ng-src="{{imgHost + hot.sAvatar}}" alt="{{hot.title}}">
                     </div>
                     <div class="hit-post-title title">
                         <a ui-sref="main.articles.express({id: hot._id, friendly: hot.friendly})">

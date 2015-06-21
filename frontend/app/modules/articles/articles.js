@@ -37,6 +37,12 @@ angular
                 templateUrl: modulePath + 'views/express.html'
 
             })
+            .state('main.articles.express0', {
+                url: '/express/:id?:friendly',
+                controller: 'expressCtrl',
+                templateUrl: modulePath + 'views/express.html'
+
+            })
             .state('main.articles.search', {
                 url: '/search/:text',
                 templateUrl: modulePath + 'views/listArticles.html',
