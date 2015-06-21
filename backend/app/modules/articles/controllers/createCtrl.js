@@ -70,7 +70,6 @@ angular
 
             if(!breakOut) {
                 createArticles.create({}, {auth: $rootScope.online.code, data: $scope.detail}, function(data) {
-                    console.log(data);
                     if(data.ok && data.err == null) {
                         $state.go('main.articles.express', {id: data._id});
                     }else {

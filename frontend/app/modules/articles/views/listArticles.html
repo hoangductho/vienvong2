@@ -13,7 +13,7 @@
                         <div class="normal-info-box">
                             <div class="normal-section">
                                 <div class="normal-title">
-                                    <a ng-href="/express/{{normal._id}}?{{normal.friendly}}">
+                                    <a ui-sref="main.articles.express({id: normal._id, friendly: normal.friendly})">
                                         {{normal.title}}
                                     </a>
                                 </div>
