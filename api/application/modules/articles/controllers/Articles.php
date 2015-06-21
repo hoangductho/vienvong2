@@ -490,7 +490,7 @@ class Articles extends CI_Controller {
                             // storage avatar
                             if($in['data']['lAvatar'] && $data['lAvatar'] != $in['data']['lAvatar']) {
                                 $in['data']['lAvatar'] = $this->_storageAvatar($in['data']['lAvatar'], $id);;
-                                $in['data']['sAvatar'] = $this->_storageAvatar($in['data']['sAvatar'], $id);
+                                $in['data']['sAvatar'] = $this->_storageAvatar($in['data']['sAvatar'], $id, true);
                             }
 
                             foreach ($this->valid as $key) {
@@ -559,7 +559,7 @@ class Articles extends CI_Controller {
 
             // storage avatar
             $data['lAvatar'] = $this->_storageAvatar($data['lAvatar'], $data['_id']);
-            $data['sAvatar'] = $this->_storageAvatar($data['sAvatar'], $data['_id']);
+            $data['sAvatar'] = $this->_storageAvatar($data['sAvatar'], $data['_id'], true);
 
             $this->load->helper("url");
             $data['friendly'] = mb_strtolower(url_title($this->_removesign($data['title'])));
