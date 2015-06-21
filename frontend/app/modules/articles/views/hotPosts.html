@@ -7,7 +7,7 @@
                     <img ng-src="{{imgHost + hotArticles[0].lAvatar}}">
                 </div>
                 <div id="hottest-title" class="title">
-                    <a ng-href="/express/{{hotArticles[0]._id}}?{{hotArticles[0].friendly}}">
+                    <a ui-sref="main.articles.express({id: hotArticles[0]._id, friendly: hotArticles[0].friendly})">
                         <p>{{hotArticles[0].title}}</p>
                     </a>
                 </div>
@@ -21,7 +21,7 @@
                         <img ng-src="{{imgHost + hot.sAvatar}}">
                     </div>
                     <div class="hit-post-title title">
-                        <a ng-href="/express/{{hot._id}}?{{hot.friendly}}">
+                        <a ui-sref="main.articles.express({id: hot._id, friendly: hot.friendly})">
                             <p>{{hot.title}}</p>
                         </a>
                     </div>
