@@ -28,7 +28,7 @@ angular
             .state('main', {
                 abstract: true,
                 //templateUrl: 'views/main.html',
-                //controller: 'MainCtrl'
+                controller: 'MainCtrl'
             });
 
 
