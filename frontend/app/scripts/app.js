@@ -27,8 +27,9 @@ angular
         $stateProvider
             .state('main', {
                 abstract: true,
+                template: '<ui-view></ui-view>'
                 //templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                //controller: 'MainCtrl'
             });
 
 
