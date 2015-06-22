@@ -15,6 +15,7 @@ angular
         $scope.suggest = null;
         $scope.listCount = 0;
         $scope.pageComment = 1;
+        $scope.linkShare = null;
         var tryAgain = true;
 
         // get articles from server
@@ -23,9 +24,7 @@ angular
                 if (data.ok && data.result.length > 0) {
                     $scope.detail = angular.copy(data.result[0]);
                     $window.document.title = $scope.detail.title;
-                    $rootScope.meta.title = $scope.detail.title;
-                    $rootScope.meta.description = $scope.detail.description;
-                    $rootScope.meta.image = $rootScope.apiHost + $scope.detail.lAvatar;
+                    $scope.linkShare = '/express/'+ $scope.detail._id;
                     suggest($scope.detail.keyword);
                 } else {
                     if(tryAgain){
