@@ -4,11 +4,11 @@
     <base href='/'>
     <meta name="fragment" content="!" />
     <meta charset="utf-8">
-    <title ng-bind-template="{{viewTitle}} Viễn Vọng">Viễn Vọng - vienvong.vn Blog cho dân công nghệ</title>
+    <title ng-bind-template="{{viewTitle}} Viễn Vọng">Viễn Vọng - vienvong.vn Blog công nghệ và đời sống</title>
     <link rel="shortcut icon" href="images/vienvong-logo1.png">
 
     <link rel="apple-touch-icon-precomposed" href="images/vienvong-logo2.png">
-    <meta name="description" content="vienvong.vn hi vọng đã đem đến cho bạn những thông tin thực sự hữu ích cho công việc và cuộc sống.">
+    <meta name="description" content="Viễn Vọng là một blog tập trung vào Internet, NoSQL, MongoDB, PHP và CodeIgniter">
     <meta name="keywords" content="Công nghệ, Khoa học, Lập trình, Internet. IT, Website, Mobile, NoSQL, MongoDB, Database, IoT, Big Data, Tin tức">
     <meta name="viewport" content="width=device-width">
 
@@ -35,59 +35,6 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-
-<!--[if lt IE 9]>
-<script src="bower_components/es5-shim/es5-shim.js"></script>
-<script src="bower_components/json3/lib/json3.min.js"></script>
-<![endif]-->
-
-<!-- build:js(.) scripts/static.js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/json3/lib/json3.js"></script>
-<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angularjs-viewhead/angularjs-viewhead.js"></script>
-<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-<!-- endbuild -->
-
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/seo.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/factories/initConnectFactory.js"></script>
-
-<!-- Articles Module-->
-<script src="modules/articles/articles.js"></script>
-<script src="modules/articles/controllers/articlesCtrl.js"></script>
-<script src="modules/articles/controllers/searchCtrl.js"></script>
-<script src="modules/articles/controllers/expressCtrl.js"></script>
-
-<script src="modules/articles/directives/scroll.js"></script>
-
-<script src="modules/articles/factories/articleConnectFactory.js"></script>
-<script src="modules/articles/factories/getArticlesFactory.js"></script>
-<script src="modules/articles/factories/expressArticlesFactory.js"></script>
-<script src="modules/articles/factories/commentConnectFactory.js"></script>
-
-<!-- End articles module-->
-<!-- Auth module-->
-<script src="modules/auth/auth.js"></script>
-<script src="modules/auth/controllers/loginCtrl.js"></script>
-<script src="modules/auth/controllers/forgotCtrl.js"></script>
-<script src="modules/auth/controllers/registryCtrl.js"></script>
-<script src="modules/auth/controllers/logoutCtrl.js"></script>
-
-<script src="modules/auth/factories/authConnectFactory.js"></script>
-<!-- End auth module-->
-
-<!-- facebook Module-->
-<script src="modules/facebook/facebookInit.js"></script>
-<script src="modules/facebook/facebook.js"></script>
-<script src="modules/facebook/directives/facebookDirective.js"></script>
-<!-- facebook module end-->
-<!-- endbuild -->
-
 
 <!-- Add your site or application content here -->
 <div ng-app="vienvong" ng-controller="MainCtrl">
@@ -209,6 +156,15 @@
 
     <!-- Main Content loading-->
     <main class="container">
+        <noscript>
+            <div class="row articles-block">
+                <h3>Trình duyệt của bạn đã chặn Javascript</h3>
+                <p>vienvong.vn được xây dựng bằng angularJS. Website của chúng tôi không thể hoạt động khi Javascript bị chặn.</p>
+                <p>Để vienvong.vn có thể hoạt động trên trình duyệt của bạn, xin vui lòng hãy kích hoạt Javascript.</p>
+                <p>Hi vọng bạn sẽ có những trải nghiệm thú vị.</p>
+                <p>Xin cảm ơn</p>
+            </div>
+        </noscript>
         <div class="row" ui-view="">
 
         </div>
@@ -249,8 +205,33 @@
                     <hr>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-0-max"></div>
+                <div class="col-lg-8 col-md-9">
+                    <div class="info-menu">
+                        <nav>
+                            <a href="/info/about">
+                                <span class="info-menu-options blur">Giới thiệu</span>
+                            </a>
+                            <a href="/info/privacy">
+                                <span class="info-menu-options blur">Privacy</span>
+                            </a>
+                            <a href="/info/copyright">
+                                <span class="info-menu-options blur">Bản quyền</span>
+                            </a>
+                            <a href="/info/sitemap">
+                                <span class="info-menu-options blur">Site Map</span>
+                            </a>
+                        </nav>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-12">
+
+                </div>
+            </div>
             <div id="copyright">
-                @2015 vienvong.vn <a href="http://vienvong.vn/sitemap.html">Site Map</a>
+                @2015 vienvong.vn
             </div>
             <br>
         </div>
@@ -353,6 +334,58 @@
 
 </div>
 
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js(.) scripts/static.js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angularjs-viewhead/angularjs-viewhead.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/seo.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/factories/initConnectFactory.js"></script>
+
+<!-- Articles Module-->
+<script src="modules/articles/articles.js"></script>
+<script src="modules/articles/controllers/articlesCtrl.js"></script>
+<script src="modules/articles/controllers/searchCtrl.js"></script>
+<script src="modules/articles/controllers/expressCtrl.js"></script>
+
+<script src="modules/articles/directives/scroll.js"></script>
+
+<script src="modules/articles/factories/articleConnectFactory.js"></script>
+<script src="modules/articles/factories/getArticlesFactory.js"></script>
+<script src="modules/articles/factories/expressArticlesFactory.js"></script>
+<script src="modules/articles/factories/commentConnectFactory.js"></script>
+
+<!-- End articles module-->
+<!-- Auth module-->
+<script src="modules/auth/auth.js"></script>
+<script src="modules/auth/controllers/loginCtrl.js"></script>
+<script src="modules/auth/controllers/forgotCtrl.js"></script>
+<script src="modules/auth/controllers/registryCtrl.js"></script>
+<script src="modules/auth/controllers/logoutCtrl.js"></script>
+
+<script src="modules/auth/factories/authConnectFactory.js"></script>
+<!-- End auth module-->
+
+<!-- facebook Module-->
+<script src="modules/facebook/facebookInit.js"></script>
+<script src="modules/facebook/facebook.js"></script>
+<script src="modules/facebook/directives/facebookDirective.js"></script>
+<!-- facebook module end-->
+<!-- endbuild -->
+
 <!-- build:js(.) scripts/vendor.js -->
 <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -397,15 +430,7 @@
 <!-- End cryptoJS lib-->
 <!-- endbuild -->
 
-<script>
-    jQuery.ajax({
-        type: "GET",
-        url: "http://connect.facebook.net/en_US/all.js#etags",
-        success: function(){},
-        dataType: "script",
-        cache: true
-    });
-</script>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>

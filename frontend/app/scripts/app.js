@@ -30,6 +30,26 @@ angular
                 template: '<ui-view></ui-view>'
                 //templateUrl: 'views/main.html',
                 //controller: 'MainCtrl'
+            })
+            .state('main.info', {
+                abstract: true,
+                template: '<ui-view></ui-view>'
+            })
+            .state('main.info.sitemap', {
+                url: '/info/sitemap',
+                templateUrl: 'views/sitemap.html'
+            })
+            .state('main.info.about', {
+                url: '/info/about',
+                templateUrl: 'views/about.html'
+            })
+            .state('main.info.copyright', {
+                url: '/info/copyright',
+                templateUrl: 'views/copyright.html'
+            })
+            .state('main.info.privacy', {
+                url: '/info/privacy',
+                templateUrl: 'views/privacy.html'
             });
 
 

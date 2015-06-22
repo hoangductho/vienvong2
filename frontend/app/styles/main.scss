@@ -862,6 +862,16 @@ footer {
   #copyright {
     text-align: center;
   }
+
+  .info-menu {
+    text-align: center;
+  }
+
+  .info-menu {
+    .info-menu-options {
+      margin: 0 7px;
+    }
+  }
 }
 
 /* End footer style*/
