@@ -48,7 +48,7 @@
                     <span class="caret"></span>
                 </div>
 
-                <nav id="second-menu" ng-class="{'hide': (secondMenu == false)}" off-click="secondMenu = false" off-click-if="secondMenu">
+                <nav id="second-menu" class="hide" ng-class="{'show': (secondMenu)}" off-click="secondMenu = false" off-click-if="secondMenu">
                     <a ui-sref="main.articles.home">
                         <div class="second-menu-options blur" ng-class="{'active': (state.includes('main.articles.home'))}">All Posts</div>
                     </a>
@@ -154,6 +154,21 @@
     </header>
     <!-- end header-->
 
+    <!-- Google Adsense-->
+    <div class="google-ads-box">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- ad.no.1 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5355896671501389"
+             data-ad-slot="7089889751"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <!-- End Adsense-->
+
     <!-- Main Content loading-->
     <main class="container">
         <noscript>
@@ -241,7 +256,7 @@
 
     <!-- Irregular Box-->
     <div class="irregular-box">
-        <div id="search-bar" class="header-package" ng-class="{'hide': (searchBoxShow == false)}" off-click="searchHide()" off-click-if="searchBoxShow">
+        <div id="search-bar" class="header-package hide" ng-class="{'show': (searchBoxShow)}" off-click="searchHide()" off-click-if="searchBoxShow">
             <!-- Search Box-->
             <div id="search-bar-box" class="bar pull-right full-radius">
                 <form ng-submit="searchPosts()">
@@ -259,7 +274,7 @@
         </div>
 
         <!-- Load facebook page-->
-        <div id="facebook-page-box" ng-class="{'hide': (facebookShow == false)}" off-click="fbHide()" off-click-if="facebookShow">
+        <div id="facebook-page-box" class="hide" ng-class="{'show': (facebookShow)}" off-click="fbHide()" off-click-if="facebookShow">
             <div id="fb-root"></div>
             <div ng-if="fanpageInit">
                 <div class="fb-like-box" data-href="https://www.facebook.com/vienvong.vn" data-width="100%"
@@ -270,7 +285,7 @@
         <!-- end load facebook page-->
 
         <!-- Login box-->
-        <div id="login-box" ng-class="{'hide': (loginBoxShow == false || online)}" off-click="loginHide()" off-click-if="loginBoxShow">
+        <div id="login-box" class="hide" ng-class="{'show': (loginBoxShow && !online)}" off-click="loginHide()" off-click-if="loginBoxShow">
             <div class="login-actions">
                 <div class="login-title end-box">
                     <img src="/images/vienvong1.png" alt="vienvong.vn login icon">
