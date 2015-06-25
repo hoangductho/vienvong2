@@ -40,7 +40,8 @@ class Admin_SEO extends CI_Controller{
      * Site-map Init
      */
     private function _siteMapInit() {
-        $time = date('Y:m:d H:m:s');
+        $time = date('Y:m:dTH:m:s+00:00');
+        
         $table = 'Articles';
         $select = '_id, friendly, firstTime, lastTime';
         $where = array(
