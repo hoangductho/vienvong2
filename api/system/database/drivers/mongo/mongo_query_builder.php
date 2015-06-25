@@ -1527,6 +1527,8 @@ class Mongo_query_builder extends CI_DB {
     {
         $key = $this->_object_to_array_batch($key);
 
+        var_dump($key); die();
+
         if ( ! is_array($key))
         {
             $key = array($key => $value);
