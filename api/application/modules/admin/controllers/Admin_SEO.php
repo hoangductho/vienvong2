@@ -55,8 +55,8 @@ class Admin_SEO extends CI_Controller{
         $allArticles = $this->Admin_model->select($table, $select, $where, $limit, $order);
 
         foreach($allArticles['result'] as $art) {
-            $update['lastTime'] = $art['firstTime'];
-            $update['firstTime'] = $art['lastTime'];
+            $newdate = new DateTime($art['lastTime']);
+            $update['firstTime'] = $newdate->format('Y-m-d H:i:s');
 
             $uwh['_id'] = $art['_id'];
 
