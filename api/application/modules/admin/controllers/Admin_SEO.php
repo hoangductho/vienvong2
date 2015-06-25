@@ -40,7 +40,7 @@ class Admin_SEO extends CI_Controller{
      * Site-map Init
      */
     private function _siteMapInit() {
-        $time = date('Y:m:dTH:m:s');
+        $time = date('c');
         $table = 'Articles';
         $select = '_id, friendly, firstTime, lastTime';
         $where = array(
@@ -59,6 +59,9 @@ class Admin_SEO extends CI_Controller{
             if(isset($art['lastTime']) && $art['lastTime'] > $art['firstTime']) {
                 $art['firstTime'] = $art['lastTime'];
             }
+
+            $date = new DateTime($art['firstTime']);
+            $art['firstTime'] = $date->format('c');
 
             $sitemap .= '<url>
                             <loc>http://vienvong.vn/express/'.$art['_id'].'</loc>
