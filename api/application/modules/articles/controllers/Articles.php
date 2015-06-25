@@ -566,7 +566,7 @@ class Articles extends CI_Controller {
             $data['owner'] = 1;
             $data['groups'] = 7;
             $data['others'] = 2;
-            $data['groups_id'] =  md5(strtolower(str_replace(' ','_',$data['categories'])));;
+            $data['groups_id'] =  md5(strtolower(str_replace(' ','_',$data['categories'])));
             $data['hot'] = 0;
 
             $insert = $this->Articles_model->insert_articles($this->table, $data);

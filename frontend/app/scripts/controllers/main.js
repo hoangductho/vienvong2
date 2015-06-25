@@ -8,7 +8,8 @@
  * Controller of the installApp
  */
 angular.module('vienvong')
-    .controller('MainCtrl', function ($scope, $state, $rootScope, $http, $filter, localStorageService, initConnect) {
+    .controller('MainCtrl', function ($scope, $state, $rootScope, $http, $filter, $location,
+                                      $anchorScroll, localStorageService, initConnect) {
         // setup api hostname
         $rootScope.apiHost = 'http://api.vienvong.vn';
 
@@ -22,6 +23,13 @@ angular.module('vienvong')
 
         // state of ui-router
         $scope.state = $state;
+
+        $rootScope.$on('$stateChangeStart', function(){
+            console.log($state);
+            $location.hash('top');
+            $anchorScroll();
+            $location.hash(null);
+        });
 
         /* Control facebook show and hide*/
         $scope.facebookShow = false;

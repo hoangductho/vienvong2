@@ -85,4 +85,46 @@ class Admin_SEO extends CI_Controller{
 
         return true;
     }
+
+    public function metadata() {
+        $table = 'Articles';
+        $select = '_id, tags, series, firstTime';
+        $where = array(
+            'others >=' => 1
+        );
+        $limit = 0;
+
+        $allArticles = $this->Admin_model->select($table, $select, $where, $limit);
+
+        $meta = array();
+
+        foreach ($allArticles as $art) {
+            $com = $art['tags'].','.$art['series'];
+
+            $data = explode($com, ',');
+
+            foreach($data as $key) {
+                $key = trim(strtolower($key));
+                if(strlen($key) >= 2) {
+                    $id = md5($key);
+                    if(!isset($meta[$id])) {
+                        $meta[$id] = array(
+                            '_id' => $id,
+                            'data' => $key,
+                            'pid' => $art['_id'],
+                            'firstTime' => $art['firstTime']
+                        );
+                    }
+                }
+            }
+        }
+
+        $insert = $this->Admin_model->insert_batch('metadata', $meta);
+
+        var_dump($insert);
+
+//        foreach($meta as $value) {
+//
+//        }
+    }
 }

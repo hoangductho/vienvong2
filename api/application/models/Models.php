@@ -32,6 +32,7 @@ class Models extends CI_Model {
         $this->db->offset($offset);
         $this->db->limit($limit);
         $this->db->from($table);
+        $this->db->order_by('firstTime', 'DESC');
 
         $data = $this->db->get();
 
@@ -94,6 +95,14 @@ class Models extends CI_Model {
         $this->db->set($data);
 
         $insert = $this->db->insert($table);
+
+        return $insert;
+    }
+
+    public function insert_batch($table, $data) {
+//        $this->db->set($data);
+
+        $insert = $this->db->insert_batch($table, $data);
 
         return $insert;
     }
