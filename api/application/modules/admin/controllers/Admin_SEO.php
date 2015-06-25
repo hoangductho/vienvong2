@@ -56,7 +56,7 @@ class Admin_SEO extends CI_Controller{
         $sitemap = '';
 
         foreach($allArticles['result'] as $art) {
-            if($art['lastTime'] > $art['firstTime']) {
+            if(isset($art['lastTime']) && $art['lastTime'] > $art['firstTime']) {
                 $art['firstTime'] = $art['lastTime'];
             }
 
