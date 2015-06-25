@@ -1486,7 +1486,7 @@ class Mongo_query_builder extends CI_DB {
         // input update data if that was setup
         if ($set !== NULL)
         {
-            $this->set_insert_batch($set);
+            $this->set($set);
         }
 
         // check insert data available
@@ -1525,6 +1525,8 @@ class Mongo_query_builder extends CI_DB {
      */
     public function set_insert_batch($key, $value = '', $escape = NULL)
     {
+        $key = $this->_object_to_array_batch($key);
+
         if ( ! is_array($key))
         {
             $key = array($key => $value);

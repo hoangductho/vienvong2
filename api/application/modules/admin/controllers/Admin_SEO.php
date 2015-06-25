@@ -100,11 +100,9 @@ class Admin_SEO extends CI_Controller{
         $meta = array();
 
         foreach ($allArticles as $art) {
-            if(!isset($art['tags'])) $art['tags'] = '';
-            if(!isset($art['series'])) $art['series'] = '';
             $com = $art['tags'].','.$art['series'];
 
-            $data = explode($com, ',');
+            $data = explode(',', $com);
 
             foreach($data as $key) {
                 $key = trim(strtolower($key));
