@@ -100,7 +100,6 @@ class Models extends CI_Model {
     }
 
     public function insert_batch($table, $data) {
-        $this->db->set($data);
 
         $insert = $this->db->insert_batch($table, $data);
 
