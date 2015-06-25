@@ -65,8 +65,7 @@ class Admin_SEO extends CI_Controller{
             if($art['firstTime'][4] == ':') {
 
                 $date = DateTime::createFromFormat('Y:d:m H:m:s', $art['firstTime']);
-                $newdate = new DateTime($date);
-                $art['firstTime'] = $newdate->format('c');
+                $art['firstTime'] = $date->format('c');
             }else {
                 $newdate = new DateTime($art['firstTime']);
                 $art['firstTime'] = $newdate->format('c');
