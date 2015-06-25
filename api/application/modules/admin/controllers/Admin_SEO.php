@@ -60,8 +60,17 @@ class Admin_SEO extends CI_Controller{
                 $art['firstTime'] = $art['lastTime'];
             }
 
-            $date = new DateTime($art['firstTime']);
-            $art['firstTime'] = $date->format('c');
+            echo $art['friendly']. ' | ' . $art['firstTime'] . ' | ';
+
+            if($art['firstTime'][4] == ':') {
+
+                $date = DateTime::createFromFormat('Y:d:m H:m:s', $art['firstTime']);
+                $newdate = new DateTime($date);
+                $art['firstTime'] = $newdate->format('c');
+            }else {
+                $newdate = new DateTime($art['firstTime']);
+                $art['firstTime'] = $newdate->format('c');
+            }
 
             $sitemap .= '<url>
                             <loc>http://vienvong.vn/express/'.$art['_id'].'</loc>
