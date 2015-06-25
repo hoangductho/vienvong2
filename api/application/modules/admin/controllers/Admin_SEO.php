@@ -94,11 +94,14 @@ class Admin_SEO extends CI_Controller{
         );
         $limit = 0;
 
-        $allArticles = $this->Admin_model->select($table, $select, $where, $limit);
+        $all = $this->Admin_model->select($table, $select, $where, $limit);
+        $allArticles = $all['result'];
 
         $meta = array();
 
         foreach ($allArticles as $art) {
+            if(!isset($art['tags'])) $art['tags'] = '';
+            if(!isset($art['series'])) $art['series'] = '';
             $com = $art['tags'].','.$art['series'];
 
             $data = explode($com, ',');
