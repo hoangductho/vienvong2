@@ -73,7 +73,7 @@ class Admin_SEO extends CI_Controller{
 
             $uwh['_id'] = $art['_id'];
 
-            $this->Admin_model->update($table, $update, $where);
+            var_dump($this->Admin_model->update($table, $update, $uwh));
         }
     }
 
