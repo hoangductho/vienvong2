@@ -111,7 +111,7 @@ class Admin_SEO extends CI_Controller{
                     if(!isset($meta[$id])) {
                         $meta[$id] = array(
                             '_id' => $id,
-                            'data' => $key,
+                            'data' => ucfirst($key),
                             'pid' => $art['_id'],
                             'firstTime' => $art['firstTime']
                         );
@@ -123,9 +123,5 @@ class Admin_SEO extends CI_Controller{
         $insert = $this->Admin_model->insert_batch('metadata', $meta);
 
         var_dump($insert);
-
-//        foreach($meta as $value) {
-//
-//        }
     }
 }
