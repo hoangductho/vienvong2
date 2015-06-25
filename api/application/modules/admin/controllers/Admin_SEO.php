@@ -41,7 +41,7 @@ class Admin_SEO extends CI_Controller{
      */
     private function _siteMapInit() {
         $time = date('Y:m:dTH:m:s+00:00');
-        
+
         $table = 'Articles';
         $select = '_id, friendly, firstTime, lastTime';
         $where = array(
@@ -100,19 +100,19 @@ class Admin_SEO extends CI_Controller{
                         </url>
                         <url>
                           <loc>http://vienvong.vn/info/about</loc>
-                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                          <lastmod>2015-23-06T17:16:58+00:00</lastmod>
                         </url>
                         <url>
                           <loc>http://vienvong.vn/info/privacy</loc>
-                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                          <lastmod>2015-23-06T17:16:58+00:00</lastmod>
                         </url>
                         <url>
                           <loc>http://vienvong.vn/info/copyright</loc>
-                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                          <lastmod>2015-23-06T17:16:58+00:00</lastmod>
                         </url>
                         <url>
                           <loc>http://vienvong.vn/info/sitemap</loc>
-                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                          <lastmod>2015-23-06T17:16:58+00:00</lastmod>
                         </url>'
                         . $sitemap.
                     '</urlset>';
