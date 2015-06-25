@@ -39,6 +39,44 @@ class Admin_SEO extends CI_Controller{
     /**
      * Site-map Init
      */
+
+    public function update() {
+        $time = date('c');
+        $table = 'Articles';
+        $select = '_id, firstTime, lastTime';
+        $where = array(
+            'others >=' => 1
+        );
+        $limit = 0;
+        $order = array(
+            'firstTime' => 'DESC'
+        );
+
+        $allArticles = $this->Admin_model->select($table, $select, $where, $limit, $order);
+
+        foreach($allArticles['result'] as $art) {
+
+            if($art['firstTime'][4] == ':') {
+
+                $date = DateTime::createFromFormat('Y:d:m H:m:s', $art['firstTime']);
+
+            }else {
+                $date = new DateTime($art['firstTime']);
+            }
+
+            $update['firstTime'] = $date->format('c');
+            if(!isset($art['lastTime']) || $art['lastTime'] < $art['firstTime']) {
+                $update['lastTime'] = $art['firstTime'];
+            }else {
+                $update['lastTime'] = $art['lastTime'];
+            }
+
+            $uwh['_id'] = $art['_id'];
+
+            $this->Admin_model->update($table, $update, $where);
+        }
+    }
+
     private function _siteMapInit() {
         $time = date('c');
         $table = 'Articles';
@@ -59,8 +97,6 @@ class Admin_SEO extends CI_Controller{
             if(isset($art['lastTime']) && $art['lastTime'] > $art['firstTime']) {
                 $art['firstTime'] = $art['lastTime'];
             }
-
-            echo $art['friendly']. ' | ' . $art['firstTime'] . ' | ';
 
             if($art['firstTime'][4] == ':') {
 
