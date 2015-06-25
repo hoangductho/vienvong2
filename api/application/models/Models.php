@@ -26,13 +26,18 @@ class Models extends CI_Model {
      * Task     :
      *      - Select data in database
      */
-    public function select($table, $select = '*', $where = array(), $limit = 1, $offset = 0) {
+    public function select($table, $select = '*', $where = array(), $limit = 1, $offset = 0, $order = null) {
         $this->db->select($select);
         $this->db->where($where);
         $this->db->offset($offset);
         $this->db->limit($limit);
         $this->db->from($table);
-        $this->db->order_by('firstTime', 'DESC');
+
+        if(is_array($order)) {
+            foreach($order as $key => $value) {
+                $this->db->order_by($key, $value);
+            }
+        }
 
         $data = $this->db->get();
 
@@ -72,8 +77,8 @@ class Models extends CI_Model {
      */
     public function fulltextSearch($table, $text, $select = '*', $offset = 0, $limit = 10, $where=array()) {
         $this->db->select($select);
-        $this->db->fulltext_where($text);
         $this->db->order_by('firstTime', 'Desc');
+        $this->db->fulltext_where($text);
         $this->db->where($where);
         $this->db->offset($offset);
         $this->db->limit($limit);
@@ -95,13 +100,6 @@ class Models extends CI_Model {
         $this->db->set($data);
 
         $insert = $this->db->insert($table);
-
-        return $insert;
-    }
-
-    public function insert_batch($table, $data) {
-
-        $insert = $this->db->insert_batch($table, $data);
 
         return $insert;
     }

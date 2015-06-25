@@ -40,31 +40,78 @@ class Admin_SEO extends CI_Controller{
      * Site-map Init
      */
     private function _siteMapInit() {
+        $time = date('Y:d:m H:m:s');
         $table = 'Articles';
-        $select = '_id, friendly';
+        $select = '_id, friendly, firstTime, lastTime';
         $where = array(
             'others >=' => 1
         );
         $limit = 0;
+        $order = array(
+            'firstTime' => 'DESC'
+        );
 
-        $allArticles = $this->Admin_model->select($table, $select, $where, $limit);
+        $allArticles = $this->Admin_model->select($table, $select, $where, $limit, $order);
 
         $sitemap = '';
 
         foreach($allArticles['result'] as $art) {
-            $sitemap .= "<url>
-                            <loc>http://vienvong.vn/express/".$art['_id']."</loc>
-                            <changefreq>daily</changefreq>
-                            <priority>1.0</priority>
+            if($art['lastTime'] > $art['firstTime']) {
+                $art['firstTime'] = $art['lastTime'];
+            }
+
+            $sitemap .= '<url>
+                            <loc>http://vienvong.vn/express/'.$art['_id'].'</loc>
+                            <lastmod>'.$art['firstTime'].'</lastmod>
+                            <changefreq>weekly</changefreq>
                         </url>
-                        ";
+                        ';
         }
 
-        $sitemap = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        $sitemap = '<?xml version="1.0" encoding="UTF-8"?>
+                    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
                         <url>
                             <loc>http://www.vienvong.vn</loc>
                             <changefreq>daily</changefreq>
+                            <lastmod>'.$time.'</lastmod>
                             <priority>1.0</priority>
+                        </url>
+                        <url>
+                            <loc>http://www.vienvong.vn/news</loc>
+                            <changefreq>daily</changefreq>
+                            <lastmod>'.$time.'</lastmod>
+                            <priority>0.8</priority>
+                        </url>
+                        <url>
+                            <loc>http://www.vienvong.vn/blog</loc>
+                            <changefreq>daily</changefreq>
+                            <lastmod>'.$time.'</lastmod>
+                            <priority>0.8</priority>
+                        </url>
+                        <url>
+                            <loc>http://www.vienvong.vn/tutorials</loc>
+                            <changefreq>daily</changefreq>
+                            <lastmod>'.$time.'</lastmod>
+                            <priority>0.8</priority>
+                        </url>
+                        <url>
+                          <loc>http://vienvong.vn/info/about</loc>
+                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                        </url>
+                        <url>
+                          <loc>http://vienvong.vn/info/privacy</loc>
+                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                        </url>
+                        <url>
+                          <loc>http://vienvong.vn/info/copyright</loc>
+                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
+                        </url>
+                        <url>
+                          <loc>http://vienvong.vn/info/sitemap</loc>
+                          <lastmod>2015-06-23T17:16:58+00:00</lastmod>
                         </url>'
                         . $sitemap.
                     '</urlset>';
@@ -86,7 +133,7 @@ class Admin_SEO extends CI_Controller{
         return true;
     }
 
-    public function metadata() {
+    private function get_metadata() {
         $table = 'Articles';
         $select = '_id, tags, series, firstTime';
         $where = array(
