@@ -55,21 +55,8 @@ class Admin_SEO extends CI_Controller{
         $allArticles = $this->Admin_model->select($table, $select, $where, $limit, $order);
 
         foreach($allArticles['result'] as $art) {
-
-            if($art['firstTime'][4] == ':') {
-
-                $date = DateTime::createFromFormat('Y:d:m H:m:s', $art['firstTime']);
-
-            }else {
-                $date = new DateTime($art['firstTime']);
-            }
-
-            $update['firstTime'] = $date->format('c');
-            if(!isset($art['lastTime']) || $art['lastTime'] < $art['firstTime']) {
-                $update['lastTime'] = $art['firstTime'];
-            }else {
-                $update['lastTime'] = $art['lastTime'];
-            }
+            $update['lastTime'] = $art['firstTime'];
+            $update['firstTime'] = $art['lastTime'];
 
             $uwh['_id'] = $art['_id'];
 
