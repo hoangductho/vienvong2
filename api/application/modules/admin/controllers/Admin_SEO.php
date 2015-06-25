@@ -39,35 +39,10 @@ class Admin_SEO extends CI_Controller{
     /**
      * Site-map Init
      */
-
-    public function update() {
-        $time = date('c');
-        $table = 'Articles';
-        $select = '_id, firstTime, lastTime';
-        $where = array(
-            'others >=' => 1
-        );
-        $limit = 0;
-        $order = array(
-            'firstTime' => 'DESC'
-        );
-
-        $allArticles = $this->Admin_model->select($table, $select, $where, $limit, $order);
-
-        foreach($allArticles['result'] as $art) {
-            $newdate = new DateTime($art['lastTime']);
-            $update['firstTime'] = $newdate->format('Y-m-d H:i:s');
-
-            $uwh['_id'] = $art['_id'];
-
-            var_dump($this->Admin_model->update($table, $update, $uwh));
-        }
-    }
-
     private function _siteMapInit() {
         $time = date('c');
         $table = 'Articles';
-        $select = '_id, friendly, firstTime, lastTime';
+        $select = '_id, friendly, lastTime';
         $where = array(
             'others >=' => 1
         );
@@ -81,7 +56,7 @@ class Admin_SEO extends CI_Controller{
         $sitemap = '';
 
         foreach($allArticles['result'] as $art) {
-            if(isset($art['lastTime']) && $art['lastTime'] > $art['firstTime']) {
+            /*if(isset($art['lastTime']) && $art['lastTime'] > $art['firstTime']) {
                 $art['firstTime'] = $art['lastTime'];
             }
 
@@ -92,11 +67,11 @@ class Admin_SEO extends CI_Controller{
             }else {
                 $newdate = new DateTime($art['firstTime']);
                 $art['firstTime'] = $newdate->format('c');
-            }
+            }*/
 
             $sitemap .= '<url>
                             <loc>http://vienvong.vn/express/'.$art['_id'].'</loc>
-                            <lastmod>'.$art['firstTime'].'</lastmod>
+                            <lastmod>'.$art['lastTime'].'</lastmod>
                             <changefreq>weekly</changefreq>
                         </url>
                         ';

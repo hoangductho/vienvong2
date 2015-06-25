@@ -497,6 +497,9 @@ class Articles extends CI_Controller {
                                 $update[$key] = $in['data'][$key];
                             }
 
+                            $lasttime = new DateTime(date('Y-d-m H:m:s'));
+                            $update['lastTime'] = $lasttime->format('c');
+
                             $updated = $this->Articles_model->update_articles($this->table, $update, $where, 0);
 
                             echo json_encode($updated, true);
@@ -554,8 +557,11 @@ class Articles extends CI_Controller {
             }
 
             $data['users_id'] = $access;
-            $data['firstTime'] = date('Y:d:m H:m:s');
+            $data['firstTime'] = date('Y-d-m H:m:s');
             $data['_id'] = md5($data['users_id']. $data['firstTime']);
+
+            $lasttime = new DateTime($data['firstTime']);
+            $data['lastTime'] = $lasttime->format('c');
 
             // storage avatar
             $data['lAvatar'] = $this->_storageAvatar($data['lAvatar'], $data['_id']);
