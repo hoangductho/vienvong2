@@ -9,7 +9,7 @@
  */
 angular.module('vienvong')
     .controller('MainCtrl', function ($scope, $state, $rootScope, $http, $filter, $location,
-                                      $anchorScroll, localStorageService, initConnect) {
+                                      $anchorScroll, $window, localStorageService, initConnect) {
         // setup api hostname
         $rootScope.apiHost = 'http://api.vienvong.vn';
 
@@ -29,6 +29,12 @@ angular.module('vienvong')
             $anchorScroll();
             $location.hash(null);
         });
+
+        if($window.innerWidth < 991){
+            $rootScope.rightEdgeShow = false;
+        }else {
+            $rootScope.rightEdgeShow = true;
+        }
 
         /* Control facebook show and hide*/
         $scope.facebookShow = false;
