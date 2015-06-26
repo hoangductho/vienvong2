@@ -70,7 +70,7 @@ class Admin_SEO extends CI_Controller{
             }*/
 
             $sitemap .= '<url>
-                            <loc>http://vienvong.vn/express/'.$art['_id'].'</loc>
+                            <loc>http://vienvong.vn/express/'.$art['_id'].'/'.$art['friendly'].'</loc>
                             <lastmod>'.$art['lastTime'].'</lastmod>
                             <changefreq>weekly</changefreq>
                         </url>
