@@ -172,16 +172,7 @@
     <!-- End main content-->
 
     <div class="google-adsense container">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- ad.no.1 -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5355896671501389"
-             data-ad-slot="7089889751"
-             data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div class="ga-box" ng-attr-aid="7089889751" ng-attr-maxscreen="992"></div>
     </div>
 
     <!-- Footer of page loading-->
@@ -389,6 +380,7 @@
 <script src="modules/facebook/facebook.js"></script>
 <script src="modules/facebook/directives/facebookDirective.js"></script>
 <script src="modules/facebook/directives/fbLikeButtonDirective.js"></script>
+<script src="scripts/directives/gaBoxDirective.js"></script>
 <!-- facebook module end-->
 <!-- endbuild -->
 
@@ -445,6 +437,8 @@
         cache: true
     });
 </script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>

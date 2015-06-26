@@ -30,11 +30,10 @@ angular.module('vienvong')
             $location.hash(null);
         });
 
-        if($window.innerWidth < 991){
-            $rootScope.rightEdgeShow = false;
-        }else {
-            $rootScope.rightEdgeShow = true;
-        }
+        $rootScope.gabox1 = {
+            aid: '7089889751',
+            screen: '992'
+        };
 
         /* Control facebook show and hide*/
         $scope.facebookShow = false;
