@@ -25,7 +25,6 @@ angular.module('vienvong')
         $scope.state = $state;
 
         $rootScope.$on('$stateChangeStart', function(){
-            console.log($state);
             $location.hash('top');
             $anchorScroll();
             $location.hash(null);
