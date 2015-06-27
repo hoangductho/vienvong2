@@ -499,6 +499,8 @@ class Articles extends CI_Controller {
 
                             $lasttime = new DateTime(date('Y-m-d H:m:s'));
                             $update['lastTime'] = $lasttime->format('c');
+                            $this->load->helper("url");
+                            $data['friendly'] = mb_strtolower(url_title($this->_removesign($data['title'])));
 
                             $updated = $this->Articles_model->update_articles($this->table, $update, $where, 0);
 

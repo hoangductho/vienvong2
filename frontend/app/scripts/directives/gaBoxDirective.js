@@ -24,7 +24,7 @@ angular
                         var newElement = $compile(
                             '<ins class="adsbygoogle"'
                             + 'style="display:block"'
-                            + 'data-ad-client="ca-pub-5355896671501389"'
+                            + 'data-ad-client="'+ attrs.publisher +'"'
                             + 'data-ad-slot="' + aid + '"'
                             + 'data-ad-format="auto"></ins>'
                             + '<script>'
