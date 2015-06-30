@@ -97,7 +97,7 @@
                         <div id="user-name" class="header-dual"><p>You are Anonymous!</p></div>
                         <div id="user-actions" class="header-dual">
                             <button ng-click="loginShow()">Sign in</button>
-                            <button nofollow ui-sref="main.auth.registry" href="http://vienvong.vn//auth/registry">Sign up</button>
+                            <button rel="nofollow" ui-sref="main.auth.registry" href="http://vienvong.vn//auth/registry">Sign up</button>
                         </div>
                     </div>
                     <!-- end ngIf: !online --> <!-- ngIf: online --> </div>
@@ -171,6 +171,16 @@
                 </article>
 
             <div id="right-edge" class="col-lg-2 col-md-3 col-sm-0-max ng-scope">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- ad.no.1 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5355896671501389"
+                     data-ad-slot="7089889751"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </main>
