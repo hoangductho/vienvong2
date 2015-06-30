@@ -20,6 +20,15 @@ angular
                         || (attrs.maxscreen && $window.innerWidth < attrs.maxscreen)
                         || (!attrs.maxscreen && !attrs.minscreen)
                     ) {
+                        if(typeof(adsbygoogle) == "undefined") {
+                            jQuery.ajax({
+                                type: "GET",
+                                url: "http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+                                success: function(){},
+                                dataType: "script",
+                                cache: true
+                            });
+                        }
 
                         // build markdown editor template.
                         var newElement = $compile(
