@@ -2,17 +2,7 @@
 <div id="capital" class="col-lg-8 col-md-9 col-sm-12">
     <section ng-if="hotArticles" ng-include="'modules/articles/views/hotPosts.html'"></section>
     <div class="google-adsense container-fluid">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- demo adsense -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5355896671501389"
-             data-ad-slot="8491924156"
-             data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <!--<div class="ga-box" ng-attr-aid="8491924156" ng-attr-publisher="ca-pub-5355896671501389"></div>-->
+        <div class="ga-box" ng-attr-aid="8491924156" ng-attr-publisher="ca-pub-5355896671501389"></div>
     </div>
     <div id="list-posts">
         <section ng-repeat="normal in listArticles">
