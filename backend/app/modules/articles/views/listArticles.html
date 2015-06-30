@@ -7,10 +7,10 @@
                     <div class="normal-post-detail">
                         <div class="normal-thumb-box">
                             <div class="articles-management" style="position: absolute">
-                                <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-primary pull-left">Publish</a>
+                                <a ng-click="publish($index)" class="btn btn-primary pull-left">{{(normal.others>=1?'Unpublish':'Publish')}}</a>
                                 <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-info pull-left">Edit</a>
-                                <a ng-click="sethot($index)" class="btn btn-success pull-left">Hot</a>
-                                <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-danger pull-left">Delete</a>
+                                <a ng-click="sethot($index)" class="btn btn-success pull-left">{{(normal.hot?'Unhot':'Hot')}}</a>
+                                <!--<a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-danger pull-left">Delete</a>-->
                             </div>
                             <img ng-src="{{imgHost + normal.sAvatar}}">
                         </div>

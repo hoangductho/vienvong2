@@ -63,12 +63,41 @@ class Admin_Articles extends Admin{
      */
     public function all($page = 0) {
 
-        $select = '_id, users_id, title, friendly, description, lAvatar, sAvatar, hot, firstTime';
+        $select = '*';
 
         $articles = $this->Admin_model->find_articles($this->table, $select, array(), $this->limit, $page);
         $articles['page'] = $page;
 
         echo json_encode($articles, true);
+    }
+    // ---------------------------------------------------------------------
+
+    /**
+     * Set Hot Articles
+     *
+     * @param string $pid id of article will be set hot
+     * @param int $publish value of others field
+     * @todo  update hot field of articles in database
+     * @result update status
+     */
+    public function publish($pid, $publish) {
+        $publish = (int)$publish;
+
+        if($publish > 7 || $publish < 0) {
+            $publish = 0;
+        }
+
+        $where = array(
+            '_id' => $pid
+        );
+
+        $update = array(
+            'others' => $publish
+        );
+
+        $updated = $this->Admin_model->update($this->table, $update, $where);
+
+        echo json_encode($updated, true);
     }
     // ---------------------------------------------------------------------
 

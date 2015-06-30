@@ -68,7 +68,17 @@ angular
             var value = $scope.listArticles[index].hot;
             articleConnect(url).submit({pid: $scope.listArticles[index]._id, value: value}, {auth: $rootScope.online.code}, function (data) {
                 if(data.ok && data.err == null) {
-                    $scope.listArticles[index].hot = !value;
+                    $scope.listArticles[index].hot = (value>=1?0:1);
+                }
+            });
+        };
+
+        $scope.publish = function(index){
+            var url = $rootScope.apiHost + '/admin/articles/publish/:pid/:value';
+            var value = ($scope.listArticles[index].others >= 1? 0: 2);
+            articleConnect(url).submit({pid: $scope.listArticles[index]._id, value: value}, {auth: $rootScope.online.code}, function (data) {
+                if(data.ok && data.err == null) {
+                    $scope.listArticles[index].others = value;
                 }
             });
         };
