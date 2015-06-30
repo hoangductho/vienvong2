@@ -28,8 +28,6 @@ angular.module('vienvong')
             $location.hash('top');
             $anchorScroll();
             $location.hash(null);
-
-            (adsbygoogle = window.adsbygoogle || []).push({});
         });
 
         $rootScope.gabox1 = {
