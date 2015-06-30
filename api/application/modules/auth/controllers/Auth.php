@@ -244,6 +244,7 @@ class Auth extends CI_Controller {
         $data['user_info']['uid'] = $user['_id'];
         $data['user_info']['fullName'] = $user['fullName'];
         $data['user_info']['avatar'] = $user['avatar'];
+        $data['user_info']['role'] = $user['role'];
 
         if($_SERVER['HTTP_ORIGIN'] == 'http://backend.vienvong.vn') {
             $data['user_info']['role'] = $user['role'];

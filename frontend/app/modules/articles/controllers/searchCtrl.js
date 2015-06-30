@@ -57,8 +57,6 @@ angular
             list();
         };
 
-        list();
-
         $scope.searchArticle = function() {
             var text = encodeURIComponent($scope.searchString);
             $state.go('main.articles.search', {'text': text});

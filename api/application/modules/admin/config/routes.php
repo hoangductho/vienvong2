@@ -95,5 +95,7 @@ $route['admin/role/update'] = 'admin/Admin_Roles/updateRole';
 
 $route['admin/seo/(:any)'] = 'admin/Admin_SEO/$1';
 
+$route['admin/articles/(.*)'] = 'admin/Admin_Articles/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

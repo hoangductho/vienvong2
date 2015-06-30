@@ -6,7 +6,12 @@
                 <div class="normal-post-box">
                     <div class="normal-post-detail">
                         <div class="normal-thumb-box">
-                            <a ui-sref="main.articles.edit({id: normal._id})" style="position: absolute" class="btn btn-info pull-right">Edit</a>
+                            <div class="articles-management" style="position: absolute">
+                                <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-primary pull-left">Publish</a>
+                                <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-info pull-left">Edit</a>
+                                <a ng-click="sethot($index)" class="btn btn-success pull-left">Hot</a>
+                                <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-danger pull-left">Delete</a>
+                            </div>
                             <img ng-src="{{imgHost + normal.sAvatar}}">
                         </div>
                         <div class="normal-info-box">

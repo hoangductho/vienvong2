@@ -392,9 +392,12 @@ class Articles extends CI_Controller {
 
         $data = $detail['result'][0];
 
+        if(strlen($data['keyword']) >= 2)
         $suggest = $this->_getSuggest($id, $data['keyword']);
 
-        $data['suggest'] = $suggest['result'];
+        if(isset($suggest['result'])) {
+            $data['suggest'] = $suggest['result'];
+        }
 
         $this->load->view('snapshot', $data);
     }

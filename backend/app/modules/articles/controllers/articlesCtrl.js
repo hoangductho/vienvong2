@@ -6,7 +6,7 @@
 
 angular
     .module('articles')
-    .controller('articlesCtrl', function ($scope, $sce, $rootScope, $state, $location, $timeout, getArticles, hotArticles, articleConnect) {
+    .controller('articlesCtrl', function ($scope, $sce, $rootScope, $state, $location, $timeout, articleConnect) {
         // public params
         $scope.state = $state;
         $scope.next = true;
@@ -25,9 +25,10 @@ angular
 
         // get articles from server
         var list = function (addGroup, addPage) {
+            var url = $rootScope.apiHost + '/admin/articles/all/:page';
             if($scope.next) {
                 $scope.searchMess = $sce.trustAsHtml('<div class="valid search-status"><i class="fa fa-spinner fa-spin"></i> Searching...</div>');
-                getArticles.get({group: addGroup, page: addPage}, function (data) {
+                articleConnect(url).submit({page: addPage}, {auth: $rootScope.online.code}, function (data) {
                     if (data.ok && data.result.length > 0) {
                         $scope.searchMess = null;
                         $scope.next = true;
@@ -60,5 +61,15 @@ angular
         // load more articles
         $scope.loadMore = function() {
             list(group, page)
+        };
+
+        $scope.sethot = function(index){
+            var url = $rootScope.apiHost + '/admin/articles/sethot/:pid/:value';
+            var value = $scope.listArticles[index].hot;
+            articleConnect(url).submit({pid: $scope.listArticles[index]._id, value: value}, {auth: $rootScope.online.code}, function (data) {
+                if(data.ok && data.err == null) {
+                    $scope.listArticles[index].hot = !value;
+                }
+            });
         };
     });

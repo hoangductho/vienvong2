@@ -47,5 +47,32 @@ class Admin_model extends  Models{
     }
     // ------------------------------------------------------------
 
+    /**
+     * Function : Find_articles
+     * Type     : Public
+     * Task     : Find articles follow conditions
+     * Params   :
+     *
+     * @select - string
+     * @where  - array
+     * @limit  - number (default 0)
+     * @page   - number (default 1)
+     */
+    public function find_articles($table, $select = '*', $where = array(), $limit = 0, $page = 0) {
+        $this->db->select($select);
+        $this->db->where($where);
+        $this->db->limit($limit);
+        if($page > 1) {
+            $this->db->offset(($page-1) * $limit);
+        }
+        $this->db->from($table);
+        $this->db->order_by('firstTime', 'DESC');
+        //var_dump($this->db->get_compiled_select('', false));
+        $articles = $this->db->get();
+
+        return $articles;
+    }
+    // ------------------------------------------------------------
+
     // End of class
 }
