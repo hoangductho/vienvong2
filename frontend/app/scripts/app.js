@@ -22,8 +22,8 @@ angular
         'articles',
         'auth'
     ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider) {
-
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider, $httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
         $stateProvider
             .state('main', {
                 abstract: true,

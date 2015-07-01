@@ -16,6 +16,7 @@ angular
         $scope.searchString = null;
         $scope.searchMess = null;
         var tryAgain = 3;
+        var tryHot = 2;
 
         // pirate params
         var group = 'all';
@@ -30,11 +31,14 @@ angular
                 if (data.ok && data.result.length > 0) {
                     $scope.hotArticles = data.result;
                 } else {
-                    var delay = 1;
-                    $timeout(function () {
-                        hot();
-                        delay = 0;
-                    }, 0, delay > 0);
+                    if(tryHot > 0) {
+                        tryHot -=1;
+                        var delay = 1;
+                        $timeout(function () {
+                            hot();
+                            delay = 0;
+                        }, 10, delay > 0);
+                    }
                 };
             })
         };

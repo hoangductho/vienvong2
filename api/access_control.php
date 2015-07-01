@@ -12,8 +12,8 @@ if($_SERVER['HTTP_ORIGIN'] === 'http://localhost:9000'){
     header("Access-Control-Allow-Origin: http://localhost:9000");
 }
 
-if($_SERVER['HTTP_ORIGIN'] === 'http://vienvong.vn'){
-    header("Access-Control-Allow-Origin: http://vienvong.vn");
+if($_SERVER['HTTP_ORIGIN'] === 'http://beta.vienvong.vn'){
+    header("Access-Control-Allow-Origin: http://beta.vienvong.vn");
 }
 
 if($_SERVER['HTTP_ORIGIN'] === 'http://backend.vienvong.vn'){

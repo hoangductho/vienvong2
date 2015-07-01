@@ -26,6 +26,8 @@ class Controller extends CI_Controller {
         parent::__construct();
         $this->load->model('Models');
 
+//        var_dump($_COOKIE);
+
         if(isset($_COOKIE['2vu'])) {
             $this->_logging();
         }

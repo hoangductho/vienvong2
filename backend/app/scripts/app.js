@@ -23,7 +23,7 @@ angular
         'admin'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider,
-                      localStorageServiceProvider, $resourceProvider) {
+                      localStorageServiceProvider, $httpProvider) {
 
         $stateProvider
             .state('main', {
@@ -36,7 +36,7 @@ angular
 
         localStorageServiceProvider.setPrefix('ls');
 
-        $resourceProvider.defaults.withCredentials = true;
+        //$httpProvider.defaults.withCredentials = true;
 
         $(document).ajaxComplete(function () {
             console.log('FB re-parse');
