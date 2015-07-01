@@ -42,7 +42,9 @@ class Controller extends CI_Controller {
             $time = time();
             $user = md5($_SERVER['HTTP_USER_AGENT'].$time.rand(0,1000));
 
-            setcookie('2vu', $user, $time + 60*60*24*30);
+            setcookie('2vu', $user, $time + 60*60*24*30, '/', '.vienvong.vn');
+        }else {
+            setcookie('2vu', $_COOKIE['2vu'], time() + 60*60*24*30, '/', '.vienvong.vn');
         }
     }
     // --------------------------------------------------------------------
