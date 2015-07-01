@@ -25,6 +25,68 @@ class Controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Models');
+
+        if(isset($_COOKIE['2vu'])) {
+            $this->_logging();
+        }
+    }
+    // --------------------------------------------------------------------
+
+    /**
+     * Set cookie to static user action
+     */
+    private function _setCookie() {
+        if(!isset($_COOKIE['2vu'])) {
+            $time = time();
+            $user = md5($_SERVER['HTTP_USER_AGENT'].$time.rand(0,1000));
+
+            setcookie('2vu', $user, $time + 60*60*24*30);
+        }
+    }
+    // --------------------------------------------------------------------
+
+    /**
+     * Log visitor actions into database
+     */
+    protected function _logging() {
+        $this->_setCookie();
+
+        $backtrace = debug_backtrace();
+
+        $trace = $backtrace[0]['object']->router;
+
+        $data = array(
+            'visitor' => $_COOKIE['2vu'],
+            'class' => $trace->class,
+            'method' => $trace->method,
+            'host_origin' => isset($_SERVER['HTTP_ORIGIN'])?$_SERVER['HTTP_ORIGIN']:$_SERVER['HTTP_HOST'],
+            'uri' => $trace->uri->uri_string,
+            'uri_rsegments' => $trace->uri->rsegments,
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'time' => time()
+        );
+
+        $log = $this->Models->insert('log', $data);
+
+        return $log;
+    }
+    // --------------------------------------------------------------------
+
+    /**
+     * Check data existed
+     *
+     * @param string $table table name will be check
+     * @param array $where where conditions to filter and find data
+     * @return bool
+     */
+    private function _dataExist($table, $where) {
+        $data = $this->Model->select($table, '*', $where, 0);
+
+        if($data['ok'] || !count($data['result'])) {
+            return false;
+        }
+
+        return true;
     }
     // --------------------------------------------------------------------
 
@@ -39,7 +101,7 @@ class Controller extends CI_Controller {
     protected function _getUser($select, $where, $limit = 1) {
         $table = 'Users';
 
-        $user = $this->Auth_model->select($table, $select, $where, $limit);
+        $user = $this->Models->select($table, $select, $where, $limit);
 
         return $user;
     }
@@ -231,7 +293,7 @@ class Controller extends CI_Controller {
         $table = 'Roles';
         $where['_id'] = $rid;
 
-        $role = $this->Admin_model->select($table,$select, $where);
+        $role = $this->Models->select($table,$select, $where);
 
         return $role;
     }

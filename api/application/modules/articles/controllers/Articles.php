@@ -13,8 +13,8 @@
  *  - Search and Show all articles follow conditions: categories, keyword, tags, or text search
  *
  */
-
-class Articles extends CI_Controller {
+require_once(APPPATH . '/controllers/Controller.php');
+class Articles extends Controller {
 
     /**
      * Table name to query
@@ -49,7 +49,7 @@ class Articles extends CI_Controller {
     /**
      * write permission values
      */
-    private $write = array(2, 3, 6, 7);
+    protected $write = array(2, 3, 6, 7);
 
     //
     private $uploadPath = 'uploader/';
@@ -69,117 +69,7 @@ class Articles extends CI_Controller {
     }
     // --------------------------------------------------------------------
 
-    /**
-     * Function : _CheckAccess
-     * Type     : private
-     * Task     :
-     *      - Check access token have correct
-     */
-    private function _getAccessInfo($where) {
-        $table = 'AccessTokens';
-        $select = '*';
 
-        $access = $this->Articles_model->select($table, $select, $where, 1);
-
-        return $access;
-    }
-    // --------------------------------------------------------------------
-
-    /**
-     * Function : _CheckAccess
-     * Type     : private
-     * Task     :
-     *      - Check access token have correct
-     */
-    private function _checkAccess($code, $field) {
-        $client = $this->_client();
-
-        list($signal, $data64) = explode('.', base64_decode($code), 2);
-
-        $data = json_decode(base64_decode($data64), true);
-
-        $valid_regexp = array("options"=>array("regexp"=>"/^\w{64}+$/"));
-
-        if(isset($data['accessStatic']) && filter_var($data['accessStatic'], FILTER_VALIDATE_REGEXP, $valid_regexp) === $data['accessStatic']) {
-            $where['_id'] = $data['accessStatic'];
-            $where['status'] = true;
-            $where['device'] = $client;
-
-            $access = $this->_getAccessInfo($where);
-
-            if($access['ok'] && count($access['result'])) {
-                $valid = hash_hmac('sha256', $data64, $access['result'][0]['secretKey']);
-
-                if($valid == $signal){
-                    return $data[$field];
-                }
-            }
-        }
-
-        return false;
-    }
-
-    // --------------------------------------------------------------------
-
-    /**
-     * Function : _client
-     * Type     : private
-     * Task     :
-     *      - Get client info
-     */
-    private function _client() {
-        // Function to get the client IP address
-        $ipAddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipAddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipAddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipAddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipAddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-            $ipAddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipAddress = getenv('REMOTE_ADDR');
-        else
-            $ipAddress = 'UNKNOWN';
-
-        $host['ip'] = $ipAddress;
-        $host['agent'] = $_SERVER['HTTP_USER_AGENT'];
-
-        return $host;
-    }
-    // --------------------------------------------------------------------
-
-    /**
-     * Function : _GetGroupInfo
-     * Type     : private
-     * Task     :
-     *      - get group's info
-     */
-    private function _getGroupInfo($where, $select = '*') {
-        $table = 'Groups';
-
-        $group = $this->Articles_model->select($table, $select, $where, 1);
-
-        return $group;
-    }
-    // --------------------------------------------------------------------
-
-    /**
-     * Function : _GetGroupRole
-     * Type     : private
-     * Task     :
-     *      - get user's role with the group
-     */
-    private function _getGroupRole($where, $select = '*') {
-        $table = 'Roles';
-
-        $group = $this->Articles_model->select_where_in($table, $select, $where, 1);
-
-        return $group;
-    }
     // --------------------------------------------------------------------
 
     /**
