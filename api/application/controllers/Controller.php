@@ -26,7 +26,7 @@ class Controller extends CI_Controller {
         parent::__construct();
         $this->load->model('Models');
 
-//        var_dump($_COOKIE);
+        $this->_setCookie();
 
         if(isset($_COOKIE['2vu'])) {
             $this->_logging();
@@ -53,7 +53,6 @@ class Controller extends CI_Controller {
      * Log visitor actions into database
      */
     protected function _logging() {
-        $this->_setCookie();
 
         $backtrace = debug_backtrace();
 
