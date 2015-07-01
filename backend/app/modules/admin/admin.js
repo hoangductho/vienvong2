@@ -17,13 +17,18 @@ angular
                 controller: 'adminCtrl'
             })
             .state('main.admin.group', {
-                url: '/admin/group',
+                url: '/admin/groups',
                 templateUrl: modulePath + 'views/group.html',
                 controller: 'groupCtrl'
             })
             .state('main.admin.role', {
-                url: '/admin/role',
+                url: '/admin/roles',
                 templateUrl: modulePath + 'views/role.html',
                 controller: 'roleCtrl'
+            })
+            .state('main.admin.seo', {
+                url: '/admin/seo',
+                templateUrl: modulePath + 'views/seo.html',
+                controller: 'seoCtrl'
             });
     });

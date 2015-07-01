@@ -123,24 +123,30 @@ class Admin_SEO extends Admin{
                         </url>'
                         . $sitemap.
                     '</urlset>';
-        return $sitemap;
+        return array('xml' => $sitemap, 'links' => count($allArticles['result']) + 9);
     }
 
 
     // ---------------------------------------------------------------------
+
+    /**
+     * Create sitemap.xml for search engine
+     */
     public function sitemap() {
         $frontend = $this->_getFrontendPath();
         $sitemap = $this->_siteMapInit();
 
         $fopen = fopen($frontend.'/sitemap.xml', 'w') or die("Unable to open file!");
 
-        fwrite($fopen, $sitemap);
+        fwrite($fopen, $sitemap['xml']);
 
         fclose($fopen);
 
-        echo json_encode(array('ok' => 1), true);
+        echo json_encode(array('ok' => 1, 'links' =>$sitemap['links']), true);
     }
+    // ---------------------------------------------------------------------
 
+    // create meta keyword data
     private function get_metadata() {
         $table = 'Articles';
         $select = '_id, tags, series, firstTime';
