@@ -45,7 +45,7 @@ angular
         };
 
         $scope.addRole = function() {
-            var url = $rootScope.apiHost + '/admin/role/add';
+            var url = $rootScope.apiHost + '/admin/roles/add';
             adminConnect(url).submit(
                 {},
                 {auth: $rootScope.online.code, data: $scope.data},
@@ -64,7 +64,7 @@ angular
         $scope.getRole = function() {
             $scope.searchMess = $sce.trustAsHtml('<br><br><div class="valid search-status form-control normal-post none-radius"><i class="fa fa-spinner fa-spin"></i> Searching...</div>');
 
-            var url = $rootScope.apiHost + '/admin/role/list/:page/:text';
+            var url = $rootScope.apiHost + '/admin/roles/all/:page/:text';
             var text = angular.copy($scope.searchString);
             if(!text) {
                 text = 0;
@@ -96,7 +96,7 @@ angular
 
         $scope.updateRole = function() {
             if($scope.point >= 0) {
-                var url = $rootScope.apiHost + '/admin/role/update';
+                var url = $rootScope.apiHost + '/admin/roles/update';
                 var data = {
                     rid: $scope.listRoles[$scope.point]._id,
                     permission: $scope.listRoles[$scope.point].permission

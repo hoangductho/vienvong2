@@ -30,7 +30,7 @@ angular
         };
 
         $scope.addGroup = function() {
-            var url = $rootScope.apiHost + '/admin/group/add';
+            var url = $rootScope.apiHost + '/admin/groups/add';
             adminConnect(url).submit(
                 {},
                 {auth: $rootScope.online.code, data: $scope.data},
@@ -50,7 +50,7 @@ angular
         $scope.getGroup = function() {
             $scope.searchMess = $sce.trustAsHtml('<br><br><div class="valid search-status form-control normal-post none-radius"><i class="fa fa-spinner fa-spin"></i> Searching...</div>');
 
-            var url = $rootScope.apiHost + '/admin/group/list/:page/:text';
+            var url = $rootScope.apiHost + '/admin/groups/all/:page/:text';
             var text = angular.copy($scope.searchString);
             if(!text) {
                 text = 0;

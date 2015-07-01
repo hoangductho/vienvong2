@@ -30,7 +30,7 @@ class Admin_Groups extends  Admin{
      * @param int $page page of list
      * @return array result query
      */
-    public function listGroup($page = 1, $text = '') {
+    public function all($page = 1, $text = '') {
         $table = 'Groups';
         $select = '_id, name, family';
         $limit = 10;
@@ -49,7 +49,7 @@ class Admin_Groups extends  Admin{
     /**
      * Add New Groups Into System
      */
-    public function addGroup() {
+    public function add() {
         $table = 'Groups';
         $family = null;
 

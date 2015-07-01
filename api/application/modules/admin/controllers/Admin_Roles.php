@@ -48,7 +48,7 @@ class Admin_Roles extends  Admin
      * @param int $page page of list
      * @return array result query
      */
-    public function listRole($page = 1, $text = '') {
+    public function all($page = 1, $text = '') {
         $table = 'Roles';
         $select = '_id, email, group, permission';
         $limit = 10;
@@ -68,7 +68,7 @@ class Admin_Roles extends  Admin
     /**
      * Add New Role Into System
      */
-    public function addRole() {
+    public function add() {
         $table = 'Roles';
         $family = null;
 
@@ -105,7 +105,7 @@ class Admin_Roles extends  Admin
     }
     // ---------------------------------------------------------------------
 
-    public function updateRole() {
+    public function update() {
         $table = 'Roles';
         $perValid = $this->_permissionValid($this->data['permission']);
         $idValid = $this->_idValid($this->data['rid']);

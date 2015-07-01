@@ -86,14 +86,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 //$route['admin/group/list/(:num)'] = 'admin/Admin_Groups/listGroup/$1';
-$route['admin/group/list/(:num)/(:any)'] = 'admin/Admin_Groups/listGroup/$1/$2';
-$route['admin/group/add'] = 'admin/Admin_Groups/addGroup';
+//$route['admin/group/list/(:num)/(:any)'] = 'admin/Admin_Groups/listGroup/$1/$2';
+//$route['admin/group/add'] = 'admin/Admin_Groups/addGroup';
 
-$route['admin/role/list/(:num)/(:any)'] = 'admin/Admin_Roles/listRole/$1/$2';
-$route['admin/role/add'] = 'admin/Admin_Roles/addRole';
-$route['admin/role/update'] = 'admin/Admin_Roles/updateRole';
+//$route['admin/role/list/(:num)/(:any)'] = 'admin/Admin_Roles/listRole/$1/$2';
+//$route['admin/role/add'] = 'admin/Admin_Roles/addRole';
+//$route['admin/role/update'] = 'admin/Admin_Roles/updateRole';
 
-$route['admin/seo/(:any)'] = 'admin/Admin_SEO/$1';
+$route['admin/groups/(.*)'] = 'admin/Admin_Groups/$1';
+
+$route['admin/roles/(.*)'] = 'admin/Admin_Roles/$1';
+
+$route['admin/seo/(.*)'] = 'admin/Admin_SEO/$1';
 
 $route['admin/articles/(.*)'] = 'admin/Admin_Articles/$1';
 

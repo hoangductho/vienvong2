@@ -8,7 +8,7 @@
 
 require_once('Admin.php');
 
-class Admin_SEO extends CI_Controller{
+class Admin_SEO extends Admin{
     /**
      * Function : Construct
      * Type     : Public
@@ -18,7 +18,6 @@ class Admin_SEO extends CI_Controller{
      */
     public function __construct() {
         parent::__construct();
-        $this->load->model('Admin_model');
     }
 
     // ---------------------------------------------------------------------
@@ -139,7 +138,7 @@ class Admin_SEO extends CI_Controller{
 
         fclose($fopen);
 
-        return true;
+        echo json_encode(array('ok' => 1), true);
     }
 
     private function get_metadata() {
