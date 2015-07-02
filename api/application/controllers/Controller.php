@@ -199,6 +199,8 @@ class Controller extends CI_Controller {
     protected function _checkAccess($code, $fields) {
         $client = $this->_client();
 
+//        var_dump(explode('.', base64_decode($code), 2));
+
         list($signal, $data64) = explode('.', base64_decode($code), 2);
 
         $data = json_decode(base64_decode($data64), true);

@@ -101,25 +101,7 @@ class Articles extends Controller {
 
         return false;
     }
-    // --------------------------------------------------------------------
-    /**
-     * ID Validate
-     *
-     * @param string $id data need check valid.
-     * @todo using regular expression to check data valid.
-     * @return bool result check valid
-     */
-    protected function _idValid($id) {
-        $regexp = array("options" => array("regexp" => "/^[\\w]{16,128}$/u"));
-        $valid = filter_var($id, FILTER_VALIDATE_REGEXP, $regexp);
 
-        if (!$valid) {
-            return false;
-        }
-
-        return true;
-
-    }
     // ---------------------------------------------------------------------
 
     /**
@@ -306,7 +288,9 @@ class Articles extends Controller {
         if(!isset($in['auth']) || !$in['auth']) {
             echo json_encode(array('ok' => 0, 'err' => 'Auth invalid'), true);
         }else {
-            $uid = $this->_checkAccess($in['auth'], 'uid');
+            $check = $this->_checkAccess($in['auth'], 'uid');
+
+            $uid = $check['uid'];
 
             if($this->_idValid($uid)) {
                 $where = array(
@@ -362,7 +346,9 @@ class Articles extends Controller {
         if(!isset($in['auth']) || !$in['auth']) {
             echo json_encode(array('ok' => 0, 'err' => 'Auth invalid'), true);
         }else {
-            $uid = $this->_checkAccess($in['auth'], 'uid');
+            $check = $this->_checkAccess($in['auth'], 'uid');
+
+            $uid = $check['uid'];
 
             if($this->_idValid($uid)) {
                 $where = array(
@@ -425,7 +411,9 @@ class Articles extends Controller {
         $data = [];
         $post = json_decode(file_get_contents('php://input'), true);
 
-        $access = $this->_checkAccess($post['auth'], 'uid');
+        $check = $this->_checkAccess($post['auth'], 'uid');
+
+        $access = $check['uid'];
 
         if(!$this->_idValid($access)) {
             $err = [
