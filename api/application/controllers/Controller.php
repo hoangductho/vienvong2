@@ -66,7 +66,7 @@ class Controller extends CI_Controller {
             'uri' => $trace->uri->uri_string,
             'uri_rsegments' => $trace->uri->rsegments,
             'ip' => $_SERVER['REMOTE_ADDR'],
-            'time' => time()
+            'time' => date('Y-m-d H:m:s')
         );
 
         $log = $this->Models->insert('log', $data);
