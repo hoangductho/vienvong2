@@ -162,6 +162,10 @@ class Articles extends Controller {
         $articles['group'] = $group;
 
         echo json_encode($articles, true);
+
+        if(isset($_COOKIE['2vu'])) {
+            $this->_logging();
+        }
     }
 
     // --------------------------------------------------------------------
@@ -204,6 +208,10 @@ class Articles extends Controller {
         $detail = $this->Articles_model->detail_article($this->table, $where, $select);
 
         echo json_encode($detail, true);
+
+        if(isset($_COOKIE['2vu'])) {
+            $this->_logging();
+        }
     }
 
     // --------------------------------------------------------------------
@@ -482,6 +490,10 @@ class Articles extends Controller {
             $select = '_id, users_id, title, friendly, description, lAvatar, sAvatar, tags, series, firstTime';
             $articles = $this->Articles_model->fulltextSearch('Articles', $text, $select, $offset, $limit);
             echo json_encode($articles, true);
+        }
+
+        if(isset($_COOKIE['2vu'])) {
+            $this->_logging();
         }
     }
 

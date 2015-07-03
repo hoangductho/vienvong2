@@ -28,9 +28,9 @@ class Controller extends CI_Controller {
 
         $this->_setCookie();
 
-        if(isset($_COOKIE['2vu'])) {
+        /*if(isset($_COOKIE['2vu'])) {
             $this->_logging();
-        }
+        }*/
     }
     // --------------------------------------------------------------------
 

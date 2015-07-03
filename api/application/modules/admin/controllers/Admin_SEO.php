@@ -146,6 +146,10 @@ class Admin_SEO extends Admin{
     }
     // ---------------------------------------------------------------------
 
+
+
+    // ---------------------------------------------------------------------
+
     // create meta keyword data
     private function get_metadata() {
         $table = 'Articles';

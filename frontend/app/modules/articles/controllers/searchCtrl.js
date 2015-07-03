@@ -52,6 +52,8 @@ angular
             }
         };
 
+        list();
+
         // load more articles
         $scope.loadMore = function() {
             list();

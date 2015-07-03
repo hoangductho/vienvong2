@@ -74,5 +74,23 @@ class Admin_model extends  Models{
     }
     // ------------------------------------------------------------
 
+    /**
+     * Count data of field
+     *
+     * @param string $table name of table will be query.
+     * @param string $field name of field will be count.
+     * @param bool   $distinct count only one or recursive.
+     * @param timestamp $start_date date to start count.
+     * @param timestamp $end_date data to end count.
+     *
+     * @return count result
+     */
+    public function count($table, $field, $distinct = false, $start_date = null, $end_date = null) {
+        if(!$start_date) {
+            
+        }
+    }
+    // ------------------------------------------------------------
+
     // End of class
 }
