@@ -15,7 +15,7 @@ angular
         'offClick',
         'LocalStorageModule',
 
-        'seo',
+        //'seo',
         'markdown',
         'facebook',
 
