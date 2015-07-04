@@ -80,14 +80,45 @@ class Admin_model extends  Models{
      * @param string $table name of table will be query.
      * @param string $field name of field will be count.
      * @param bool   $distinct count only one or recursive.
+     * @param string $time_name name of field storage time
      * @param timestamp $start_date date to start count.
      * @param timestamp $end_date data to end count.
      *
      * @return count result
      */
-    public function count($table, $field, $distinct = false, $start_date = null, $end_date = null) {
-        if(!$start_date) {
-            
+    public function count($table, $field, $distinct = false, $time_name = 'time', $start_date = null, $end_date = null) {
+        if($start_date == null) {
+            $start_date = strtotime(date('Y-m-d 00:00:00'));
+        }
+
+        if($end_date == null) {
+            $end_date = strtotime(date('Y-m-d 23:59:59'));
+        }
+
+        $where = array(
+            $time_name = array(
+                '$gte' => $start_date,
+                '$lte' => $end_date
+            )
+        );
+
+        if($distinct) {
+            $this->db->from($table);
+            $this->db->where($where);
+            $this->db->select_count($field);
+            $this->db->group_by($field);
+
+            $count = $this->db->get();
+            $count['result'] = array(
+                $field => count($count['result'])
+            );
+
+            return $count;
+        }else {
+            $this->db->from($table);
+            $this->db->where($where);
+            $this->db->select_count($field);
+            return $this->db->get();
         }
     }
     // ------------------------------------------------------------

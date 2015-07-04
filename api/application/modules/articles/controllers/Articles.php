@@ -46,11 +46,6 @@ class Articles extends Controller {
      */
     private $others = 0;
 
-    /**
-     * write permission values
-     */
-    protected $write = array(2, 3, 6, 7);
-
     //
     private $uploadPath = 'uploader/';
 

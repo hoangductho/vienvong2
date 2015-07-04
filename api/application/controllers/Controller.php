@@ -66,7 +66,7 @@ class Controller extends CI_Controller {
             'uri' => $trace->uri->uri_string,
             'uri_rsegments' => $trace->uri->rsegments,
             'ip' => $_SERVER['REMOTE_ADDR'],
-            'time' => date('Y-m-d H:m:s')
+            'time' => time()
         );
 
         $log = $this->Models->insert('log', $data);
@@ -358,6 +358,20 @@ class Controller extends CI_Controller {
 
         return true;
     }
+    // ---------------------------------------------------------------------
+
+    /**
+     * Check date follow format
+     *
+     * @param date  $date date value
+     * @param str   $format format need follow
+     * @return bool
+     */
+    protected function _validDate($date, $format = 'Y-m-d H:i:s') {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
+    }
+
     // ---------------------------------------------------------------------
 
     // End of class
