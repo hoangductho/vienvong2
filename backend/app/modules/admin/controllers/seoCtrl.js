@@ -34,7 +34,7 @@ angular
                     console.log(data);
                     if(data.ok && data.result.length) {
                         angular.forEach(data.result, function(value){
-                            $scope.visitor += data.result.length;
+                            $scope.visitor = data.result.length;
                         });
                     }
                 }
