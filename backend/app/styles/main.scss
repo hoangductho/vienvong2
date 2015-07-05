@@ -840,6 +840,38 @@ article {
   margin-bottom: $standard-space;
 }
 
+@mixin box-radius ($size) {
+  border-radius: $size/2;
+}
+
+@mixin box-size ($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+.box {
+  display: inline-block;
+  border: 1px solid $g-plus-color;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.box {
+  @include box-radius(32px);
+  @include box-size(32px);
+}
+
+.box-2x {
+  @include box-radius(64px);
+  @include box-size(64px);
+}
+
+.text-center {
+  text-align: center;
+}
+
+
 /* end express style*/
 /* ==================================================================*/
 

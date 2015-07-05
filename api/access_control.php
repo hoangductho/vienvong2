@@ -8,9 +8,9 @@
 
 date_default_timezone_set('UTC');
 
-//if($_SERVER['HTTP_ORIGIN'] === 'http://localhost:9000'){
-//    header("Access-Control-Allow-Origin: http://localhost:9000");
-//}
+if($_SERVER['HTTP_ORIGIN'] === 'http://localhost:9000'){
+    header("Access-Control-Allow-Origin: http://localhost:9000");
+}
 
 if($_SERVER['HTTP_ORIGIN'] === 'http://vienvong.vn'){
     header("Access-Control-Allow-Origin: http://vienvong.vn");

@@ -146,7 +146,21 @@ class Admin_SEO extends Admin{
     }
     // ---------------------------------------------------------------------
 
+    public function statistic($field, $distinct = false, $start_date = null, $stop_date = null) {
+        $start_date = ($this->_validDate($start_date, 'Y-m-d')?
+            strtotime($start_date . ' 00:00:00', 'Y-m-d H:i:s'):null);
+        $stop_date = ($this->_validDate($stop_date, 'Y-m-d')?
+            strtotime($start_date . ' 23:59:59', 'Y-m-d H:i:s'):null);
 
+        if($start_date > $stop_date) {
+            echo json_encode(array('ok' => 0, 'err' => 'Date time invalid'));
+            return false;
+        }
+
+        $data = $this->Admin_model->count('log', $field, $distinct, 'time', $start_date, $stop_date);
+//        var_dump($data);
+        echo json_encode($data, true);
+    }
 
     // ---------------------------------------------------------------------
 

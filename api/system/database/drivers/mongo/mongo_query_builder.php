@@ -119,10 +119,9 @@ class Mongo_query_builder extends CI_DB {
         $select = array();
 
         if($this->qb_distinct === true) {
-            foreach($this->qb_select as $select_key=> $select_val) {
-                if($select_val) {
-                    $this->group_by($select_key);
-                }
+            if($this->qb_select) {
+                $fields = implode(',', $this->qb_select);
+                $this->qb_groubby['$group']['distinct']['$addToSet'] = $this->qb_select;
             }
         }
 

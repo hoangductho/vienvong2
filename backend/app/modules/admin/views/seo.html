@@ -1,20 +1,52 @@
 <div id="left-edge" class="col-lg-2 col-md-0-max"></div>
 <div id="capital" class="col-lg-8 col-md-9 col-sm-12">
-
-    <h4>Create Sitemap</h4>
-    <div id="search-role-form" class="standard-border col-md-12 none-padding">
-        <div class="col-md-2 col-xs-4 none-padding">
-            <button ng-click="sitemap()" class="form-control btn btn-info form-control-static no-border none-shadow none-radius">
-                <i class="fa fa-file-code-o"></i> Create
-            </button>
-        </div>
-        <div class="col-md-10 col-xs-8 none-padding">
-            <div class="form-control form-control-static no-border none-shadow none-radius">
-                {{links>0?('Number links in sitemap.xml: '+links):'Do you want create now?'}}
+    <div ng-init="currentTab = 'statistic'">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{'active': currentTab == 'statistic'}">
+                <a href="#" ng-click="currentTab = 'statistic'">Statistic</a>
+            </li>
+            <li role="presentation" ng-class="{'active': currentTab == 'sitemap'}">
+                <a href="#" ng-click="currentTab = 'sitemap'">Sitemap</a>
+            </li>
+        </ul>
+        <div ng-if="currentTab == 'statistic'">
+            <div class="row">
+                <br>
+                <div class="col-md-6 col-sm-12">
+                    <div class="thumbnail text-center">
+                        <div>
+                            <a class="box box-circle box-2x"><h3>{{visitor}}</h3></a>
+                        </div>
+                        <h3>Visitors</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="thumbnail text-center">
+                        <div>
+                            <a class="box box-circle box-2x"><h3>{{pageview}}</h3></a>
+                        </div>
+                        <h3>Pageviews</h3>
+                    </div>
+                </div>
             </div>
         </div>
+        <div ng-if="currentTab == 'sitemap'">
+            <h4>Create Sitemap</h4>
+            <div id="search-role-form" class="standard-border col-md-12 none-padding">
+                <div class="col-md-2 col-xs-4 none-padding">
+                    <button ng-click="sitemap()" class="form-control btn btn-info form-control-static no-border none-shadow none-radius">
+                        <i class="fa fa-file-code-o"></i> Create
+                    </button>
+                </div>
+                <div class="col-md-10 col-xs-8 none-padding">
+                    <div class="form-control form-control-static no-border none-shadow none-radius">
+                        {{links>0?('Number links in sitemap.xml: '+links):'Do you want create now?'}}
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
     </div>
-    <hr>
 </div>
 <div id="right-edge" class="col-lg-2 col-md-3 col-sm-0-max">
 

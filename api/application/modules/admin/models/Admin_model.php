@@ -96,30 +96,18 @@ class Admin_model extends  Models{
         }
 
         $where = array(
-            $time_name = array(
+            $time_name => array(
                 '$gte' => $start_date,
                 '$lte' => $end_date
             )
         );
 
-        if($distinct) {
-            $this->db->from($table);
-            $this->db->where($where);
-            $this->db->select_count($field);
-            $this->db->group_by($field);
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->distinct($distinct);
+        $this->db->select_count($field);
 
-            $count = $this->db->get();
-            $count['result'] = array(
-                $field => count($count['result'])
-            );
-
-            return $count;
-        }else {
-            $this->db->from($table);
-            $this->db->where($where);
-            $this->db->select_count($field);
-            return $this->db->get();
-        }
+        return $this->db->get();
     }
     // ------------------------------------------------------------
 
