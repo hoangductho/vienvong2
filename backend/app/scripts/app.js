@@ -16,7 +16,6 @@ angular
         'LocalStorageModule',
 
         'markdown',
-        'facebook',
 
         'articles',
         'auth',
@@ -37,12 +36,4 @@ angular
         localStorageServiceProvider.setPrefix('ls');
 
         //$httpProvider.defaults.withCredentials = true;
-
-        $(document).ajaxComplete(function () {
-            console.log('FB re-parse');
-            try {
-                FB.XFBML.parse();
-            } catch (ex) {
-            }
-        });
     });
