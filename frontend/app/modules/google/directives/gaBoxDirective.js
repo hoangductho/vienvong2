@@ -7,14 +7,15 @@
  */
 
 angular
-    .module('vienvong')
+    .module('google')
     .directive("gaBox", function ($window, $compile) {
+        var modulePath = 'modules/google/';
         return {
             restrict: 'C',
             replace: true,
             scope: {
             },
-            templateUrl: 'views/ggAdsense.html',
+            templateUrl: modulePath + 'views/ggAdsense.html',
             /*link: function (scope, element, attrs) {
                 var observer = function(aid) {
                     if(

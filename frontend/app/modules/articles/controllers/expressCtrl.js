@@ -37,7 +37,6 @@ angular
                     }
                 }
 
-                $rootScope.htmlReady();
             });
         };
 

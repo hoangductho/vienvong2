@@ -18,6 +18,7 @@ angular
         //'seo',
         'markdown',
         'facebook',
+        'google',
 
         'articles',
         'auth'
