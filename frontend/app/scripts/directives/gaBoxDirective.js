@@ -11,25 +11,17 @@ angular
     .directive("gaBox", function ($window, $compile) {
         return {
             restrict: 'C',
+            replace: true,
             scope: {
             },
-            link: function (scope, element, attrs) {
+            templateUrl: 'views/ggAdsense.html',
+            /*link: function (scope, element, attrs) {
                 var observer = function(aid) {
                     if(
                         (attrs.minscreen && $window.innerWidth >= attrs.minscreen)
                         || (attrs.maxscreen && $window.innerWidth < attrs.maxscreen)
                         || (!attrs.maxscreen && !attrs.minscreen)
                     ) {
-                        if(typeof(adsbygoogle) == "undefined") {
-                            jQuery.ajax({
-                                type: "GET",
-                                url: "http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
-                                success: function(){},
-                                dataType: "script",
-                                cache: true
-                            });
-                        }
-
                         // build markdown editor template.
                         var newElement = $compile(
                             '<ins class="adsbygoogle"'
@@ -37,9 +29,7 @@ angular
                             + 'data-ad-client="'+ attrs.publisher +'"'
                             + 'data-ad-slot="' + aid + '"'
                             + 'data-ad-format="auto"></ins>'
-                            + '<script>'
-                            +   '(adsbygoogle = window.adsbygoogle || []).push({});'
-                            + '</script>')(scope);
+                            )(scope);
 
                         // add markdown editor in to point called it. html() doesn't work
                         element.replaceWith(newElement);
@@ -47,6 +37,18 @@ angular
                 };
 
                 attrs.$observe('aid', observer);
+            },*/
+            controller: function () {
+                if(typeof(adsbygoogle) == "undefined") {
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+                        success: function(){},
+                        dataType: "script",
+                        cache: true
+                    });
+                }
+                (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }
     });
