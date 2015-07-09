@@ -210,10 +210,10 @@ AddDefaultCharset utf-8
 <ifModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*)
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google|*Google)
     RewriteRule express/([a-z0-9-]+)/(.*+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
 
-    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*)
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google|*Google)
     RewriteRule express/([a-z0-9-]+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
 
 #    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
@@ -224,7 +224,7 @@ AddDefaultCharset utf-8
     RewriteCond %{REQUEST_URI} !index
 
     #this condition for crawlers not to interfere with normal access
-    RewriteCond %{HTTP_USER_AGENT} !(facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|googlebot)
+    RewriteCond %{HTTP_USER_AGENT} !(facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|googlebot|Mediapartners-Google|*Google)
 
     #this rule for html5 mode and friendly urls without the #
     RewriteRule (.*) #/$1 [L]

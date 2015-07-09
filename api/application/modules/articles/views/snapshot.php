@@ -172,11 +172,11 @@
 
             <div id="right-edge" class="col-lg-2 col-md-3 col-sm-0-max ng-scope">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- ad.no.1 -->
+                <!-- adsend code -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-5355896671501389"
-                     data-ad-slot="8491924156"
+                     data-ad-slot="6338389751"
                      data-ad-format="auto"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
