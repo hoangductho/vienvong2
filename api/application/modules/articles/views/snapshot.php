@@ -140,6 +140,16 @@
         <div class="row ng-scope" ui-view=""><!-- uiView: undefined -->
             <div id="left-edge" class="col-lg-2 col-md-0-max ng-scope"></div>
             <div id="express" class="col-lg-8 col-md-9 col-sm-12 ng-scope"> <!--<main>-->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- adsend code -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5355896671501389"
+                     data-ad-slot="6338389751"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 <article scroll="">
                     <div id="brand" class="articles-block">
                         <div class="detail-content detail-box"><h1 class="ng-binding"><?php echo $title ?></h1></div>
@@ -171,16 +181,6 @@
                 </article>
 
             <div id="right-edge" class="col-lg-2 col-md-3 col-sm-0-max ng-scope">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- adsend code -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5355896671501389"
-                     data-ad-slot="6338389751"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
         </div>
     </main>
