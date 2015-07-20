@@ -39,7 +39,7 @@ angular
                             + 'data-ad-client="'+ attrs.publisher +'"'
                             + 'data-ad-slot="' + aid + '"'
                             + 'data-ad-format="auto"></ins>'
-                            + '<script>adsbygoogle = window.adsbygoogle || []).push({}</script>'
+                            + '<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>'
                             )(scope);
 
                         // add markdown editor in to point called it. html() doesn't work
