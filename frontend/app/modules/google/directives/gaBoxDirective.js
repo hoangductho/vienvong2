@@ -15,8 +15,8 @@ angular
             replace: true,
             scope: {
             },
-            templateUrl: modulePath + 'views/ggAdsense.html',
-            /*link: function (scope, element, attrs) {
+            // templateUrl: modulePath + 'views/ggAdsense.html',
+            link: function (scope, element, attrs) {
                 var observer = function(aid) {
                     if(
                         (attrs.minscreen && $window.innerWidth >= attrs.minscreen)
@@ -47,7 +47,7 @@ angular
                 };
 
                 attrs.$observe('aid', observer);
-            },*/
+            },
             controller: function () {
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
