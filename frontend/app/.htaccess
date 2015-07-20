@@ -210,10 +210,10 @@ AddDefaultCharset utf-8
 <ifModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google|*Google)
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google)
     RewriteRule express/([a-z0-9-]+)/(.*+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
 
-    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google|*Google)
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|facebot|Twitterbot|Pinterest|Google.*snippet|google*|Mediapartners-Google)
     RewriteRule express/([a-z0-9-]+)$ http://api.vienvong.vn/articles/snapshot/$1 [P,L]
 
 #    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
