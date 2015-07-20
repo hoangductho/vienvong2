@@ -39,6 +39,7 @@ angular
                             + 'data-ad-client="'+ attrs.publisher +'"'
                             + 'data-ad-slot="' + aid + '"'
                             + 'data-ad-format="auto"></ins>'
+                            + '<script>adsbygoogle = window.adsbygoogle || []).push({}</script>'
                             )(scope);
 
                         // add markdown editor in to point called it. html() doesn't work
@@ -48,8 +49,8 @@ angular
 
                 attrs.$observe('aid', observer);
             },
-            controller: function () {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
+            // controller: function () {
+            //     (adsbygoogle = window.adsbygoogle || []).push({});
+            // }
         }
     });
